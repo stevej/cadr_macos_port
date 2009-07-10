@@ -32,6 +32,16 @@ clean up the display. You're up!
 If you want to use the network download and run chaosd.  Read the
 "README" in the disks subdirectory on the http server.
 
+Compiling for the Mac
+---------------------
+
+First you will need SDL. The easiest way to get it is through MacPorts
+
+sudo port install libsdl-framework
+sudo port install libsdl
+
+then run 'make clean' followed by 'make'. Then simply follow the Quickstart guide!
+
 Recent Changes
 --------------
 
