@@ -1,0 +1,4724 @@
+----
+1.0 excess-2000 exponent 2001, 32 bit mantissa 10000000000 0x40000000
+1.1 excess-2000 exponent 2001, 32 bit mantissa 10631463146 0x46666666
+
+(+ 1.0 1.1)
+
+mant M-1, M-2
+exponents M-I, M-J
+
+M-I 15
+M-J 16
+M-1 22
+M-2 23
+
+----
+
+pc history:
+ 0 00000012543 ARITH-FIX-FLO     	vma 00603251271 md 20500000000 pf0 pdl 121 20500000000
+(alu) SETM a=0 m=22 m[22] C=0 alu-> -><none>,m[14] 
+ 1 00000012544 ARITH-FIX-FLO   +1	vma 00603251271 md 20500000000 pf0 pdl 121 20500000000
+(alu) SETA a=767 m=0 m[0] C=0 alu-> -><none>,m[15] 
+ 2 00000012545 ARITH-FIX-FLO   +2	vma 00603251271 md 20500000000 pf0 pdl 121 20500000000
+(jump) a=0 m=m[0] pc 12571, P jump-always 
+ 3 00000012546 ARITH-FIX-FLO   +3	vma 00603251271 md 20500000000 pf0 pdl 121 20500000000
+(alu) SETM a=0 m=2 m[2] C=0 alu-> Q-R -><none>,m[0] 
+ 4 00000012571 FNORM             	vma 00603251271 md 20500000000 pf0 pdl 121 20500000000
+(dispatch) m=m[22] disp-const 0, disp-addr 620, map 0, len 4, rot 4 
+ 5 00000012573 FNORM3            	vma 00603251271 md 20500000000 pf0 pdl 121 20500000000
+(alu) SETM a=0 m=22 m[22] C=0 alu<<+q31 <<Q -><none>,m[22] 
+ 6 00000012574 FNORM3          +1	vma 00603251271 md 20500000000 pf0 pdl 121 20500000000
+(alu) SETM a=0 m=22 m[22] C=0 alu<<+q31 <<Q -><none>,m[22] 
+ 7 00000012575 FNORM3          +2	vma 00603251271 md 20500000000 pf0 pdl 121 20500000000
+(alu) SETM a=0 m=22 m[22] C=0 alu<<+q31 <<Q -><none>,m[22] 
+ 8 00000012576 FNORM3          +3	vma 00603251271 md 20500000000 pf0 pdl 121 20500000000
+(alu) ANDCA a=637 m=47 Q C=0 alu-> Q-R -><none>,m[0] 
+ 9 00000012577 FNORM3          +4	vma 00603251271 md 20500000000 pf0 pdl 121 20500000000
+(jump) a=2 m=m[22] pc 12571, !jump M-src = A-src 
+10 00000012600 FNORM3          +5	vma 00603251271 md 20500000000 pf0 pdl 121 20500000000
+(alu) M-A-1 [M-A-1] a=570 m=15 m[15] C=1 alu-> -><none>,m[15] 
+11 00000012601 FLZERO            	vma 00603251271 md 20500000000 pf0 pdl 121 20500000000
+popj; (alu) SETA a=2 m=0 m[0] C=0 alu-> -><none>,m[15] 
+12 00000012602 FLZERO          +1	vma 00603251271 md 20500000000 pf0 pdl 121 20500000000
+(alu) SETA a=2 m=0 m[0] C=0 alu-> -><none>,m[22] 
+13 00000012547 ARITH-SFL-FLO     	vma 00603251271 md 20500000000 pf0 pdl 121 20500000000
+(dispatch) m=m[5] disp-const 0, disp-addr 1020, map 0, len 4, rot 0 
+14 00000012550 ARITH-FLO-FLO   +1	vma 00603251271 md 20500000000 pf0 pdl 121 20500000000
+(alu) SETA a=1010 m=0 m[0] C=0 alu-> ->SPC data,push ,m[0] 
+15 00000012552 FADD              	vma 00603251271 md 20500000000 pf0 pdl 121 20500000000
+(jump) a=16 m=m[15] pc 12570, M-src = A-src 
+
+[brad@mwave usim]$ ./usim -l FADD
+CADR emulator v0.7
+disk: image CHB 1457/23/21
+disk: pack label comment 'ucadr.mcr.841'
+cadr_1.bin
+cadr_2.bin
+cadr_3.bin
+cadr_4.bin
+cadr_5.bin
+cadr_6.bin
+[promh.sym.9] sort 27 symbols (originally 27)
+[ucadr.sym.841] sort 2503 symbols (originally 2503)
+trace label point [mcr]: FADD 12552
+run:
+??: reg write vaddr 400, pn 36777, offset 0, v 0; u_pc 314
+chaos: forcing reconnect to chaosd
+chaos: reconnecting to chaosd
+chaos: reconnected
+chaos: forcing reconnect to chaosd
+chaos: reconnecting to chaosd
+chaos: reconnected
+------
+M-I 15 0
+M-J 16 2001
+M-1 22 0
+M-2 23 10000000000
+
+FADD:
+12552 0200706525700043 (lc=21007570740 34201736170)
+(jump) a=16 m=m[15] pc 12570, M-src = A-src 
+a=16 (2001), m=15 (0)
+------
+12553 0000001000010033 (lc=21007570740 34201736170)
+(alu) SETM a=0 m=2 m[2] C=0 alu-> Q-R -><none>,m[0] 
+a=0 (11360), m=2 (0)
+alu_op 3, ir8 0, ir7 0, c 0, dest 0, out_bus 1
+q<-alu
+a,m_memory[0] <- 0
+alu_out 0x00000000, alu_carry 0, q 0x00000000
+------
+12554 0200706526300441 (lc=21007570740 34201736170)
+(jump) a=16 m=m[15] pc 12630, P M-src < A-src 
+a=16 (2001), m=15 (0)
+writing spc[2] <- 12556
+------
+12555 0000706401550260 (lc=21007570740 34201736170)
+(alu) M-A-1 [M-A-1] a=16 m=15 m[15] C=0 alu-> -><none>,m[33] 
+a=16 (2001), m=15 (0)
+alu_op 6, ir8 0, ir7 1, c 0, dest 33, out_bus 1
+a,m_memory[33] <- 37777775776
+alu_out 0xfffffbfe, alu_carry 1, q 0x00000000
+------
+FADD1:
+12630 0000007000650030 (lc=21007570740 34201736170)
+(alu) SETM a=0 m=16 m[16] C=0 alu-> -><none>,m[15] 
+a=0 (0), m=16 (2001)
+alu_op 3, ir8 0, ir7 0, c 0, dest 15, out_bus 1
+a,m_memory[15] <- 2001
+alu_out 0x00000401, alu_carry 0, q 0x00000000
+------
+12631 0001541401550260 (lc=21007570740 34201736170)
+(alu) M-A-1 [M-A-1] a=33 m=3 m[3] C=0 alu-> -><none>,m[33] 
+a=33 (37777775776), m=3 (37777777777)
+alu_op 6, ir8 0, ir7 1, c 0, dest 33, out_bus 1
+a,m_memory[33] <- 2000
+alu_out 0x00000400, alu_carry 0, q 0x00000000
+------
+12632 0000011401250030 (lc=21007570740 34201736170)
+(alu) SETM a=0 m=23 m[23] C=0 alu-> -><none>,m[25] 
+a=0 (0), m=23 (10000000000)
+alu_op 3, ir8 0, ir7 0, c 0, dest 25, out_bus 1
+a,m_memory[25] <- 10000000000
+alu_out 0x40000000, alu_carry 0, q 0x00000000
+------
+12633 0100011001150030 (lc=21007570740 34201736170)
+popj; (alu) SETM a=0 m=22 m[22] C=0 alu-> -><none>,m[23] 
+a=0 (0), m=22 (0)
+alu_op 3, ir8 0, ir7 0, c 0, dest 23, out_bus 1
+a,m_memory[23] <- 0
+alu_out 0x00000000, alu_carry 0, q 0x00000000
+popj; reading spc[2] -> 12556
+------
+12634 0000012401110030 (lc=21007570740 34201736170)
+(alu) SETM a=0 m=25 m[25] C=0 alu-> -><none>,m[22] 
+a=0 (0), m=25 (10000000000)
+alu_op 3, ir8 0, ir7 0, c 0, dest 22, out_bus 1
+a,m_memory[22] <- 10000000000
+alu_out 0x40000000, alu_carry 0, q 0x00000000
+------
+12556 0231655526030341 (lc=21007570740 34201736170)
+(jump) a=635 m=m[33] pc 12603, !next !jump M-src < A-src 
+a=635 (37), m=33 (2000)
+no_exec_next; u_pc 12604
+------
+FADD3:
+12603 0231655400001342 (lc=21007570740 34201736170)
+(jump) a=635 m=m[33] pc 0, R !next !jump M-src <= A-src 
+a=635 (37), m=33 (2000)
+reading spc[1] -> 11360
+no_exec_next; u_pc 11361
+------
+FLOPACK-P:
+11360 0037140032010050 (lc=21007570740 34201736170)
+(alu) SETA a=763 m=0 m[0] C=0 alu-> ->SPC data,push ,m[0] 
+a=763 (521), m=0 (0)
+alu_op 5, ir8 0, ir7 0, c 0, dest 640, out_bus 1
+writing spc[1] <- 521
+a,m_memory[0] <- 521
+alu_out 0x00000151, alu_carry 0, q 0x00000000
+------
+FLOPACK:
+11361 0200106513740642 (lc=21007570740 34201736170)
+(jump) a=2 m=m[15] pc 11374, P !next M-src <= A-src 
+a=2 (0), m=15 (2001)
+------
+11362 0237206403740741 (lc=21007570740 34201736170)
+(jump) a=764 m=m[15] pc 374, P !next !jump M-src < A-src 
+a=764 (4000), m=15 (2001)
+------
+11363 0200000006570447 (lc=21007570740 34201736170)
+(jump) a=0 m=m[0] pc 657, P jump-always 
+a=0 (521), m=0 (521)
+writing spc[2] <- 11365
+------
+11364 0027340000310050 (lc=21007570740 34201736170)
+(alu) SETA a=567 m=0 m[0] C=0 alu-> -><none>,m[6] 
+a=567 (2), m=0 (521)
+alu_op 5, ir8 0, ir7 0, c 0, dest 6, out_bus 1
+a,m_memory[6] <- 2
+alu_out 0x00000002, alu_carry 0, q 0x00000000
+------
+SCONS-T:
+657 0602141000770135 (lc=21007570740 34201736170)
+(byte) a=43 m=m[2] dpb pos=35, width=3 -><none>,m[17] 
+a=43 (500000025), m=2 (0), dest=17
+widthm1 2, pos 35, mr_sr_bits 3
+left_mask_index 37, right_mask_index 35
+left_mask 37777777777, right_mask 34000000000, mask 34000000000
+dpb; m 0, pos 35
+dpb; mask 34000000000, result 500000025
+a,m_memory[17] <- 500000025
+------
+SCONS:
+660 0205607406620343 (lc=21007570740 34201736170)
+(jump) a=134 m=m[17] pc 662, !next !jump M-src = A-src 
+a=134 (300000000), m=17 (500000025)
+no_exec_next; u_pc 663
+------
+SCONS-N:
+662 0200103003740642 (lc=21007570740 34201736170)
+(jump) a=2 m=m[6] pc 374, P !next M-src <= A-src 
+a=2 (0), m=6 (2)
+------
+663 0200013006740220 (lc=21007570740 34201736170)
+(jump) a=0 m=m[26] pc 674, !next m-rot<< 20
+a=0 (521), m=26 (500002042)
+jump-if-bit; rot 20, before 500002042 after 410402400
+------
+664 0212747406740343 (lc=21007570740 34201736170)
+(jump) a=257 m=m[17] pc 674, !next !jump M-src = A-src 
+a=257 (0), m=17 (500000025)
+no_exec_next; u_pc 675
+------
+SCONSR:
+674 0200000006460647 (lc=21007570740 34201736170)
+(jump) a=0 m=m[0] pc 646, P !next jump-always 
+a=0 (521), m=0 (521)
+writing spc[3] <- 675
+no_exec_next; u_pc 647
+------
+CONS-GET-AREA:
+646 0600107401550210 (lc=21007570740 34201736170)
+(byte) a=2 m=m[17] ldb pos=10, width=5 -><none>,m[33] 
+a=2 (0), m=17 (500000025), dest=33
+widthm1 4, pos 10, mr_sr_bits 1
+left_mask_index 4, right_mask_index 0
+left_mask 37, right_mask 37777777777, mask 37
+ldb; m 500000025
+ldb; m-rot 12405, mask 37, result 5
+a,m_memory[33] <- 5
+------
+647 0227415406520643 (lc=21007570740 34201736170)
+(jump) a=570 m=m[33] pc 652, P !next M-src = A-src 
+a=570 (3), m=33 (5)
+------
+650 1500007431400250 (i-long) (lc=21007570740 34201736170)
+popj; (dispatch) m=m[17] disp-const 0, disp-addr 3140, map 0, len 5, rot 10 
+m-src 500000025, rotated 12405, mask 37, result 5
+dispatch[3145] -> 700000 P R 
+popj; reading spc[3] -> 675
+------
+651 0230247403740742 (lc=21007570740 34201736170)
+(jump) a=605 m=m[17] pc 374, P !next !jump M-src <= A-src 
+a=605 (500000377), m=17 (500000025)
+------
+675 0017247442010310 (lc=21007570740 34201736170)
+(alu) M+A [ADD] a=365 m=17 m[17] C=0 alu-> ->VMA,start-read ,m[0] 
+a=365 (500126400), m=17 (500000025)
+alu_op 11, ir8 0, ir7 1, c 0, dest 1040, out_bus 1
+read_mem(vaddr=1200126425)
+read_mem(vaddr=1200126425) -> pn 316, offset 25, map 257000316 (40000000)
+read_mem(vaddr=1200126425) -> 500000025
+a,m_memory[0] <- 1200126425
+alu_out 0x0a00ad15, alu_carry 0, q 0x00000000
+------
+SCONS0:
+676 0200000200410645 (lc=21007570740 34201736170)
+(jump) a=0 m=m[0] pc 20041, P !next pf/int 
+a=0 (1200126425), m=0 (1200126425)
+jump i|pf
+writing spc[3] <- 677
+no_exec_next; u_pc 20042
+------
+PGF-R-I:
+20041 0200000217420344 (lc=21007570740 34201736170)
+(jump) a=0 m=m[0] pc 21742, !next !jump pf 
+a=0 (1200126425), m=0 (1200126425)
+no_exec_next; u_pc 21743
+------
+INTR:
+21742 0200013003730622 (lc=21007570740 34201736170)
+(jump) a=0 m=m[26] pc 373, P !next m-rot<< 22
+a=0 (1200126425), m=26 (500002042)
+jump-if-bit; rot 22, before 500002042 after 2042012000
+------
+21743 0000024210510030 (lc=21007570740 34201736170)
+(alu) SETM a=0 m=50 VMA C=0 alu-> ->a_mem[212] 
+a=0 (1200126425), m=50 (1200126425)
+alu_op 3, ir8 0, ir7 0, c 0, dest 4212, out_bus 1
+a_memory[212] <- 1200126425
+alu_out 0x0a00ad15, alu_carry 0, q 0x00000000
+------
+21744 0000025210550030 (lc=21007570740 34201736170)
+(alu) SETM a=0 m=52 MD C=0 alu-> ->a_mem[213] 
+a=0 (1200126425), m=52 (500000025)
+alu_op 3, ir8 0, ir7 0, c 0, dest 4213, out_bus 1
+a_memory[213] <- 500000025
+alu_out 0x05000015, alu_carry 0, q 0x00000000
+------
+21745 0601301401330016 (lc=21007570740 34201736170)
+(byte) a=26 m=m[3] dpb pos=16, width=1 -><none>,m[26] 
+a=26 (500002042), m=3 (37777777777), dest=26
+widthm1 0, pos 16, mr_sr_bits 3
+left_mask_index 16, right_mask_index 16
+left_mask 77777, right_mask 37777740000, mask 40000
+dpb; m 37777777777, pos 16
+dpb; mask 40000, result 500042042
+a,m_memory[26] <- 500042042
+------
+21746 0027140042010050 (lc=21007570740 34201736170)
+(alu) SETA a=563 m=0 m[0] C=0 alu-> ->VMA,start-read ,m[0] 
+a=563 (77773020), m=0 (1200126425)
+alu_op 5, ir8 0, ir7 0, c 0, dest 1040, out_bus 1
+read_mem(vaddr=77773020)
+read_mem(vaddr=77773020) -> pn 37766, offset 20, map 263037766 (40000000)
+read_mem(vaddr=77773020) -> 0
+a,m_memory[0] <- 77773020
+alu_out 0x00fff610, alu_carry 0, q 0x00000000
+------
+21747 0200000200420644 (lc=21007570740 34201736170)
+(jump) a=0 m=m[0] pc 20042, P !next pf 
+a=0 (77773020), m=0 (77773020)
+------
+21750 0000002610610030 (lc=21007570740 34201736170)
+(alu) SETM a=0 m=5 m[5] C=0 alu-> ->a_mem[214] 
+a=0 (77773020), m=5 (0)
+alu_op 3, ir8 0, ir7 0, c 0, dest 4214, out_bus 1
+a_memory[214] <- 0
+alu_out 0x00000000, alu_carry 0, q 0x00000000
+------
+21751 0000003210650030 (lc=21007570740 34201736170)
+(alu) SETM a=0 m=6 m[6] C=0 alu-> ->a_mem[215] 
+a=0 (77773020), m=6 (2)
+alu_op 3, ir8 0, ir7 0, c 0, dest 4215, out_bus 1
+a_memory[215] <- 2
+alu_out 0x00000002, alu_carry 0, q 0x00000000
+------
+21752 0000005210710030 (lc=21007570740 34201736170)
+(alu) SETM a=0 m=12 m[12] C=0 alu-> ->a_mem[216] 
+a=0 (77773020), m=12 (603251270)
+alu_op 3, ir8 0, ir7 0, c 0, dest 4216, out_bus 1
+a_memory[216] <- 603251270
+alu_out 0x060d52b8, alu_carry 0, q 0x00000000
+------
+21753 0600125210750037 (lc=21007570740 34201736170)
+(byte) a=2 m=MD ldb pos=37, width=1 ->a_mem[217] 
+a=2 (0), m=52 (0), dest=4217
+widthm1 0, pos 37, mr_sr_bits 1
+left_mask_index 0, right_mask_index 0
+left_mask 1, right_mask 37777777777, mask 1
+ldb; m 0
+ldb; m-rot 0, mask 1, result 0
+a_memory[217] <- 0
+------
+21754 0210741221220243 (lc=21007570740 34201736170)
+(jump) a=217 m=m[2] pc 22122, !next M-src = A-src 
+a=217 (0), m=2 (0)
+no_exec_next; u_pc 22123
+------
+INNL0:
+22122 0002700042310050 (lc=21007570740 34201736170)
+(alu) SETA a=56 m=0 m[0] C=0 alu-> ->VMA,start-read ,m[6] 
+a=56 (577772060), m=0 (77773020)
+alu_op 5, ir8 0, ir7 0, c 0, dest 1046, out_bus 1
+read_mem(vaddr=577772060)
+read_mem(vaddr=577772060) -> pn 37764, offset 60, map 263037764 (40000000)
+a,m_memory[6] <- 577772060
+alu_out 0x05fff430, alu_carry 0, q 0x00000000
+------
+22123 0200000200420644 (lc=21007570740 34201736170)
+(jump) a=0 m=m[0] pc 20042, P !next pf 
+a=0 (77773020), m=0 (77773020)
+------
+22124 0200025221260334 (lc=21007570740 34201736170)
+(jump) a=0 m=MD pc 22126, !next !jump m-rot<< 34
+a=0 (77773020), m=52 (220)
+jump-if-bit; rot 34, before 220 after 11
+------
+22125 0200025221750221 (lc=21007570740 34201736170)
+(jump) a=0 m=MD pc 22175, !next m-rot<< 21
+a=0 (77773020), m=52 (220)
+jump-if-bit; rot 21, before 220 after 110000000
+------
+INNL1:
+22126 0200025221300333 (lc=21007570740 34201736170)
+(jump) a=0 m=MD pc 22130, !next !jump m-rot<< 33
+a=0 (77773020), m=52 (220)
+jump-if-bit; rot 33, before 220 after 20000000004
+no_exec_next; u_pc 22131
+------
+INNL2:
+22130 0030600000250050 (lc=21007570740 34201736170)
+(alu) SETA a=614 m=0 m[0] C=0 alu-> -><none>,m[5] 
+a=614 (413), m=0 (77773020)
+alu_op 5, ir8 0, ir7 0, c 0, dest 5, out_bus 1
+a,m_memory[5] <- 413
+alu_out 0x0000010b, alu_carry 0, q 0x00000000
+------
+INND0:
+22131 0000142442010310 (lc=21007570740 34201736170)
+(alu) M+A [ADD] a=3 m=5 m[5] C=0 alu-> ->VMA,start-read ,m[0] 
+a=3 (37777777777), m=5 (413)
+alu_op 11, ir8 0, ir7 1, c 0, dest 1040, out_bus 1
+read_mem(vaddr=412)
+read_mem(vaddr=412) -> pn 1, offset 12, map 263200001 (40000000)
+read_mem(vaddr=412) -> 30500000500
+a,m_memory[0] <- 412
+alu_out 0x0000010a, alu_carry 0, q 0x00000000
+------
+22132 0200000200420644 (lc=21007570740 34201736170)
+(jump) a=0 m=m[0] pc 20042, P !next pf 
+a=0 (412), m=0 (412)
+------
+22133 0600125060011340 (lc=21007570740 34201736170)
+(byte) a=2 m=MD ldb pos=0, width=30 ->MD ,m[0] 
+a=2 (0), m=52 (30500000500), dest=1400
+widthm1 27, pos 0, mr_sr_bits 1
+left_mask_index 27, right_mask_index 0
+left_mask 77777777, right_mask 37777777777, mask 77777777
+ldb; m 30500000500
+ldb; m-rot 30500000500, mask 77777777, result 500
+md<-500
+a,m_memory[0] <- 500
+------
+22134 0200125221500243 (lc=21007570740 34201736170)
+(jump) a=2 m=MD pc 22150, !next M-src = A-src 
+a=2 (0), m=52 (500)
+------
+22135 0027365000250310 (lc=21007570740 34201736170)
+(alu) M+A [ADD] a=567 m=52 MD C=0 alu-> -><none>,m[5] 
+a=567 (2), m=52 (500)
+alu_op 11, ir8 0, ir7 1, c 0, dest 5, out_bus 1
+a,m_memory[5] <- 502
+alu_out 0x00000142, alu_carry 0, q 0x00000000
+------
+22136 0027342442010310 (lc=21007570740 34201736170)
+(alu) M+A [ADD] a=567 m=5 m[5] C=0 alu-> ->VMA,start-read ,m[0] 
+a=567 (2), m=5 (502)
+alu_op 11, ir8 0, ir7 1, c 0, dest 1040, out_bus 1
+read_mem(vaddr=504)
+read_mem(vaddr=504) -> pn 1, offset 104, map 263200001 (40000000)
+read_mem(vaddr=504) -> 40
+a,m_memory[0] <- 504
+alu_out 0x00000144, alu_carry 0, q 0x00000000
+------
+22137 0200000200420644 (lc=21007570740 34201736170)
+(jump) a=0 m=m[0] pc 20042, P !next pf 
+a=0 (504), m=0 (504)
+------
+22140 0000025210410030 (lc=21007570740 34201736170)
+(alu) SETM a=0 m=52 MD C=0 alu-> ->a_mem[210] 
+a=0 (504), m=52 (40)
+alu_op 3, ir8 0, ir7 0, c 0, dest 4210, out_bus 1
+a_memory[210] <- 40
+alu_out 0x00000020, alu_carry 0, q 0x00000000
+------
+22141 0026442442010310 (lc=21007570740 34201736170)
+(alu) M+A [ADD] a=551 m=5 m[5] C=0 alu-> ->VMA,start-read ,m[0] 
+a=551 (1), m=5 (502)
+alu_op 11, ir8 0, ir7 1, c 0, dest 1040, out_bus 1
+read_mem(vaddr=503)
+read_mem(vaddr=503) -> pn 1, offset 103, map 263200001 (40000000)
+read_mem(vaddr=503) -> 77772045
+a,m_memory[0] <- 503
+alu_out 0x00000143, alu_carry 0, q 0x00000000
+------
+22142 0200000200420644 (lc=21007570740 34201736170)
+(jump) a=0 m=m[0] pc 20042, P !next pf 
+a=0 (503), m=0 (503)
+------
+22143 0000025042010030 (lc=21007570740 34201736170)
+(alu) SETM a=0 m=52 MD C=0 alu-> ->VMA,start-read ,m[0] 
+a=0 (503), m=52 (77772045)
+alu_op 3, ir8 0, ir7 0, c 0, dest 1040, out_bus 1
+read_mem(vaddr=77772045)
+read_mem(vaddr=77772045) -> pn 37764, offset 45, map 263037764 (40000000)
+a,m_memory[0] <- 77772045
+alu_out 0x00fff425, alu_carry 0, q 0x00000000
+------
+22144 0200000200420644 (lc=21007570740 34201736170)
+(jump) a=0 m=m[0] pc 20042, P !next pf 
+a=0 (77772045), m=0 (77772045)
+------
+22145 0010425001550010 (lc=21007570740 34201736170)
+(alu) AND a=210 m=52 MD C=0 alu-> -><none>,m[33] 
+a=210 (40), m=52 (4)
+alu_op 1, ir8 0, ir7 0, c 0, dest 33, out_bus 1
+a,m_memory[33] <- 0
+alu_out 0x00000000, alu_carry 0, q 0x00000000
+------
+22146 0200115620040343 (lc=21007570740 34201736170)
+(jump) a=2 m=m[33] pc 22004, !next !jump M-src = A-src 
+a=2 (0), m=33 (0)
+------
+22147 0200000221310247 (lc=21007570740 34201736170)
+(jump) a=0 m=m[0] pc 22131, !next jump-always 
+a=0 (77772045), m=0 (77772045)
+no_exec_next; u_pc 22132
+------
+INND0:
+22131 0000142442010310 (lc=21007570740 34201736170)
+(alu) M+A [ADD] a=3 m=5 m[5] C=0 alu-> ->VMA,start-read ,m[0] 
+a=3 (37777777777), m=5 (502)
+alu_op 11, ir8 0, ir7 1, c 0, dest 1040, out_bus 1
+read_mem(vaddr=501)
+read_mem(vaddr=501) -> pn 1, offset 101, map 263200001 (40000000)
+read_mem(vaddr=501) -> 0
+a,m_memory[0] <- 501
+alu_out 0x00000141, alu_carry 0, q 0x00000000
+------
+22132 0200000200420644 (lc=21007570740 34201736170)
+(jump) a=0 m=m[0] pc 20042, P !next pf 
+a=0 (501), m=0 (501)
+------
+22133 0600125060011340 (lc=21007570740 34201736170)
+(byte) a=2 m=MD ldb pos=0, width=30 ->MD ,m[0] 
+a=2 (0), m=52 (0), dest=1400
+widthm1 27, pos 0, mr_sr_bits 1
+left_mask_index 27, right_mask_index 0
+left_mask 77777777, right_mask 37777777777, mask 77777777
+ldb; m 0
+ldb; m-rot 0, mask 77777777, result 0
+md<-0
+a,m_memory[0] <- 0
+------
+22134 0200125221500243 (lc=21007570740 34201736170)
+(jump) a=2 m=MD pc 22150, !next M-src = A-src 
+a=2 (0), m=52 (0)
+no_exec_next; u_pc 22151
+------
+INTRX0:
+22150 0016300042010050 (lc=21007570740 34201736170)
+(alu) SETA a=346 m=0 m[0] C=0 alu-> ->VMA,start-read ,m[0] 
+a=346 (77377760), m=0 (0)
+alu_op 5, ir8 0, ir7 0, c 0, dest 1040, out_bus 1
+read_mem(vaddr=77377760)
+read_mem(vaddr=77377760) -> pn 36777, offset 360, map 60036777 (40000000)
+a,m_memory[0] <- 77377760
+alu_out 0x00fdfff0, alu_carry 0, q 0x00000000
+------
+22151 0200000200420644 (lc=21007570740 34201736170)
+(jump) a=0 m=m[0] pc 20042, P !next pf 
+a=0 (77377760), m=0 (77377760)
+------
+22152 0200025221700334 (lc=21007570740 34201736170)
+(jump) a=0 m=MD pc 22170, !next !jump m-rot<< 34
+a=0 (77377760), m=52 (34)
+jump-if-bit; rot 34, before 34 after 30000000001
+------
+22153 0026765064010020 (lc=21007570740 34201736170)
+(alu) ANDCA a=557 m=52 MD C=0 alu-> ->MD,start-write ,m[0] 
+a=557 (20), m=52 (34)
+alu_op 2, ir8 0, ir7 0, c 0, dest 1500, out_bus 1
+write_mem(vaddr=77377760,v=14)
+write_mem(vaddr=77377760) -> pn 36777, offset 360, map 60036777 (20000000)
+a,m_memory[0] <- 14
+alu_out 0x0000000c, alu_carry 0, q 0x00000000
+------
+22154 0200000200600644 (lc=21007570740 34201736170)
+(jump) a=0 m=m[0] pc 20060, P !next pf 
+a=0 (14), m=0 (14)
+------
+22155 0212201221600242 (lc=21007570740 34201736170)
+(jump) a=244 m=m[2] pc 22160, !next M-src <= A-src 
+a=244 (0), m=2 (0)
+no_exec_next; u_pc 22161
+------
+60CYC-0:
+22160 0214101221620343 (lc=21007570740 34201736170)
+(jump) a=302 m=m[2] pc 22162, !next !jump M-src = A-src 
+a=302 (0), m=2 (0)
+------
+22161 0014641214650314 (lc=21007570740 34201736170)
+(alu) M+A [ADD] a=315 m=2 m[2] C=1 alu-> ->a_mem[315] 
+a=315 (0), m=2 (0)
+alu_op 11, ir8 0, ir7 1, c 1, dest 4315, out_bus 1
+a_memory[315] <- 1
+alu_out 0x00000001, alu_carry 0, q 0x00000000
+------
+60CYC-1:
+22162 0200000176270647 (lc=21007570740 34201736170)
+(jump) a=0 m=m[0] pc 17627, P !next jump-always 
+a=0 (14), m=0 (14)
+writing spc[4] <- 22163
+no_exec_next; u_pc 17630
+------
+TRACK-MOUSE:
+17627 0604641001570370 (lc=21007570740 34201736170)
+(byte) a=115 m=m[2] dpb pos=30, width=10 -><none>,m[33] 
+a=115 (500000001), m=2 (0), dest=33
+widthm1 7, pos 30, mr_sr_bits 3
+left_mask_index 37, right_mask_index 30
+left_mask 37777777777, right_mask 37700000000, mask 37700000000
+dpb; m 0, pos 30
+dpb; mask 37700000000, result 1
+a,m_memory[33] <- 1
+------
+17630 0200115400001243 (lc=21007570740 34201736170)
+(jump) a=2 m=m[33] pc 0, R !next M-src = A-src 
+a=2 (0), m=33 (1)
+------
+17631 0025100042010050 (lc=21007570740 34201736170)
+(alu) SETA a=522 m=0 m[0] C=0 alu-> ->VMA,start-read ,m[0] 
+a=522 (77772042), m=0 (14)
+alu_op 5, ir8 0, ir7 0, c 0, dest 1040, out_bus 1
+read_mem(vaddr=77772042)
+read_mem(vaddr=77772042) -> pn 37764, offset 42, map 263037764 (40000000)
+a,m_memory[0] <- 77772042
+alu_out 0x00fff422, alu_carry 0, q 0x00000000
+------
+17632 0200000200420644 (lc=21007570740 34201736170)
+(jump) a=0 m=m[0] pc 20042, P !next pf 
+a=0 (77772042), m=0 (77772042)
+------
+17633 0000011225510030 (lc=21007570740 34201736170)
+(alu) SETM a=0 m=22 m[22] C=0 alu-> ->a_mem[532] 
+a=0 (77772042), m=22 (10000000000)
+alu_op 3, ir8 0, ir7 0, c 0, dest 4532, out_bus 1
+a_memory[532] <- 10000000000
+alu_out 0x40000000, alu_carry 0, q 0x00000000
+------
+17634 0000011625550030 (lc=21007570740 34201736170)
+(alu) SETM a=0 m=23 m[23] C=0 alu-> ->a_mem[533] 
+a=0 (77772042), m=23 (0)
+alu_op 3, ir8 0, ir7 0, c 0, dest 4533, out_bus 1
+a_memory[533] <- 0
+alu_out 0x00000000, alu_carry 0, q 0x00000000
+------
+17635 0000004625610030 (lc=21007570740 34201736170)
+(alu) SETM a=0 m=11 m[11] C=0 alu-> ->a_mem[534] 
+a=0 (77772042), m=11 (0)
+alu_op 3, ir8 0, ir7 0, c 0, dest 4534, out_bus 1
+a_memory[534] <- 0
+alu_out 0x00000000, alu_carry 0, q 0x00000000
+------
+17636 0000025000250030 (lc=21007570740 34201736170)
+(alu) SETM a=0 m=52 MD C=0 alu-> -><none>,m[5] 
+a=0 (77772042), m=52 (125)
+alu_op 3, ir8 0, ir7 0, c 0, dest 5, out_bus 1
+a,m_memory[5] <- 125
+alu_out 0x00000055, alu_carry 0, q 0x00000000
+------
+17637 0026464042010310 (lc=21007570740 34201736170)
+(alu) M+A [ADD] a=551 m=50 VMA C=0 alu-> ->VMA,start-read ,m[0] 
+a=551 (1), m=50 (77772042)
+alu_op 11, ir8 0, ir7 1, c 0, dest 1040, out_bus 1
+read_mem(vaddr=77772043)
+read_mem(vaddr=77772043) -> pn 37764, offset 43, map 263037764 (40000000)
+a,m_memory[0] <- 77772043
+alu_out 0x00fff423, alu_carry 0, q 0x00000000
+------
+17640 0200000200420644 (lc=21007570740 34201736170)
+(jump) a=0 m=m[0] pc 20042, P !next pf 
+a=0 (77772043), m=0 (77772043)
+------
+17641 0025002401550060 (lc=21007570740 34201736170)
+(alu) XOR a=520 m=5 m[5] C=0 alu-> -><none>,m[33] 
+a=520 (125), m=5 (125)
+alu_op 6, ir8 0, ir7 0, c 0, dest 33, out_bus 1
+a,m_memory[33] <- 0
+alu_out 0x00000000, alu_carry 0, q 0x00000000
+------
+17642 0600115401550124 (lc=21007570740 34201736170)
+(byte) a=2 m=m[33] ldb pos=24, width=3 -><none>,m[33] 
+a=2 (0), m=33 (0), dest=33
+widthm1 2, pos 24, mr_sr_bits 1
+left_mask_index 2, right_mask_index 0
+left_mask 7, right_mask 37777777777, mask 7
+ldb; m 0
+ldb; m-rot 0, mask 7, result 0
+a,m_memory[33] <- 0
+------
+17643 0200115576670043 (lc=21007570740 34201736170)
+(jump) a=2 m=m[33] pc 17667, M-src = A-src 
+a=2 (0), m=33 (0)
+------
+17644 0000025000310030 (lc=21007570740 34201736170)
+(alu) SETM a=0 m=52 MD C=0 alu-> -><none>,m[6] 
+a=0 (77772043), m=52 (570)
+alu_op 3, ir8 0, ir7 0, c 0, dest 6, out_bus 1
+a,m_memory[6] <- 570
+alu_out 0x00000178, alu_carry 0, q 0x00000000
+------
+TRACK-MOUSE-1:
+17667 0025002400250264 (lc=21007570740 34201736170)
+(alu) M-A-1 [M-A-1] a=520 m=5 m[5] C=1 alu-> -><none>,m[5] 
+a=520 (125), m=5 (125)
+alu_op 6, ir8 0, ir7 1, c 1, dest 5, out_bus 1
+a,m_memory[5] <- 0
+alu_out 0x00000000, alu_carry 0, q 0x00000000
+------
+17670 0025002625010310 (lc=21007570740 34201736170)
+(alu) M+A [ADD] a=520 m=5 m[5] C=0 alu-> ->a_mem[520] 
+a=520 (125), m=5 (0)
+alu_op 11, ir8 0, ir7 1, c 0, dest 4520, out_bus 1
+a_memory[520] <- 125
+alu_out 0x00000055, alu_carry 0, q 0x00000000
+------
+17671 0600102436010025 (lc=21007570740 34201736170)
+(byte) a=2 m=m[5] ldb pos=25, width=1 ->OA-reg-hi ,m[0] 
+a=2 (0), m=5 (0), dest=740
+widthm1 0, pos 25, mr_sr_bits 1
+left_mask_index 0, right_mask_index 0
+left_mask 1, right_mask 37777777777, mask 1
+ldb; m 0
+ldb; m-rot 0, mask 1, result 0
+setting oa_reg hi 0
+a,m_memory[0] <- 0
+merging oa hi 0
+------
+17672 0600241000271213 (lc=21007570740 34201736170)
+(byte) a=5 m=m[2] dpb pos=13, width=25 -><none>,m[5] 
+a=5 (0), m=2 (0), dest=5
+widthm1 24, pos 13, mr_sr_bits 3
+left_mask_index 37, right_mask_index 13
+left_mask 37777777777, right_mask 37777774000, mask 37777774000
+dpb; m 0, pos 13
+dpb; mask 37777774000, result 0
+a,m_memory[5] <- 0
+------
+17673 0025043000310264 (lc=21007570740 34201736170)
+(alu) M-A-1 [M-A-1] a=521 m=6 m[6] C=1 alu-> -><none>,m[6] 
+a=521 (570), m=6 (570)
+alu_op 6, ir8 0, ir7 1, c 1, dest 6, out_bus 1
+a,m_memory[6] <- 0
+alu_out 0x00000000, alu_carry 0, q 0x00000000
+------
+17674 0025043225050310 (lc=21007570740 34201736170)
+(alu) M+A [ADD] a=521 m=6 m[6] C=0 alu-> ->a_mem[521] 
+a=521 (570), m=6 (0)
+alu_op 11, ir8 0, ir7 1, c 0, dest 4521, out_bus 1
+a_memory[521] <- 570
+alu_out 0x00000178, alu_carry 0, q 0x00000000
+------
+17675 0600103036010025 (lc=21007570740 34201736170)
+(byte) a=2 m=m[6] ldb pos=25, width=1 ->OA-reg-hi ,m[0] 
+a=2 (0), m=6 (0), dest=740
+widthm1 0, pos 25, mr_sr_bits 1
+left_mask_index 0, right_mask_index 0
+left_mask 1, right_mask 37777777777, mask 1
+ldb; m 0
+ldb; m-rot 0, mask 1, result 0
+setting oa_reg hi 0
+a,m_memory[0] <- 0
+merging oa hi 0
+------
+17676 0600301000331213 (lc=21007570740 34201736170)
+(byte) a=6 m=m[2] dpb pos=13, width=25 -><none>,m[6] 
+a=6 (0), m=2 (0), dest=6
+widthm1 24, pos 13, mr_sr_bits 3
+left_mask_index 37, right_mask_index 13
+left_mask 37777777777, right_mask 37777774000, mask 37777774000
+dpb; m 0, pos 13
+dpb; mask 37777774000, result 0
+a,m_memory[6] <- 0
+------
+17677 0605241001570370 (lc=21007570740 34201736170)
+(byte) a=125 m=m[2] dpb pos=30, width=10 -><none>,m[33] 
+a=125 (500000054), m=2 (0), dest=33
+widthm1 7, pos 30, mr_sr_bits 3
+left_mask_index 37, right_mask_index 30
+left_mask 37777777777, right_mask 37700000000, mask 37700000000
+dpb; m 0, pos 30
+dpb; mask 37700000000, result 54
+a,m_memory[33] <- 54
+------
+17700 0200115577030243 (lc=21007570740 34201736170)
+(jump) a=2 m=m[33] pc 17703, !next M-src = A-src 
+a=2 (0), m=33 (54)
+------
+17701 0600115610051174 (lc=21007570740 34201736170)
+(byte) a=2 m=m[33] ldb pos=34, width=24 ->a_mem[201] 
+a=2 (0), m=33 (54), dest=4201
+widthm1 23, pos 34, mr_sr_bits 1
+left_mask_index 23, right_mask_index 0
+left_mask 3777777, right_mask 37777777777, mask 3777777
+ldb; m 54
+ldb; m-rot 30000000002, mask 3777777, result 2
+a_memory[201] <- 2
+------
+17702 0010055401550260 (lc=21007570740 34201736170)
+(alu) M-A-1 [M-A-1] a=201 m=33 m[33] C=0 alu-> -><none>,m[33] 
+a=201 (2), m=33 (54)
+alu_op 6, ir8 0, ir7 1, c 0, dest 33, out_bus 1
+a,m_memory[33] <- 51
+alu_out 0x00000029, alu_carry 0, q 0x00000000
+------
+TRACK-MOUSE-1C:
+17703 0200102577060141 (lc=21007570740 34201736170)
+(jump) a=2 m=m[5] pc 17706, !jump M-src < A-src 
+a=2 (0), m=5 (0)
+------
+17704 0600102610071642 (lc=21007570740 34201736170)
+(byte) a=2 m=m[5] dpb pos=2, width=36 ->a_mem[201] 
+a=2 (0), m=5 (0), dest=4201
+widthm1 35, pos 2, mr_sr_bits 3
+left_mask_index 37, right_mask_index 2
+left_mask 37777777777, right_mask 37777777774, mask 37777777774
+dpb; m 0, pos 2
+dpb; mask 37777777774, result 0
+a_memory[201] <- 0
+------
+TRACK-MOUSE-1A:
+17706 0010055401550310 (lc=21007570740 34201736170)
+(alu) M+A [ADD] a=201 m=33 m[33] C=0 alu-> -><none>,m[33] 
+a=201 (0), m=33 (51)
+alu_op 11, ir8 0, ir7 1, c 0, dest 33, out_bus 1
+a,m_memory[33] <- 51
+alu_out 0x00000029, alu_carry 0, q 0x00000000
+------
+17707 0626255605251340 (lc=21007570740 34201736170)
+(byte) a=545 m=m[33] ldb pos=0, width=30 ->a_mem[125] 
+a=545 (500000000), m=33 (51), dest=4125
+widthm1 27, pos 0, mr_sr_bits 1
+left_mask_index 27, right_mask_index 0
+left_mask 77777777, right_mask 37777777777, mask 77777777
+ldb; m 51
+ldb; m-rot 51, mask 77777777, result 500000051
+a_memory[125] <- 500000051
+------
+17710 0605201001570370 (lc=21007570740 34201736170)
+(byte) a=124 m=m[2] dpb pos=30, width=10 -><none>,m[33] 
+a=124 (500000021), m=2 (0), dest=33
+widthm1 7, pos 30, mr_sr_bits 3
+left_mask_index 37, right_mask_index 30
+left_mask 37777777777, right_mask 37700000000, mask 37700000000
+dpb; m 0, pos 30
+dpb; mask 37700000000, result 21
+a,m_memory[33] <- 21
+------
+17711 0200115577140243 (lc=21007570740 34201736170)
+(jump) a=2 m=m[33] pc 17714, !next M-src = A-src 
+a=2 (0), m=33 (21)
+------
+17712 0600115610051174 (lc=21007570740 34201736170)
+(byte) a=2 m=m[33] ldb pos=34, width=24 ->a_mem[201] 
+a=2 (0), m=33 (21), dest=4201
+widthm1 23, pos 34, mr_sr_bits 1
+left_mask_index 23, right_mask_index 0
+left_mask 3777777, right_mask 37777777777, mask 3777777
+ldb; m 21
+ldb; m-rot 2000000001, mask 3777777, result 1
+a_memory[201] <- 1
+------
+17713 0010055401550260 (lc=21007570740 34201736170)
+(alu) M-A-1 [M-A-1] a=201 m=33 m[33] C=0 alu-> -><none>,m[33] 
+a=201 (1), m=33 (21)
+alu_op 6, ir8 0, ir7 1, c 0, dest 33, out_bus 1
+a,m_memory[33] <- 17
+alu_out 0x0000000f, alu_carry 0, q 0x00000000
+------
+TRACK-MOUSE-1D:
+17714 0200103177170141 (lc=21007570740 34201736170)
+(jump) a=2 m=m[6] pc 17717, !jump M-src < A-src 
+a=2 (0), m=6 (0)
+------
+17715 0600103210071642 (lc=21007570740 34201736170)
+(byte) a=2 m=m[6] dpb pos=2, width=36 ->a_mem[201] 
+a=2 (0), m=6 (0), dest=4201
+widthm1 35, pos 2, mr_sr_bits 3
+left_mask_index 37, right_mask_index 2
+left_mask 37777777777, right_mask 37777777774, mask 37777777774
+dpb; m 0, pos 2
+dpb; mask 37777777774, result 0
+a_memory[201] <- 0
+------
+TRACK-MOUSE-1B:
+17717 0010055401550310 (lc=21007570740 34201736170)
+(alu) M+A [ADD] a=201 m=33 m[33] C=0 alu-> -><none>,m[33] 
+a=201 (0), m=33 (17)
+alu_op 11, ir8 0, ir7 1, c 0, dest 33, out_bus 1
+a,m_memory[33] <- 17
+alu_out 0x0000000f, alu_carry 0, q 0x00000000
+------
+17720 0626255605211340 (lc=21007570740 34201736170)
+(byte) a=545 m=m[33] ldb pos=0, width=30 ->a_mem[124] 
+a=545 (500000000), m=33 (17), dest=4124
+widthm1 27, pos 0, mr_sr_bits 1
+left_mask_index 27, right_mask_index 0
+left_mask 77777777, right_mask 37777777777, mask 77777777
+ldb; m 17
+ldb; m-rot 17, mask 77777777, result 500000017
+a_memory[124] <- 500000017
+------
+17721 0000302401550070 (lc=21007570740 34201736170)
+(alu) IOR a=6 m=5 m[5] C=0 alu-> -><none>,m[33] 
+a=6 (0), m=5 (0)
+alu_op 7, ir8 0, ir7 0, c 0, dest 33, out_bus 1
+a,m_memory[33] <- 0
+alu_out 0x00000000, alu_carry 0, q 0x00000000
+------
+17722 0200115577730243 (lc=21007570740 34201736170)
+(jump) a=2 m=m[33] pc 17773, !next M-src = A-src 
+a=2 (0), m=33 (0)
+no_exec_next; u_pc 17774
+------
+TRACK-MOUSE-XSC-NO-MOTION:
+17773 0604641000530370 (lc=21007570740 34201736170)
+(byte) a=115 m=m[2] dpb pos=30, width=10 -><none>,m[12] 
+a=115 (500000001), m=2 (0), dest=12
+widthm1 7, pos 30, mr_sr_bits 3
+left_mask_index 37, right_mask_index 30
+left_mask 37777777777, right_mask 37700000000, mask 37700000000
+dpb; m 0, pos 30
+dpb; mask 37700000000, result 1
+a,m_memory[12] <- 1
+------
+17774 0227345200130241 (lc=21007570740 34201736170)
+(jump) a=567 m=m[12] pc 20013, !next M-src < A-src 
+a=567 (2), m=12 (1)
+no_exec_next; u_pc 20014
+------
+TRACK-MOUSE-9:
+20013 0025500001110050 (lc=21007570740 34201736170)
+(alu) SETA a=532 m=0 m[0] C=0 alu-> -><none>,m[22] 
+a=532 (10000000000), m=0 (0)
+alu_op 5, ir8 0, ir7 0, c 0, dest 22, out_bus 1
+a,m_memory[22] <- 10000000000
+alu_out 0x40000000, alu_carry 0, q 0x00000000
+------
+20014 0125540001150050 (lc=21007570740 34201736170)
+popj; (alu) SETA a=533 m=0 m[0] C=0 alu-> -><none>,m[23] 
+a=533 (0), m=0 (0)
+alu_op 5, ir8 0, ir7 0, c 0, dest 23, out_bus 1
+a,m_memory[23] <- 0
+alu_out 0x00000000, alu_carry 0, q 0x00000000
+popj; reading spc[4] -> 22163
+------
+20015 0025600000450050 (lc=21007570740 34201736170)
+(alu) SETA a=534 m=0 m[0] C=0 alu-> -><none>,m[11] 
+a=534 (0), m=0 (0)
+alu_op 5, ir8 0, ir7 0, c 0, dest 11, out_bus 1
+a,m_memory[11] <- 0
+alu_out 0x00000000, alu_carry 0, q 0x00000000
+------
+22163 0216241221700041 (lc=21007570740 34201736170)
+(jump) a=345 m=m[2] pc 22170, M-src < A-src 
+a=345 (67), m=2 (0)
+------
+22164 0016241616250310 (lc=21007570740 34201736170)
+(alu) M+A [ADD] a=345 m=3 m[3] C=0 alu-> ->a_mem[345] 
+a=345 (67), m=3 (37777777777)
+alu_op 11, ir8 0, ir7 1, c 0, dest 4345, out_bus 1
+a_memory[345] <- 66
+alu_out 0x00000036, alu_carry 0, q 0x00000000
+------
+INTRX1:
+22170 0214101221740243 (lc=21007570740 34201736170)
+(jump) a=302 m=m[2] pc 22174, !next M-src = A-src 
+a=302 (0), m=2 (0)
+no_exec_next; u_pc 22175
+------
+INTRX2:
+22174 0200000220560247 (lc=21007570740 34201736170)
+(jump) a=0 m=m[0] pc 22056, !next jump-always 
+a=0 (0), m=0 (0)
+no_exec_next; u_pc 22057
+------
+XB-INTR-RET:
+22056 0601301001330016 (lc=21007570740 34201736170)
+(byte) a=26 m=m[2] dpb pos=16, width=1 -><none>,m[26] 
+a=26 (500042042), m=2 (0), dest=26
+widthm1 0, pos 16, mr_sr_bits 3
+left_mask_index 16, right_mask_index 16
+left_mask 77777, right_mask 37777740000, mask 40000
+dpb; m 0, pos 16
+dpb; mask 40000, result 500002042
+a,m_memory[26] <- 500002042
+------
+22057 0010540060010050 (lc=21007570740 34201736170)
+(alu) SETA a=213 m=0 m[0] C=0 alu-> ->MD ,m[0] 
+a=213 (500000025), m=0 (0)
+alu_op 5, ir8 0, ir7 0, c 0, dest 1400, out_bus 1
+md<-500000025
+a,m_memory[0] <- 500000025
+alu_out 0x05000015, alu_carry 0, q 0x00000000
+------
+22060 0010500040010050 (lc=21007570740 34201736170)
+(alu) SETA a=212 m=0 m[0] C=0 alu-> ->VMA ,m[0] 
+a=212 (1200126425), m=0 (500000025)
+alu_op 5, ir8 0, ir7 0, c 0, dest 1000, out_bus 1
+a,m_memory[0] <- 1200126425
+alu_out 0x0a00ad15, alu_carry 0, q 0x00000000
+------
+22061 0010700000510050 (lc=21007570740 34201736170)
+(alu) SETA a=216 m=0 m[0] C=0 alu-> -><none>,m[12] 
+a=216 (603251270), m=0 (1200126425)
+alu_op 5, ir8 0, ir7 0, c 0, dest 12, out_bus 1
+a,m_memory[12] <- 603251270
+alu_out 0x060d52b8, alu_carry 0, q 0x00000000
+------
+22062 0110640000310050 (lc=21007570740 34201736170)
+popj; (alu) SETA a=215 m=0 m[0] C=0 alu-> -><none>,m[6] 
+a=215 (2), m=0 (1200126425)
+alu_op 5, ir8 0, ir7 0, c 0, dest 6, out_bus 1
+a,m_memory[6] <- 2
+alu_out 0x00000002, alu_carry 0, q 0x00000000
+popj; reading spc[3] -> 677
+------
+22063 0010600000250050 (lc=21007570740 34201736170)
+(alu) SETA a=214 m=0 m[0] C=0 alu-> -><none>,m[5] 
+a=214 (0), m=0 (1200126425)
+alu_op 5, ir8 0, ir7 0, c 0, dest 5, out_bus 1
+a,m_memory[5] <- 0
+alu_out 0x00000000, alu_carry 0, q 0x00000000
+------
+677 0200025012150211 (lc=21007570740 34201736170)
+(jump) a=0 m=MD pc 1215, !next m-rot<< 11
+a=0 (1200126425), m=52 (500000025)
+jump-if-bit; rot 11, before 500000025 after 25012
+------
+700 0600125001011340 (lc=21007570740 34201736170)
+(byte) a=2 m=MD ldb pos=0, width=30 -><none>,m[20] 
+a=2 (0), m=52 (500000025), dest=20
+widthm1 27, pos 0, mr_sr_bits 1
+left_mask_index 27, right_mask_index 0
+left_mask 77777777, right_mask 37777777777, mask 77777777
+ldb; m 500000025
+ldb; m-rot 500000025, mask 77777777, result 25
+a,m_memory[20] <- 25
+------
+SCONS2:
+701 0016750042010310 (lc=21007570740 34201736170)
+(alu) M+A [ADD] a=357 m=20 m[20] C=0 alu-> ->VMA,start-read ,m[0] 
+a=357 (500123400), m=20 (25)
+alu_op 11, ir8 0, ir7 1, c 0, dest 1040, out_bus 1
+read_mem(vaddr=500123425)
+read_mem(vaddr=500123425) -> pn 247, offset 25, map 263200247 (40000000)
+read_mem(vaddr=500123425) -> 556213000
+a,m_memory[0] <- 500123425
+alu_out 0x0500a715, alu_carry 0, q 0x00000000
+------
+702 0200000200410645 (lc=21007570740 34201736170)
+(jump) a=0 m=m[0] pc 20041, P !next pf/int 
+a=0 (500123425), m=0 (500123425)
+jump i|pf
+writing spc[3] <- 703
+no_exec_next; u_pc 20042
+------
+PGF-R-I:
+20041 0200000217420344 (lc=21007570740 34201736170)
+(jump) a=0 m=m[0] pc 21742, !next !jump pf 
+a=0 (500123425), m=0 (500123425)
+no_exec_next; u_pc 21743
+------
+INTR:
+21742 0200013003730622 (lc=21007570740 34201736170)
+(jump) a=0 m=m[26] pc 373, P !next m-rot<< 22
+a=0 (500123425), m=26 (500002042)
+jump-if-bit; rot 22, before 500002042 after 2042012000
+------
+21743 0000024210510030 (lc=21007570740 34201736170)
+(alu) SETM a=0 m=50 VMA C=0 alu-> ->a_mem[212] 
+a=0 (500123425), m=50 (500123425)
+alu_op 3, ir8 0, ir7 0, c 0, dest 4212, out_bus 1
+a_memory[212] <- 500123425
+alu_out 0x0500a715, alu_carry 0, q 0x00000000
+------
+21744 0000025210550030 (lc=21007570740 34201736170)
+(alu) SETM a=0 m=52 MD C=0 alu-> ->a_mem[213] 
+a=0 (500123425), m=52 (556213000)
+alu_op 3, ir8 0, ir7 0, c 0, dest 4213, out_bus 1
+a_memory[213] <- 556213000
+alu_out 0x05b91600, alu_carry 0, q 0x00000000
+------
+21745 0601301401330016 (lc=21007570740 34201736170)
+(byte) a=26 m=m[3] dpb pos=16, width=1 -><none>,m[26] 
+a=26 (500002042), m=3 (37777777777), dest=26
+widthm1 0, pos 16, mr_sr_bits 3
+left_mask_index 16, right_mask_index 16
+left_mask 77777, right_mask 37777740000, mask 40000
+dpb; m 37777777777, pos 16
+dpb; mask 40000, result 500042042
+a,m_memory[26] <- 500042042
+------
+21746 0027140042010050 (lc=21007570740 34201736170)
+(alu) SETA a=563 m=0 m[0] C=0 alu-> ->VMA,start-read ,m[0] 
+a=563 (77773020), m=0 (500123425)
+alu_op 5, ir8 0, ir7 0, c 0, dest 1040, out_bus 1
+read_mem(vaddr=77773020)
+read_mem(vaddr=77773020) -> pn 37766, offset 20, map 263037766 (40000000)
+read_mem(vaddr=77773020) -> 0
+a,m_memory[0] <- 77773020
+alu_out 0x00fff610, alu_carry 0, q 0x00000000
+------
+21747 0200000200420644 (lc=21007570740 34201736170)
+(jump) a=0 m=m[0] pc 20042, P !next pf 
+a=0 (77773020), m=0 (77773020)
+------
+21750 0000002610610030 (lc=21007570740 34201736170)
+(alu) SETM a=0 m=5 m[5] C=0 alu-> ->a_mem[214] 
+a=0 (77773020), m=5 (0)
+alu_op 3, ir8 0, ir7 0, c 0, dest 4214, out_bus 1
+a_memory[214] <- 0
+alu_out 0x00000000, alu_carry 0, q 0x00000000
+------
+21751 0000003210650030 (lc=21007570740 34201736170)
+(alu) SETM a=0 m=6 m[6] C=0 alu-> ->a_mem[215] 
+a=0 (77773020), m=6 (2)
+alu_op 3, ir8 0, ir7 0, c 0, dest 4215, out_bus 1
+a_memory[215] <- 2
+alu_out 0x00000002, alu_carry 0, q 0x00000000
+------
+21752 0000005210710030 (lc=21007570740 34201736170)
+(alu) SETM a=0 m=12 m[12] C=0 alu-> ->a_mem[216] 
+a=0 (77773020), m=12 (603251270)
+alu_op 3, ir8 0, ir7 0, c 0, dest 4216, out_bus 1
+a_memory[216] <- 603251270
+alu_out 0x060d52b8, alu_carry 0, q 0x00000000
+------
+21753 0600125210750037 (lc=21007570740 34201736170)
+(byte) a=2 m=MD ldb pos=37, width=1 ->a_mem[217] 
+a=2 (0), m=52 (0), dest=4217
+widthm1 0, pos 37, mr_sr_bits 1
+left_mask_index 0, right_mask_index 0
+left_mask 1, right_mask 37777777777, mask 1
+ldb; m 0
+ldb; m-rot 0, mask 1, result 0
+a_memory[217] <- 0
+------
+21754 0210741221220243 (lc=21007570740 34201736170)
+(jump) a=217 m=m[2] pc 22122, !next M-src = A-src 
+a=217 (0), m=2 (0)
+no_exec_next; u_pc 22123
+------
+INNL0:
+22122 0002700042310050 (lc=21007570740 34201736170)
+(alu) SETA a=56 m=0 m[0] C=0 alu-> ->VMA,start-read ,m[6] 
+a=56 (577772060), m=0 (77773020)
+alu_op 5, ir8 0, ir7 0, c 0, dest 1046, out_bus 1
+read_mem(vaddr=577772060)
+read_mem(vaddr=577772060) -> pn 37764, offset 60, map 263037764 (40000000)
+a,m_memory[6] <- 577772060
+alu_out 0x05fff430, alu_carry 0, q 0x00000000
+------
+22123 0200000200420644 (lc=21007570740 34201736170)
+(jump) a=0 m=m[0] pc 20042, P !next pf 
+a=0 (77773020), m=0 (77773020)
+------
+22124 0200025221260334 (lc=21007570740 34201736170)
+(jump) a=0 m=MD pc 22126, !next !jump m-rot<< 34
+a=0 (77773020), m=52 (220)
+jump-if-bit; rot 34, before 220 after 11
+------
+22125 0200025221750221 (lc=21007570740 34201736170)
+(jump) a=0 m=MD pc 22175, !next m-rot<< 21
+a=0 (77773020), m=52 (220)
+jump-if-bit; rot 21, before 220 after 110000000
+------
+INNL1:
+22126 0200025221300333 (lc=21007570740 34201736170)
+(jump) a=0 m=MD pc 22130, !next !jump m-rot<< 33
+a=0 (77773020), m=52 (220)
+jump-if-bit; rot 33, before 220 after 20000000004
+no_exec_next; u_pc 22131
+------
+INNL2:
+22130 0030600000250050 (lc=21007570740 34201736170)
+(alu) SETA a=614 m=0 m[0] C=0 alu-> -><none>,m[5] 
+a=614 (413), m=0 (77773020)
+alu_op 5, ir8 0, ir7 0, c 0, dest 5, out_bus 1
+a,m_memory[5] <- 413
+alu_out 0x0000010b, alu_carry 0, q 0x00000000
+------
+INND0:
+22131 0000142442010310 (lc=21007570740 34201736170)
+(alu) M+A [ADD] a=3 m=5 m[5] C=0 alu-> ->VMA,start-read ,m[0] 
+a=3 (37777777777), m=5 (413)
+alu_op 11, ir8 0, ir7 1, c 0, dest 1040, out_bus 1
+read_mem(vaddr=412)
+read_mem(vaddr=412) -> pn 1, offset 12, map 263200001 (40000000)
+read_mem(vaddr=412) -> 30500000500
+a,m_memory[0] <- 412
+alu_out 0x0000010a, alu_carry 0, q 0x00000000
+------
+22132 0200000200420644 (lc=21007570740 34201736170)
+(jump) a=0 m=m[0] pc 20042, P !next pf 
+a=0 (412), m=0 (412)
+------
+22133 0600125060011340 (lc=21007570740 34201736170)
+(byte) a=2 m=MD ldb pos=0, width=30 ->MD ,m[0] 
+a=2 (0), m=52 (30500000500), dest=1400
+widthm1 27, pos 0, mr_sr_bits 1
+left_mask_index 27, right_mask_index 0
+left_mask 77777777, right_mask 37777777777, mask 77777777
+ldb; m 30500000500
+ldb; m-rot 30500000500, mask 77777777, result 500
+md<-500
+a,m_memory[0] <- 500
+------
+22134 0200125221500243 (lc=21007570740 34201736170)
+(jump) a=2 m=MD pc 22150, !next M-src = A-src 
+a=2 (0), m=52 (500)
+------
+22135 0027365000250310 (lc=21007570740 34201736170)
+(alu) M+A [ADD] a=567 m=52 MD C=0 alu-> -><none>,m[5] 
+a=567 (2), m=52 (500)
+alu_op 11, ir8 0, ir7 1, c 0, dest 5, out_bus 1
+a,m_memory[5] <- 502
+alu_out 0x00000142, alu_carry 0, q 0x00000000
+------
+22136 0027342442010310 (lc=21007570740 34201736170)
+(alu) M+A [ADD] a=567 m=5 m[5] C=0 alu-> ->VMA,start-read ,m[0] 
+a=567 (2), m=5 (502)
+alu_op 11, ir8 0, ir7 1, c 0, dest 1040, out_bus 1
+read_mem(vaddr=504)
+read_mem(vaddr=504) -> pn 1, offset 104, map 263200001 (40000000)
+read_mem(vaddr=504) -> 40
+a,m_memory[0] <- 504
+alu_out 0x00000144, alu_carry 0, q 0x00000000
+------
+22137 0200000200420644 (lc=21007570740 34201736170)
+(jump) a=0 m=m[0] pc 20042, P !next pf 
+a=0 (504), m=0 (504)
+------
+22140 0000025210410030 (lc=21007570740 34201736170)
+(alu) SETM a=0 m=52 MD C=0 alu-> ->a_mem[210] 
+a=0 (504), m=52 (40)
+alu_op 3, ir8 0, ir7 0, c 0, dest 4210, out_bus 1
+a_memory[210] <- 40
+alu_out 0x00000020, alu_carry 0, q 0x00000000
+------
+22141 0026442442010310 (lc=21007570740 34201736170)
+(alu) M+A [ADD] a=551 m=5 m[5] C=0 alu-> ->VMA,start-read ,m[0] 
+a=551 (1), m=5 (502)
+alu_op 11, ir8 0, ir7 1, c 0, dest 1040, out_bus 1
+read_mem(vaddr=503)
+read_mem(vaddr=503) -> pn 1, offset 103, map 263200001 (40000000)
+read_mem(vaddr=503) -> 77772045
+a,m_memory[0] <- 503
+alu_out 0x00000143, alu_carry 0, q 0x00000000
+------
+22142 0200000200420644 (lc=21007570740 34201736170)
+(jump) a=0 m=m[0] pc 20042, P !next pf 
+a=0 (503), m=0 (503)
+------
+22143 0000025042010030 (lc=21007570740 34201736170)
+(alu) SETM a=0 m=52 MD C=0 alu-> ->VMA,start-read ,m[0] 
+a=0 (503), m=52 (77772045)
+alu_op 3, ir8 0, ir7 0, c 0, dest 1040, out_bus 1
+read_mem(vaddr=77772045)
+read_mem(vaddr=77772045) -> pn 37764, offset 45, map 263037764 (40000000)
+a,m_memory[0] <- 77772045
+alu_out 0x00fff425, alu_carry 0, q 0x00000000
+------
+22144 0200000200420644 (lc=21007570740 34201736170)
+(jump) a=0 m=m[0] pc 20042, P !next pf 
+a=0 (77772045), m=0 (77772045)
+------
+22145 0010425001550010 (lc=21007570740 34201736170)
+(alu) AND a=210 m=52 MD C=0 alu-> -><none>,m[33] 
+a=210 (40), m=52 (4)
+alu_op 1, ir8 0, ir7 0, c 0, dest 33, out_bus 1
+a,m_memory[33] <- 0
+alu_out 0x00000000, alu_carry 0, q 0x00000000
+------
+22146 0200115620040343 (lc=21007570740 34201736170)
+(jump) a=2 m=m[33] pc 22004, !next !jump M-src = A-src 
+a=2 (0), m=33 (0)
+------
+22147 0200000221310247 (lc=21007570740 34201736170)
+(jump) a=0 m=m[0] pc 22131, !next jump-always 
+a=0 (77772045), m=0 (77772045)
+no_exec_next; u_pc 22132
+------
+INND0:
+22131 0000142442010310 (lc=21007570740 34201736170)
+(alu) M+A [ADD] a=3 m=5 m[5] C=0 alu-> ->VMA,start-read ,m[0] 
+a=3 (37777777777), m=5 (502)
+alu_op 11, ir8 0, ir7 1, c 0, dest 1040, out_bus 1
+read_mem(vaddr=501)
+read_mem(vaddr=501) -> pn 1, offset 101, map 263200001 (40000000)
+read_mem(vaddr=501) -> 0
+a,m_memory[0] <- 501
+alu_out 0x00000141, alu_carry 0, q 0x00000000
+------
+22132 0200000200420644 (lc=21007570740 34201736170)
+(jump) a=0 m=m[0] pc 20042, P !next pf 
+a=0 (501), m=0 (501)
+------
+22133 0600125060011340 (lc=21007570740 34201736170)
+(byte) a=2 m=MD ldb pos=0, width=30 ->MD ,m[0] 
+a=2 (0), m=52 (0), dest=1400
+widthm1 27, pos 0, mr_sr_bits 1
+left_mask_index 27, right_mask_index 0
+left_mask 77777777, right_mask 37777777777, mask 77777777
+ldb; m 0
+ldb; m-rot 0, mask 77777777, result 0
+md<-0
+a,m_memory[0] <- 0
+------
+22134 0200125221500243 (lc=21007570740 34201736170)
+(jump) a=2 m=MD pc 22150, !next M-src = A-src 
+a=2 (0), m=52 (0)
+no_exec_next; u_pc 22151
+------
+INTRX0:
+22150 0016300042010050 (lc=21007570740 34201736170)
+(alu) SETA a=346 m=0 m[0] C=0 alu-> ->VMA,start-read ,m[0] 
+a=346 (77377760), m=0 (0)
+alu_op 5, ir8 0, ir7 0, c 0, dest 1040, out_bus 1
+read_mem(vaddr=77377760)
+read_mem(vaddr=77377760) -> pn 36777, offset 360, map 60036777 (40000000)
+a,m_memory[0] <- 77377760
+alu_out 0x00fdfff0, alu_carry 0, q 0x00000000
+------
+22151 0200000200420644 (lc=21007570740 34201736170)
+(jump) a=0 m=m[0] pc 20042, P !next pf 
+a=0 (77377760), m=0 (77377760)
+------
+22152 0200025221700334 (lc=21007570740 34201736170)
+(jump) a=0 m=MD pc 22170, !next !jump m-rot<< 34
+a=0 (77377760), m=52 (14)
+jump-if-bit; rot 34, before 14 after 30000000000
+no_exec_next; u_pc 22171
+------
+INTRX1:
+22170 0214101221740243 (lc=21007570740 34201736170)
+(jump) a=302 m=m[2] pc 22174, !next M-src = A-src 
+a=302 (0), m=2 (0)
+no_exec_next; u_pc 22175
+------
+INTRX2:
+22174 0200000220560247 (lc=21007570740 34201736170)
+(jump) a=0 m=m[0] pc 22056, !next jump-always 
+a=0 (77377760), m=0 (77377760)
+no_exec_next; u_pc 22057
+------
+XB-INTR-RET:
+22056 0601301001330016 (lc=21007570740 34201736170)
+(byte) a=26 m=m[2] dpb pos=16, width=1 -><none>,m[26] 
+a=26 (500042042), m=2 (0), dest=26
+widthm1 0, pos 16, mr_sr_bits 3
+left_mask_index 16, right_mask_index 16
+left_mask 77777, right_mask 37777740000, mask 40000
+dpb; m 0, pos 16
+dpb; mask 40000, result 500002042
+a,m_memory[26] <- 500002042
+------
+22057 0010540060010050 (lc=21007570740 34201736170)
+(alu) SETA a=213 m=0 m[0] C=0 alu-> ->MD ,m[0] 
+a=213 (556213000), m=0 (77377760)
+alu_op 5, ir8 0, ir7 0, c 0, dest 1400, out_bus 1
+md<-556213000
+a,m_memory[0] <- 556213000
+alu_out 0x05b91600, alu_carry 0, q 0x00000000
+------
+22060 0010500040010050 (lc=21007570740 34201736170)
+(alu) SETA a=212 m=0 m[0] C=0 alu-> ->VMA ,m[0] 
+a=212 (500123425), m=0 (556213000)
+alu_op 5, ir8 0, ir7 0, c 0, dest 1000, out_bus 1
+a,m_memory[0] <- 500123425
+alu_out 0x0500a715, alu_carry 0, q 0x00000000
+------
+22061 0010700000510050 (lc=21007570740 34201736170)
+(alu) SETA a=216 m=0 m[0] C=0 alu-> -><none>,m[12] 
+a=216 (603251270), m=0 (500123425)
+alu_op 5, ir8 0, ir7 0, c 0, dest 12, out_bus 1
+a,m_memory[12] <- 603251270
+alu_out 0x060d52b8, alu_carry 0, q 0x00000000
+------
+22062 0110640000310050 (lc=21007570740 34201736170)
+popj; (alu) SETA a=215 m=0 m[0] C=0 alu-> -><none>,m[6] 
+a=215 (2), m=0 (500123425)
+alu_op 5, ir8 0, ir7 0, c 0, dest 6, out_bus 1
+a,m_memory[6] <- 2
+alu_out 0x00000002, alu_carry 0, q 0x00000000
+popj; reading spc[3] -> 703
+------
+22063 0010600000250050 (lc=21007570740 34201736170)
+(alu) SETA a=214 m=0 m[0] C=0 alu-> -><none>,m[5] 
+a=214 (0), m=0 (500123425)
+alu_op 5, ir8 0, ir7 0, c 0, dest 5, out_bus 1
+a,m_memory[5] <- 0
+alu_out 0x00000000, alu_carry 0, q 0x00000000
+------
+703 0026440000450050 (lc=21007570740 34201736170)
+(alu) SETA a=551 m=0 m[0] C=0 alu-> -><none>,m[11] 
+a=551 (1), m=0 (500123425)
+alu_op 5, ir8 0, ir7 0, c 0, dest 11, out_bus 1
+a,m_memory[11] <- 1
+alu_out 0x00000001, alu_carry 0, q 0x00000000
+------
+704 1400025017000227 (i-long) (lc=21007570740 34201736170)
+(dispatch) m=MD disp-const 0, disp-addr 1700, map 0, len 4, rot 27 
+m-src 556213000, rotated 556213, mask 17, result 13
+dispatch[1713] -> 700000 P R 
+------
+705 1400025017300120 (i-long) (lc=21007570740 34201736170)
+(dispatch) m=MD disp-const 0, disp-addr 1730, map 0, len 2, rot 20 
+m-src 556213000, rotated 2600002671, mask 3, result 1
+dispatch[1731] -> 540762 N P 
+writing spc[3] <- 706
+no_exec_next; u_pc 763
+------
+CONSF:
+762 0016710042010310 (lc=21007570740 34201736170)
+(alu) M+A [ADD] a=356 m=20 m[20] C=0 alu-> ->VMA,start-read ,m[0] 
+a=356 (500123000), m=20 (25)
+alu_op 11, ir8 0, ir7 1, c 0, dest 1040, out_bus 1
+read_mem(vaddr=500123025)
+read_mem(vaddr=500123025) -> pn 246, offset 25, map 263200246 (40000000)
+read_mem(vaddr=500123025) -> 500004000
+a,m_memory[0] <- 500123025
+alu_out 0x0500a615, alu_carry 0, q 0x00000000
+------
+763 0200000200410645 (lc=21007570740 34201736170)
+(jump) a=0 m=m[0] pc 20041, P !next pf/int 
+a=0 (500123025), m=0 (500123025)
+jump i|pf
+writing spc[4] <- 764
+no_exec_next; u_pc 20042
+------
+PGF-R-I:
+20041 0200000217420344 (lc=21007570740 34201736170)
+(jump) a=0 m=m[0] pc 21742, !next !jump pf 
+a=0 (500123025), m=0 (500123025)
+no_exec_next; u_pc 21743
+------
+INTR:
+21742 0200013003730622 (lc=21007570740 34201736170)
+(jump) a=0 m=m[26] pc 373, P !next m-rot<< 22
+a=0 (500123025), m=26 (500002042)
+jump-if-bit; rot 22, before 500002042 after 2042012000
+------
+21743 0000024210510030 (lc=21007570740 34201736170)
+(alu) SETM a=0 m=50 VMA C=0 alu-> ->a_mem[212] 
+a=0 (500123025), m=50 (500123025)
+alu_op 3, ir8 0, ir7 0, c 0, dest 4212, out_bus 1
+a_memory[212] <- 500123025
+alu_out 0x0500a615, alu_carry 0, q 0x00000000
+------
+21744 0000025210550030 (lc=21007570740 34201736170)
+(alu) SETM a=0 m=52 MD C=0 alu-> ->a_mem[213] 
+a=0 (500123025), m=52 (500004000)
+alu_op 3, ir8 0, ir7 0, c 0, dest 4213, out_bus 1
+a_memory[213] <- 500004000
+alu_out 0x05000800, alu_carry 0, q 0x00000000
+------
+21745 0601301401330016 (lc=21007570740 34201736170)
+(byte) a=26 m=m[3] dpb pos=16, width=1 -><none>,m[26] 
+a=26 (500002042), m=3 (37777777777), dest=26
+widthm1 0, pos 16, mr_sr_bits 3
+left_mask_index 16, right_mask_index 16
+left_mask 77777, right_mask 37777740000, mask 40000
+dpb; m 37777777777, pos 16
+dpb; mask 40000, result 500042042
+a,m_memory[26] <- 500042042
+------
+21746 0027140042010050 (lc=21007570740 34201736170)
+(alu) SETA a=563 m=0 m[0] C=0 alu-> ->VMA,start-read ,m[0] 
+a=563 (77773020), m=0 (500123025)
+alu_op 5, ir8 0, ir7 0, c 0, dest 1040, out_bus 1
+read_mem(vaddr=77773020)
+read_mem(vaddr=77773020) -> pn 37766, offset 20, map 263037766 (40000000)
+read_mem(vaddr=77773020) -> 0
+a,m_memory[0] <- 77773020
+alu_out 0x00fff610, alu_carry 0, q 0x00000000
+------
+21747 0200000200420644 (lc=21007570740 34201736170)
+(jump) a=0 m=m[0] pc 20042, P !next pf 
+a=0 (77773020), m=0 (77773020)
+------
+21750 0000002610610030 (lc=21007570740 34201736170)
+(alu) SETM a=0 m=5 m[5] C=0 alu-> ->a_mem[214] 
+a=0 (77773020), m=5 (0)
+alu_op 3, ir8 0, ir7 0, c 0, dest 4214, out_bus 1
+a_memory[214] <- 0
+alu_out 0x00000000, alu_carry 0, q 0x00000000
+------
+21751 0000003210650030 (lc=21007570740 34201736170)
+(alu) SETM a=0 m=6 m[6] C=0 alu-> ->a_mem[215] 
+a=0 (77773020), m=6 (2)
+alu_op 3, ir8 0, ir7 0, c 0, dest 4215, out_bus 1
+a_memory[215] <- 2
+alu_out 0x00000002, alu_carry 0, q 0x00000000
+------
+21752 0000005210710030 (lc=21007570740 34201736170)
+(alu) SETM a=0 m=12 m[12] C=0 alu-> ->a_mem[216] 
+a=0 (77773020), m=12 (603251270)
+alu_op 3, ir8 0, ir7 0, c 0, dest 4216, out_bus 1
+a_memory[216] <- 603251270
+alu_out 0x060d52b8, alu_carry 0, q 0x00000000
+------
+21753 0600125210750037 (lc=21007570740 34201736170)
+(byte) a=2 m=MD ldb pos=37, width=1 ->a_mem[217] 
+a=2 (0), m=52 (0), dest=4217
+widthm1 0, pos 37, mr_sr_bits 1
+left_mask_index 0, right_mask_index 0
+left_mask 1, right_mask 37777777777, mask 1
+ldb; m 0
+ldb; m-rot 0, mask 1, result 0
+a_memory[217] <- 0
+------
+21754 0210741221220243 (lc=21007570740 34201736170)
+(jump) a=217 m=m[2] pc 22122, !next M-src = A-src 
+a=217 (0), m=2 (0)
+no_exec_next; u_pc 22123
+------
+INNL0:
+22122 0002700042310050 (lc=21007570740 34201736170)
+(alu) SETA a=56 m=0 m[0] C=0 alu-> ->VMA,start-read ,m[6] 
+a=56 (577772060), m=0 (77773020)
+alu_op 5, ir8 0, ir7 0, c 0, dest 1046, out_bus 1
+read_mem(vaddr=577772060)
+read_mem(vaddr=577772060) -> pn 37764, offset 60, map 263037764 (40000000)
+a,m_memory[6] <- 577772060
+alu_out 0x05fff430, alu_carry 0, q 0x00000000
+------
+22123 0200000200420644 (lc=21007570740 34201736170)
+(jump) a=0 m=m[0] pc 20042, P !next pf 
+a=0 (77773020), m=0 (77773020)
+------
+22124 0200025221260334 (lc=21007570740 34201736170)
+(jump) a=0 m=MD pc 22126, !next !jump m-rot<< 34
+a=0 (77773020), m=52 (220)
+jump-if-bit; rot 34, before 220 after 11
+------
+22125 0200025221750221 (lc=21007570740 34201736170)
+(jump) a=0 m=MD pc 22175, !next m-rot<< 21
+a=0 (77773020), m=52 (220)
+jump-if-bit; rot 21, before 220 after 110000000
+------
+INNL1:
+22126 0200025221300333 (lc=21007570740 34201736170)
+(jump) a=0 m=MD pc 22130, !next !jump m-rot<< 33
+a=0 (77773020), m=52 (220)
+jump-if-bit; rot 33, before 220 after 20000000004
+no_exec_next; u_pc 22131
+------
+INNL2:
+22130 0030600000250050 (lc=21007570740 34201736170)
+(alu) SETA a=614 m=0 m[0] C=0 alu-> -><none>,m[5] 
+a=614 (413), m=0 (77773020)
+alu_op 5, ir8 0, ir7 0, c 0, dest 5, out_bus 1
+a,m_memory[5] <- 413
+alu_out 0x0000010b, alu_carry 0, q 0x00000000
+------
+INND0:
+22131 0000142442010310 (lc=21007570740 34201736170)
+(alu) M+A [ADD] a=3 m=5 m[5] C=0 alu-> ->VMA,start-read ,m[0] 
+a=3 (37777777777), m=5 (413)
+alu_op 11, ir8 0, ir7 1, c 0, dest 1040, out_bus 1
+read_mem(vaddr=412)
+read_mem(vaddr=412) -> pn 1, offset 12, map 263200001 (40000000)
+read_mem(vaddr=412) -> 30500000500
+a,m_memory[0] <- 412
+alu_out 0x0000010a, alu_carry 0, q 0x00000000
+------
+22132 0200000200420644 (lc=21007570740 34201736170)
+(jump) a=0 m=m[0] pc 20042, P !next pf 
+a=0 (412), m=0 (412)
+------
+22133 0600125060011340 (lc=21007570740 34201736170)
+(byte) a=2 m=MD ldb pos=0, width=30 ->MD ,m[0] 
+a=2 (0), m=52 (30500000500), dest=1400
+widthm1 27, pos 0, mr_sr_bits 1
+left_mask_index 27, right_mask_index 0
+left_mask 77777777, right_mask 37777777777, mask 77777777
+ldb; m 30500000500
+ldb; m-rot 30500000500, mask 77777777, result 500
+md<-500
+a,m_memory[0] <- 500
+------
+22134 0200125221500243 (lc=21007570740 34201736170)
+(jump) a=2 m=MD pc 22150, !next M-src = A-src 
+a=2 (0), m=52 (500)
+------
+22135 0027365000250310 (lc=21007570740 34201736170)
+(alu) M+A [ADD] a=567 m=52 MD C=0 alu-> -><none>,m[5] 
+a=567 (2), m=52 (500)
+alu_op 11, ir8 0, ir7 1, c 0, dest 5, out_bus 1
+a,m_memory[5] <- 502
+alu_out 0x00000142, alu_carry 0, q 0x00000000
+------
+22136 0027342442010310 (lc=21007570740 34201736170)
+(alu) M+A [ADD] a=567 m=5 m[5] C=0 alu-> ->VMA,start-read ,m[0] 
+a=567 (2), m=5 (502)
+alu_op 11, ir8 0, ir7 1, c 0, dest 1040, out_bus 1
+read_mem(vaddr=504)
+read_mem(vaddr=504) -> pn 1, offset 104, map 263200001 (40000000)
+read_mem(vaddr=504) -> 40
+a,m_memory[0] <- 504
+alu_out 0x00000144, alu_carry 0, q 0x00000000
+------
+22137 0200000200420644 (lc=21007570740 34201736170)
+(jump) a=0 m=m[0] pc 20042, P !next pf 
+a=0 (504), m=0 (504)
+------
+22140 0000025210410030 (lc=21007570740 34201736170)
+(alu) SETM a=0 m=52 MD C=0 alu-> ->a_mem[210] 
+a=0 (504), m=52 (40)
+alu_op 3, ir8 0, ir7 0, c 0, dest 4210, out_bus 1
+a_memory[210] <- 40
+alu_out 0x00000020, alu_carry 0, q 0x00000000
+------
+22141 0026442442010310 (lc=21007570740 34201736170)
+(alu) M+A [ADD] a=551 m=5 m[5] C=0 alu-> ->VMA,start-read ,m[0] 
+a=551 (1), m=5 (502)
+alu_op 11, ir8 0, ir7 1, c 0, dest 1040, out_bus 1
+read_mem(vaddr=503)
+read_mem(vaddr=503) -> pn 1, offset 103, map 263200001 (40000000)
+read_mem(vaddr=503) -> 77772045
+a,m_memory[0] <- 503
+alu_out 0x00000143, alu_carry 0, q 0x00000000
+------
+22142 0200000200420644 (lc=21007570740 34201736170)
+(jump) a=0 m=m[0] pc 20042, P !next pf 
+a=0 (503), m=0 (503)
+------
+22143 0000025042010030 (lc=21007570740 34201736170)
+(alu) SETM a=0 m=52 MD C=0 alu-> ->VMA,start-read ,m[0] 
+a=0 (503), m=52 (77772045)
+alu_op 3, ir8 0, ir7 0, c 0, dest 1040, out_bus 1
+read_mem(vaddr=77772045)
+read_mem(vaddr=77772045) -> pn 37764, offset 45, map 263037764 (40000000)
+a,m_memory[0] <- 77772045
+alu_out 0x00fff425, alu_carry 0, q 0x00000000
+------
+22144 0200000200420644 (lc=21007570740 34201736170)
+(jump) a=0 m=m[0] pc 20042, P !next pf 
+a=0 (77772045), m=0 (77772045)
+------
+22145 0010425001550010 (lc=21007570740 34201736170)
+(alu) AND a=210 m=52 MD C=0 alu-> -><none>,m[33] 
+a=210 (40), m=52 (4)
+alu_op 1, ir8 0, ir7 0, c 0, dest 33, out_bus 1
+a,m_memory[33] <- 0
+alu_out 0x00000000, alu_carry 0, q 0x00000000
+------
+22146 0200115620040343 (lc=21007570740 34201736170)
+(jump) a=2 m=m[33] pc 22004, !next !jump M-src = A-src 
+a=2 (0), m=33 (0)
+------
+22147 0200000221310247 (lc=21007570740 34201736170)
+(jump) a=0 m=m[0] pc 22131, !next jump-always 
+a=0 (77772045), m=0 (77772045)
+no_exec_next; u_pc 22132
+------
+INND0:
+22131 0000142442010310 (lc=21007570740 34201736170)
+(alu) M+A [ADD] a=3 m=5 m[5] C=0 alu-> ->VMA,start-read ,m[0] 
+a=3 (37777777777), m=5 (502)
+alu_op 11, ir8 0, ir7 1, c 0, dest 1040, out_bus 1
+read_mem(vaddr=501)
+read_mem(vaddr=501) -> pn 1, offset 101, map 263200001 (40000000)
+read_mem(vaddr=501) -> 0
+a,m_memory[0] <- 501
+alu_out 0x00000141, alu_carry 0, q 0x00000000
+------
+22132 0200000200420644 (lc=21007570740 34201736170)
+(jump) a=0 m=m[0] pc 20042, P !next pf 
+a=0 (501), m=0 (501)
+------
+22133 0600125060011340 (lc=21007570740 34201736170)
+(byte) a=2 m=MD ldb pos=0, width=30 ->MD ,m[0] 
+a=2 (0), m=52 (0), dest=1400
+widthm1 27, pos 0, mr_sr_bits 1
+left_mask_index 27, right_mask_index 0
+left_mask 77777777, right_mask 37777777777, mask 77777777
+ldb; m 0
+ldb; m-rot 0, mask 77777777, result 0
+md<-0
+a,m_memory[0] <- 0
+------
+22134 0200125221500243 (lc=21007570740 34201736170)
+(jump) a=2 m=MD pc 22150, !next M-src = A-src 
+a=2 (0), m=52 (0)
+no_exec_next; u_pc 22151
+------
+INTRX0:
+22150 0016300042010050 (lc=21007570740 34201736170)
+(alu) SETA a=346 m=0 m[0] C=0 alu-> ->VMA,start-read ,m[0] 
+a=346 (77377760), m=0 (0)
+alu_op 5, ir8 0, ir7 0, c 0, dest 1040, out_bus 1
+read_mem(vaddr=77377760)
+read_mem(vaddr=77377760) -> pn 36777, offset 360, map 60036777 (40000000)
+a,m_memory[0] <- 77377760
+alu_out 0x00fdfff0, alu_carry 0, q 0x00000000
+------
+22151 0200000200420644 (lc=21007570740 34201736170)
+(jump) a=0 m=m[0] pc 20042, P !next pf 
+a=0 (77377760), m=0 (77377760)
+------
+22152 0200025221700334 (lc=21007570740 34201736170)
+(jump) a=0 m=MD pc 22170, !next !jump m-rot<< 34
+a=0 (77377760), m=52 (34)
+jump-if-bit; rot 34, before 34 after 30000000001
+------
+22153 0026765064010020 (lc=21007570740 34201736170)
+(alu) ANDCA a=557 m=52 MD C=0 alu-> ->MD,start-write ,m[0] 
+a=557 (20), m=52 (34)
+alu_op 2, ir8 0, ir7 0, c 0, dest 1500, out_bus 1
+write_mem(vaddr=77377760,v=14)
+write_mem(vaddr=77377760) -> pn 36777, offset 360, map 60036777 (20000000)
+a,m_memory[0] <- 14
+alu_out 0x0000000c, alu_carry 0, q 0x00000000
+------
+22154 0200000200600644 (lc=21007570740 34201736170)
+(jump) a=0 m=m[0] pc 20060, P !next pf 
+a=0 (14), m=0 (14)
+------
+22155 0212201221600242 (lc=21007570740 34201736170)
+(jump) a=244 m=m[2] pc 22160, !next M-src <= A-src 
+a=244 (0), m=2 (0)
+no_exec_next; u_pc 22161
+------
+60CYC-0:
+22160 0214101221620343 (lc=21007570740 34201736170)
+(jump) a=302 m=m[2] pc 22162, !next !jump M-src = A-src 
+a=302 (0), m=2 (0)
+------
+22161 0014641214650314 (lc=21007570740 34201736170)
+(alu) M+A [ADD] a=315 m=2 m[2] C=1 alu-> ->a_mem[315] 
+a=315 (1), m=2 (0)
+alu_op 11, ir8 0, ir7 1, c 1, dest 4315, out_bus 1
+a_memory[315] <- 2
+alu_out 0x00000002, alu_carry 0, q 0x00000000
+------
+60CYC-1:
+22162 0200000176270647 (lc=21007570740 34201736170)
+(jump) a=0 m=m[0] pc 17627, P !next jump-always 
+a=0 (14), m=0 (14)
+writing spc[5] <- 22163
+no_exec_next; u_pc 17630
+------
+TRACK-MOUSE:
+17627 0604641001570370 (lc=21007570740 34201736170)
+(byte) a=115 m=m[2] dpb pos=30, width=10 -><none>,m[33] 
+a=115 (500000001), m=2 (0), dest=33
+widthm1 7, pos 30, mr_sr_bits 3
+left_mask_index 37, right_mask_index 30
+left_mask 37777777777, right_mask 37700000000, mask 37700000000
+dpb; m 0, pos 30
+dpb; mask 37700000000, result 1
+a,m_memory[33] <- 1
+------
+17630 0200115400001243 (lc=21007570740 34201736170)
+(jump) a=2 m=m[33] pc 0, R !next M-src = A-src 
+a=2 (0), m=33 (1)
+------
+17631 0025100042010050 (lc=21007570740 34201736170)
+(alu) SETA a=522 m=0 m[0] C=0 alu-> ->VMA,start-read ,m[0] 
+a=522 (77772042), m=0 (14)
+alu_op 5, ir8 0, ir7 0, c 0, dest 1040, out_bus 1
+read_mem(vaddr=77772042)
+read_mem(vaddr=77772042) -> pn 37764, offset 42, map 263037764 (40000000)
+a,m_memory[0] <- 77772042
+alu_out 0x00fff422, alu_carry 0, q 0x00000000
+------
+17632 0200000200420644 (lc=21007570740 34201736170)
+(jump) a=0 m=m[0] pc 20042, P !next pf 
+a=0 (77772042), m=0 (77772042)
+------
+17633 0000011225510030 (lc=21007570740 34201736170)
+(alu) SETM a=0 m=22 m[22] C=0 alu-> ->a_mem[532] 
+a=0 (77772042), m=22 (10000000000)
+alu_op 3, ir8 0, ir7 0, c 0, dest 4532, out_bus 1
+a_memory[532] <- 10000000000
+alu_out 0x40000000, alu_carry 0, q 0x00000000
+------
+17634 0000011625550030 (lc=21007570740 34201736170)
+(alu) SETM a=0 m=23 m[23] C=0 alu-> ->a_mem[533] 
+a=0 (77772042), m=23 (0)
+alu_op 3, ir8 0, ir7 0, c 0, dest 4533, out_bus 1
+a_memory[533] <- 0
+alu_out 0x00000000, alu_carry 0, q 0x00000000
+------
+17635 0000004625610030 (lc=21007570740 34201736170)
+(alu) SETM a=0 m=11 m[11] C=0 alu-> ->a_mem[534] 
+a=0 (77772042), m=11 (1)
+alu_op 3, ir8 0, ir7 0, c 0, dest 4534, out_bus 1
+a_memory[534] <- 1
+alu_out 0x00000001, alu_carry 0, q 0x00000000
+------
+17636 0000025000250030 (lc=21007570740 34201736170)
+(alu) SETM a=0 m=52 MD C=0 alu-> -><none>,m[5] 
+a=0 (77772042), m=52 (125)
+alu_op 3, ir8 0, ir7 0, c 0, dest 5, out_bus 1
+a,m_memory[5] <- 125
+alu_out 0x00000055, alu_carry 0, q 0x00000000
+------
+17637 0026464042010310 (lc=21007570740 34201736170)
+(alu) M+A [ADD] a=551 m=50 VMA C=0 alu-> ->VMA,start-read ,m[0] 
+a=551 (1), m=50 (77772042)
+alu_op 11, ir8 0, ir7 1, c 0, dest 1040, out_bus 1
+read_mem(vaddr=77772043)
+read_mem(vaddr=77772043) -> pn 37764, offset 43, map 263037764 (40000000)
+a,m_memory[0] <- 77772043
+alu_out 0x00fff423, alu_carry 0, q 0x00000000
+------
+17640 0200000200420644 (lc=21007570740 34201736170)
+(jump) a=0 m=m[0] pc 20042, P !next pf 
+a=0 (77772043), m=0 (77772043)
+------
+17641 0025002401550060 (lc=21007570740 34201736170)
+(alu) XOR a=520 m=5 m[5] C=0 alu-> -><none>,m[33] 
+a=520 (125), m=5 (125)
+alu_op 6, ir8 0, ir7 0, c 0, dest 33, out_bus 1
+a,m_memory[33] <- 0
+alu_out 0x00000000, alu_carry 0, q 0x00000000
+------
+17642 0600115401550124 (lc=21007570740 34201736170)
+(byte) a=2 m=m[33] ldb pos=24, width=3 -><none>,m[33] 
+a=2 (0), m=33 (0), dest=33
+widthm1 2, pos 24, mr_sr_bits 1
+left_mask_index 2, right_mask_index 0
+left_mask 7, right_mask 37777777777, mask 7
+ldb; m 0
+ldb; m-rot 0, mask 7, result 0
+a,m_memory[33] <- 0
+------
+17643 0200115576670043 (lc=21007570740 34201736170)
+(jump) a=2 m=m[33] pc 17667, M-src = A-src 
+a=2 (0), m=33 (0)
+------
+17644 0000025000310030 (lc=21007570740 34201736170)
+(alu) SETM a=0 m=52 MD C=0 alu-> -><none>,m[6] 
+a=0 (77772043), m=52 (570)
+alu_op 3, ir8 0, ir7 0, c 0, dest 6, out_bus 1
+a,m_memory[6] <- 570
+alu_out 0x00000178, alu_carry 0, q 0x00000000
+------
+TRACK-MOUSE-1:
+17667 0025002400250264 (lc=21007570740 34201736170)
+(alu) M-A-1 [M-A-1] a=520 m=5 m[5] C=1 alu-> -><none>,m[5] 
+a=520 (125), m=5 (125)
+alu_op 6, ir8 0, ir7 1, c 1, dest 5, out_bus 1
+a,m_memory[5] <- 0
+alu_out 0x00000000, alu_carry 0, q 0x00000000
+------
+17670 0025002625010310 (lc=21007570740 34201736170)
+(alu) M+A [ADD] a=520 m=5 m[5] C=0 alu-> ->a_mem[520] 
+a=520 (125), m=5 (0)
+alu_op 11, ir8 0, ir7 1, c 0, dest 4520, out_bus 1
+a_memory[520] <- 125
+alu_out 0x00000055, alu_carry 0, q 0x00000000
+------
+17671 0600102436010025 (lc=21007570740 34201736170)
+(byte) a=2 m=m[5] ldb pos=25, width=1 ->OA-reg-hi ,m[0] 
+a=2 (0), m=5 (0), dest=740
+widthm1 0, pos 25, mr_sr_bits 1
+left_mask_index 0, right_mask_index 0
+left_mask 1, right_mask 37777777777, mask 1
+ldb; m 0
+ldb; m-rot 0, mask 1, result 0
+setting oa_reg hi 0
+a,m_memory[0] <- 0
+merging oa hi 0
+------
+17672 0600241000271213 (lc=21007570740 34201736170)
+(byte) a=5 m=m[2] dpb pos=13, width=25 -><none>,m[5] 
+a=5 (0), m=2 (0), dest=5
+widthm1 24, pos 13, mr_sr_bits 3
+left_mask_index 37, right_mask_index 13
+left_mask 37777777777, right_mask 37777774000, mask 37777774000
+dpb; m 0, pos 13
+dpb; mask 37777774000, result 0
+a,m_memory[5] <- 0
+------
+17673 0025043000310264 (lc=21007570740 34201736170)
+(alu) M-A-1 [M-A-1] a=521 m=6 m[6] C=1 alu-> -><none>,m[6] 
+a=521 (570), m=6 (570)
+alu_op 6, ir8 0, ir7 1, c 1, dest 6, out_bus 1
+a,m_memory[6] <- 0
+alu_out 0x00000000, alu_carry 0, q 0x00000000
+------
+17674 0025043225050310 (lc=21007570740 34201736170)
+(alu) M+A [ADD] a=521 m=6 m[6] C=0 alu-> ->a_mem[521] 
+a=521 (570), m=6 (0)
+alu_op 11, ir8 0, ir7 1, c 0, dest 4521, out_bus 1
+a_memory[521] <- 570
+alu_out 0x00000178, alu_carry 0, q 0x00000000
+------
+17675 0600103036010025 (lc=21007570740 34201736170)
+(byte) a=2 m=m[6] ldb pos=25, width=1 ->OA-reg-hi ,m[0] 
+a=2 (0), m=6 (0), dest=740
+widthm1 0, pos 25, mr_sr_bits 1
+left_mask_index 0, right_mask_index 0
+left_mask 1, right_mask 37777777777, mask 1
+ldb; m 0
+ldb; m-rot 0, mask 1, result 0
+setting oa_reg hi 0
+a,m_memory[0] <- 0
+merging oa hi 0
+------
+17676 0600301000331213 (lc=21007570740 34201736170)
+(byte) a=6 m=m[2] dpb pos=13, width=25 -><none>,m[6] 
+a=6 (0), m=2 (0), dest=6
+widthm1 24, pos 13, mr_sr_bits 3
+left_mask_index 37, right_mask_index 13
+left_mask 37777777777, right_mask 37777774000, mask 37777774000
+dpb; m 0, pos 13
+dpb; mask 37777774000, result 0
+a,m_memory[6] <- 0
+------
+17677 0605241001570370 (lc=21007570740 34201736170)
+(byte) a=125 m=m[2] dpb pos=30, width=10 -><none>,m[33] 
+a=125 (500000051), m=2 (0), dest=33
+widthm1 7, pos 30, mr_sr_bits 3
+left_mask_index 37, right_mask_index 30
+left_mask 37777777777, right_mask 37700000000, mask 37700000000
+dpb; m 0, pos 30
+dpb; mask 37700000000, result 51
+a,m_memory[33] <- 51
+------
+17700 0200115577030243 (lc=21007570740 34201736170)
+(jump) a=2 m=m[33] pc 17703, !next M-src = A-src 
+a=2 (0), m=33 (51)
+------
+17701 0600115610051174 (lc=21007570740 34201736170)
+(byte) a=2 m=m[33] ldb pos=34, width=24 ->a_mem[201] 
+a=2 (0), m=33 (51), dest=4201
+widthm1 23, pos 34, mr_sr_bits 1
+left_mask_index 23, right_mask_index 0
+left_mask 3777777, right_mask 37777777777, mask 3777777
+ldb; m 51
+ldb; m-rot 22000000002, mask 3777777, result 2
+a_memory[201] <- 2
+------
+17702 0010055401550260 (lc=21007570740 34201736170)
+(alu) M-A-1 [M-A-1] a=201 m=33 m[33] C=0 alu-> -><none>,m[33] 
+a=201 (2), m=33 (51)
+alu_op 6, ir8 0, ir7 1, c 0, dest 33, out_bus 1
+a,m_memory[33] <- 46
+alu_out 0x00000026, alu_carry 0, q 0x00000000
+------
+TRACK-MOUSE-1C:
+17703 0200102577060141 (lc=21007570740 34201736170)
+(jump) a=2 m=m[5] pc 17706, !jump M-src < A-src 
+a=2 (0), m=5 (0)
+------
+17704 0600102610071642 (lc=21007570740 34201736170)
+(byte) a=2 m=m[5] dpb pos=2, width=36 ->a_mem[201] 
+a=2 (0), m=5 (0), dest=4201
+widthm1 35, pos 2, mr_sr_bits 3
+left_mask_index 37, right_mask_index 2
+left_mask 37777777777, right_mask 37777777774, mask 37777777774
+dpb; m 0, pos 2
+dpb; mask 37777777774, result 0
+a_memory[201] <- 0
+------
+TRACK-MOUSE-1A:
+17706 0010055401550310 (lc=21007570740 34201736170)
+(alu) M+A [ADD] a=201 m=33 m[33] C=0 alu-> -><none>,m[33] 
+a=201 (0), m=33 (46)
+alu_op 11, ir8 0, ir7 1, c 0, dest 33, out_bus 1
+a,m_memory[33] <- 46
+alu_out 0x00000026, alu_carry 0, q 0x00000000
+------
+17707 0626255605251340 (lc=21007570740 34201736170)
+(byte) a=545 m=m[33] ldb pos=0, width=30 ->a_mem[125] 
+a=545 (500000000), m=33 (46), dest=4125
+widthm1 27, pos 0, mr_sr_bits 1
+left_mask_index 27, right_mask_index 0
+left_mask 77777777, right_mask 37777777777, mask 77777777
+ldb; m 46
+ldb; m-rot 46, mask 77777777, result 500000046
+a_memory[125] <- 500000046
+------
+17710 0605201001570370 (lc=21007570740 34201736170)
+(byte) a=124 m=m[2] dpb pos=30, width=10 -><none>,m[33] 
+a=124 (500000017), m=2 (0), dest=33
+widthm1 7, pos 30, mr_sr_bits 3
+left_mask_index 37, right_mask_index 30
+left_mask 37777777777, right_mask 37700000000, mask 37700000000
+dpb; m 0, pos 30
+dpb; mask 37700000000, result 17
+a,m_memory[33] <- 17
+------
+17711 0200115577140243 (lc=21007570740 34201736170)
+(jump) a=2 m=m[33] pc 17714, !next M-src = A-src 
+a=2 (0), m=33 (17)
+------
+17712 0600115610051174 (lc=21007570740 34201736170)
+(byte) a=2 m=m[33] ldb pos=34, width=24 ->a_mem[201] 
+a=2 (0), m=33 (17), dest=4201
+widthm1 23, pos 34, mr_sr_bits 1
+left_mask_index 23, right_mask_index 0
+left_mask 3777777, right_mask 37777777777, mask 3777777
+ldb; m 17
+ldb; m-rot 36000000000, mask 3777777, result 0
+a_memory[201] <- 0
+------
+17713 0010055401550260 (lc=21007570740 34201736170)
+(alu) M-A-1 [M-A-1] a=201 m=33 m[33] C=0 alu-> -><none>,m[33] 
+a=201 (0), m=33 (17)
+alu_op 6, ir8 0, ir7 1, c 0, dest 33, out_bus 1
+a,m_memory[33] <- 16
+alu_out 0x0000000e, alu_carry 0, q 0x00000000
+------
+TRACK-MOUSE-1D:
+17714 0200103177170141 (lc=21007570740 34201736170)
+(jump) a=2 m=m[6] pc 17717, !jump M-src < A-src 
+a=2 (0), m=6 (0)
+------
+17715 0600103210071642 (lc=21007570740 34201736170)
+(byte) a=2 m=m[6] dpb pos=2, width=36 ->a_mem[201] 
+a=2 (0), m=6 (0), dest=4201
+widthm1 35, pos 2, mr_sr_bits 3
+left_mask_index 37, right_mask_index 2
+left_mask 37777777777, right_mask 37777777774, mask 37777777774
+dpb; m 0, pos 2
+dpb; mask 37777777774, result 0
+a_memory[201] <- 0
+------
+TRACK-MOUSE-1B:
+17717 0010055401550310 (lc=21007570740 34201736170)
+(alu) M+A [ADD] a=201 m=33 m[33] C=0 alu-> -><none>,m[33] 
+a=201 (0), m=33 (16)
+alu_op 11, ir8 0, ir7 1, c 0, dest 33, out_bus 1
+a,m_memory[33] <- 16
+alu_out 0x0000000e, alu_carry 0, q 0x00000000
+------
+17720 0626255605211340 (lc=21007570740 34201736170)
+(byte) a=545 m=m[33] ldb pos=0, width=30 ->a_mem[124] 
+a=545 (500000000), m=33 (16), dest=4124
+widthm1 27, pos 0, mr_sr_bits 1
+left_mask_index 27, right_mask_index 0
+left_mask 77777777, right_mask 37777777777, mask 77777777
+ldb; m 16
+ldb; m-rot 16, mask 77777777, result 500000016
+a_memory[124] <- 500000016
+------
+17721 0000302401550070 (lc=21007570740 34201736170)
+(alu) IOR a=6 m=5 m[5] C=0 alu-> -><none>,m[33] 
+a=6 (0), m=5 (0)
+alu_op 7, ir8 0, ir7 0, c 0, dest 33, out_bus 1
+a,m_memory[33] <- 0
+alu_out 0x00000000, alu_carry 0, q 0x00000000
+------
+17722 0200115577730243 (lc=21007570740 34201736170)
+(jump) a=2 m=m[33] pc 17773, !next M-src = A-src 
+a=2 (0), m=33 (0)
+no_exec_next; u_pc 17774
+------
+TRACK-MOUSE-XSC-NO-MOTION:
+17773 0604641000530370 (lc=21007570740 34201736170)
+(byte) a=115 m=m[2] dpb pos=30, width=10 -><none>,m[12] 
+a=115 (500000001), m=2 (0), dest=12
+widthm1 7, pos 30, mr_sr_bits 3
+left_mask_index 37, right_mask_index 30
+left_mask 37777777777, right_mask 37700000000, mask 37700000000
+dpb; m 0, pos 30
+dpb; mask 37700000000, result 1
+a,m_memory[12] <- 1
+------
+17774 0227345200130241 (lc=21007570740 34201736170)
+(jump) a=567 m=m[12] pc 20013, !next M-src < A-src 
+a=567 (2), m=12 (1)
+no_exec_next; u_pc 20014
+------
+TRACK-MOUSE-9:
+20013 0025500001110050 (lc=21007570740 34201736170)
+(alu) SETA a=532 m=0 m[0] C=0 alu-> -><none>,m[22] 
+a=532 (10000000000), m=0 (0)
+alu_op 5, ir8 0, ir7 0, c 0, dest 22, out_bus 1
+a,m_memory[22] <- 10000000000
+alu_out 0x40000000, alu_carry 0, q 0x00000000
+------
+20014 0125540001150050 (lc=21007570740 34201736170)
+popj; (alu) SETA a=533 m=0 m[0] C=0 alu-> -><none>,m[23] 
+a=533 (0), m=0 (0)
+alu_op 5, ir8 0, ir7 0, c 0, dest 23, out_bus 1
+a,m_memory[23] <- 0
+alu_out 0x00000000, alu_carry 0, q 0x00000000
+popj; reading spc[5] -> 22163
+------
+20015 0025600000450050 (lc=21007570740 34201736170)
+(alu) SETA a=534 m=0 m[0] C=0 alu-> -><none>,m[11] 
+a=534 (1), m=0 (0)
+alu_op 5, ir8 0, ir7 0, c 0, dest 11, out_bus 1
+a,m_memory[11] <- 1
+alu_out 0x00000001, alu_carry 0, q 0x00000000
+------
+22163 0216241221700041 (lc=21007570740 34201736170)
+(jump) a=345 m=m[2] pc 22170, M-src < A-src 
+a=345 (66), m=2 (0)
+------
+22164 0016241616250310 (lc=21007570740 34201736170)
+(alu) M+A [ADD] a=345 m=3 m[3] C=0 alu-> ->a_mem[345] 
+a=345 (66), m=3 (37777777777)
+alu_op 11, ir8 0, ir7 1, c 0, dest 4345, out_bus 1
+a_memory[345] <- 65
+alu_out 0x00000035, alu_carry 0, q 0x00000000
+------
+INTRX1:
+22170 0214101221740243 (lc=21007570740 34201736170)
+(jump) a=302 m=m[2] pc 22174, !next M-src = A-src 
+a=302 (0), m=2 (0)
+no_exec_next; u_pc 22175
+------
+INTRX2:
+22174 0200000220560247 (lc=21007570740 34201736170)
+(jump) a=0 m=m[0] pc 22056, !next jump-always 
+a=0 (0), m=0 (0)
+no_exec_next; u_pc 22057
+------
+XB-INTR-RET:
+22056 0601301001330016 (lc=21007570740 34201736170)
+(byte) a=26 m=m[2] dpb pos=16, width=1 -><none>,m[26] 
+a=26 (500042042), m=2 (0), dest=26
+widthm1 0, pos 16, mr_sr_bits 3
+left_mask_index 16, right_mask_index 16
+left_mask 77777, right_mask 37777740000, mask 40000
+dpb; m 0, pos 16
+dpb; mask 40000, result 500002042
+a,m_memory[26] <- 500002042
+------
+22057 0010540060010050 (lc=21007570740 34201736170)
+(alu) SETA a=213 m=0 m[0] C=0 alu-> ->MD ,m[0] 
+a=213 (500004000), m=0 (0)
+alu_op 5, ir8 0, ir7 0, c 0, dest 1400, out_bus 1
+md<-500004000
+a,m_memory[0] <- 500004000
+alu_out 0x05000800, alu_carry 0, q 0x00000000
+------
+22060 0010500040010050 (lc=21007570740 34201736170)
+(alu) SETA a=212 m=0 m[0] C=0 alu-> ->VMA ,m[0] 
+a=212 (500123025), m=0 (500004000)
+alu_op 5, ir8 0, ir7 0, c 0, dest 1000, out_bus 1
+a,m_memory[0] <- 500123025
+alu_out 0x0500a615, alu_carry 0, q 0x00000000
+------
+22061 0010700000510050 (lc=21007570740 34201736170)
+(alu) SETA a=216 m=0 m[0] C=0 alu-> -><none>,m[12] 
+a=216 (603251270), m=0 (500123025)
+alu_op 5, ir8 0, ir7 0, c 0, dest 12, out_bus 1
+a,m_memory[12] <- 603251270
+alu_out 0x060d52b8, alu_carry 0, q 0x00000000
+------
+22062 0110640000310050 (lc=21007570740 34201736170)
+popj; (alu) SETA a=215 m=0 m[0] C=0 alu-> -><none>,m[6] 
+a=215 (2), m=0 (500123025)
+alu_op 5, ir8 0, ir7 0, c 0, dest 6, out_bus 1
+a,m_memory[6] <- 2
+alu_out 0x00000002, alu_carry 0, q 0x00000000
+popj; reading spc[4] -> 764
+------
+22063 0010600000250050 (lc=21007570740 34201736170)
+(alu) SETA a=214 m=0 m[0] C=0 alu-> -><none>,m[5] 
+a=214 (0), m=0 (500123025)
+alu_op 5, ir8 0, ir7 0, c 0, dest 5, out_bus 1
+a,m_memory[5] <- 0
+alu_out 0x00000000, alu_carry 0, q 0x00000000
+------
+764 0600125001211340 (lc=21007570740 34201736170)
+(byte) a=2 m=MD ldb pos=0, width=30 -><none>,m[24] 
+a=2 (0), m=52 (500004000), dest=24
+widthm1 27, pos 0, mr_sr_bits 1
+left_mask_index 27, right_mask_index 0
+left_mask 77777777, right_mask 37777777777, mask 77777777
+ldb; m 500004000
+ldb; m-rot 500004000, mask 77777777, result 4000
+a,m_memory[24] <- 4000
+------
+765 0017050042010310 (lc=21007570740 34201736170)
+(alu) M+A [ADD] a=361 m=20 m[20] C=0 alu-> ->VMA,start-read ,m[0] 
+a=361 (500124400), m=20 (25)
+alu_op 11, ir8 0, ir7 1, c 0, dest 1040, out_bus 1
+read_mem(vaddr=500124425)
+read_mem(vaddr=500124425) -> pn 430, offset 25, map 263000430 (40000000)
+read_mem(vaddr=500124425) -> 500000661
+a,m_memory[0] <- 500124425
+alu_out 0x0500a915, alu_carry 0, q 0x00000000
+------
+766 0200000200410645 (lc=21007570740 34201736170)
+(jump) a=0 m=m[0] pc 20041, P !next pf/int 
+a=0 (500124425), m=0 (500124425)
+jump i|pf
+writing spc[4] <- 767
+no_exec_next; u_pc 20042
+------
+PGF-R-I:
+20041 0200000217420344 (lc=21007570740 34201736170)
+(jump) a=0 m=m[0] pc 21742, !next !jump pf 
+a=0 (500124425), m=0 (500124425)
+no_exec_next; u_pc 21743
+------
+INTR:
+21742 0200013003730622 (lc=21007570740 34201736170)
+(jump) a=0 m=m[26] pc 373, P !next m-rot<< 22
+a=0 (500124425), m=26 (500002042)
+jump-if-bit; rot 22, before 500002042 after 2042012000
+------
+21743 0000024210510030 (lc=21007570740 34201736170)
+(alu) SETM a=0 m=50 VMA C=0 alu-> ->a_mem[212] 
+a=0 (500124425), m=50 (500124425)
+alu_op 3, ir8 0, ir7 0, c 0, dest 4212, out_bus 1
+a_memory[212] <- 500124425
+alu_out 0x0500a915, alu_carry 0, q 0x00000000
+------
+21744 0000025210550030 (lc=21007570740 34201736170)
+(alu) SETM a=0 m=52 MD C=0 alu-> ->a_mem[213] 
+a=0 (500124425), m=52 (500000661)
+alu_op 3, ir8 0, ir7 0, c 0, dest 4213, out_bus 1
+a_memory[213] <- 500000661
+alu_out 0x050001b1, alu_carry 0, q 0x00000000
+------
+21745 0601301401330016 (lc=21007570740 34201736170)
+(byte) a=26 m=m[3] dpb pos=16, width=1 -><none>,m[26] 
+a=26 (500002042), m=3 (37777777777), dest=26
+widthm1 0, pos 16, mr_sr_bits 3
+left_mask_index 16, right_mask_index 16
+left_mask 77777, right_mask 37777740000, mask 40000
+dpb; m 37777777777, pos 16
+dpb; mask 40000, result 500042042
+a,m_memory[26] <- 500042042
+------
+21746 0027140042010050 (lc=21007570740 34201736170)
+(alu) SETA a=563 m=0 m[0] C=0 alu-> ->VMA,start-read ,m[0] 
+a=563 (77773020), m=0 (500124425)
+alu_op 5, ir8 0, ir7 0, c 0, dest 1040, out_bus 1
+read_mem(vaddr=77773020)
+read_mem(vaddr=77773020) -> pn 37766, offset 20, map 263037766 (40000000)
+read_mem(vaddr=77773020) -> 0
+a,m_memory[0] <- 77773020
+alu_out 0x00fff610, alu_carry 0, q 0x00000000
+------
+21747 0200000200420644 (lc=21007570740 34201736170)
+(jump) a=0 m=m[0] pc 20042, P !next pf 
+a=0 (77773020), m=0 (77773020)
+------
+21750 0000002610610030 (lc=21007570740 34201736170)
+(alu) SETM a=0 m=5 m[5] C=0 alu-> ->a_mem[214] 
+a=0 (77773020), m=5 (0)
+alu_op 3, ir8 0, ir7 0, c 0, dest 4214, out_bus 1
+a_memory[214] <- 0
+alu_out 0x00000000, alu_carry 0, q 0x00000000
+------
+21751 0000003210650030 (lc=21007570740 34201736170)
+(alu) SETM a=0 m=6 m[6] C=0 alu-> ->a_mem[215] 
+a=0 (77773020), m=6 (2)
+alu_op 3, ir8 0, ir7 0, c 0, dest 4215, out_bus 1
+a_memory[215] <- 2
+alu_out 0x00000002, alu_carry 0, q 0x00000000
+------
+21752 0000005210710030 (lc=21007570740 34201736170)
+(alu) SETM a=0 m=12 m[12] C=0 alu-> ->a_mem[216] 
+a=0 (77773020), m=12 (603251270)
+alu_op 3, ir8 0, ir7 0, c 0, dest 4216, out_bus 1
+a_memory[216] <- 603251270
+alu_out 0x060d52b8, alu_carry 0, q 0x00000000
+------
+21753 0600125210750037 (lc=21007570740 34201736170)
+(byte) a=2 m=MD ldb pos=37, width=1 ->a_mem[217] 
+a=2 (0), m=52 (0), dest=4217
+widthm1 0, pos 37, mr_sr_bits 1
+left_mask_index 0, right_mask_index 0
+left_mask 1, right_mask 37777777777, mask 1
+ldb; m 0
+ldb; m-rot 0, mask 1, result 0
+a_memory[217] <- 0
+------
+21754 0210741221220243 (lc=21007570740 34201736170)
+(jump) a=217 m=m[2] pc 22122, !next M-src = A-src 
+a=217 (0), m=2 (0)
+no_exec_next; u_pc 22123
+------
+INNL0:
+22122 0002700042310050 (lc=21007570740 34201736170)
+(alu) SETA a=56 m=0 m[0] C=0 alu-> ->VMA,start-read ,m[6] 
+a=56 (577772060), m=0 (77773020)
+alu_op 5, ir8 0, ir7 0, c 0, dest 1046, out_bus 1
+read_mem(vaddr=577772060)
+read_mem(vaddr=577772060) -> pn 37764, offset 60, map 263037764 (40000000)
+a,m_memory[6] <- 577772060
+alu_out 0x05fff430, alu_carry 0, q 0x00000000
+------
+22123 0200000200420644 (lc=21007570740 34201736170)
+(jump) a=0 m=m[0] pc 20042, P !next pf 
+a=0 (77773020), m=0 (77773020)
+------
+22124 0200025221260334 (lc=21007570740 34201736170)
+(jump) a=0 m=MD pc 22126, !next !jump m-rot<< 34
+a=0 (77773020), m=52 (220)
+jump-if-bit; rot 34, before 220 after 11
+------
+22125 0200025221750221 (lc=21007570740 34201736170)
+(jump) a=0 m=MD pc 22175, !next m-rot<< 21
+a=0 (77773020), m=52 (220)
+jump-if-bit; rot 21, before 220 after 110000000
+------
+INNL1:
+22126 0200025221300333 (lc=21007570740 34201736170)
+(jump) a=0 m=MD pc 22130, !next !jump m-rot<< 33
+a=0 (77773020), m=52 (220)
+jump-if-bit; rot 33, before 220 after 20000000004
+no_exec_next; u_pc 22131
+------
+INNL2:
+22130 0030600000250050 (lc=21007570740 34201736170)
+(alu) SETA a=614 m=0 m[0] C=0 alu-> -><none>,m[5] 
+a=614 (413), m=0 (77773020)
+alu_op 5, ir8 0, ir7 0, c 0, dest 5, out_bus 1
+a,m_memory[5] <- 413
+alu_out 0x0000010b, alu_carry 0, q 0x00000000
+------
+INND0:
+22131 0000142442010310 (lc=21007570740 34201736170)
+(alu) M+A [ADD] a=3 m=5 m[5] C=0 alu-> ->VMA,start-read ,m[0] 
+a=3 (37777777777), m=5 (413)
+alu_op 11, ir8 0, ir7 1, c 0, dest 1040, out_bus 1
+read_mem(vaddr=412)
+read_mem(vaddr=412) -> pn 1, offset 12, map 263200001 (40000000)
+read_mem(vaddr=412) -> 30500000500
+a,m_memory[0] <- 412
+alu_out 0x0000010a, alu_carry 0, q 0x00000000
+------
+22132 0200000200420644 (lc=21007570740 34201736170)
+(jump) a=0 m=m[0] pc 20042, P !next pf 
+a=0 (412), m=0 (412)
+------
+22133 0600125060011340 (lc=21007570740 34201736170)
+(byte) a=2 m=MD ldb pos=0, width=30 ->MD ,m[0] 
+a=2 (0), m=52 (30500000500), dest=1400
+widthm1 27, pos 0, mr_sr_bits 1
+left_mask_index 27, right_mask_index 0
+left_mask 77777777, right_mask 37777777777, mask 77777777
+ldb; m 30500000500
+ldb; m-rot 30500000500, mask 77777777, result 500
+md<-500
+a,m_memory[0] <- 500
+------
+22134 0200125221500243 (lc=21007570740 34201736170)
+(jump) a=2 m=MD pc 22150, !next M-src = A-src 
+a=2 (0), m=52 (500)
+------
+22135 0027365000250310 (lc=21007570740 34201736170)
+(alu) M+A [ADD] a=567 m=52 MD C=0 alu-> -><none>,m[5] 
+a=567 (2), m=52 (500)
+alu_op 11, ir8 0, ir7 1, c 0, dest 5, out_bus 1
+a,m_memory[5] <- 502
+alu_out 0x00000142, alu_carry 0, q 0x00000000
+------
+22136 0027342442010310 (lc=21007570740 34201736170)
+(alu) M+A [ADD] a=567 m=5 m[5] C=0 alu-> ->VMA,start-read ,m[0] 
+a=567 (2), m=5 (502)
+alu_op 11, ir8 0, ir7 1, c 0, dest 1040, out_bus 1
+read_mem(vaddr=504)
+read_mem(vaddr=504) -> pn 1, offset 104, map 263200001 (40000000)
+read_mem(vaddr=504) -> 40
+a,m_memory[0] <- 504
+alu_out 0x00000144, alu_carry 0, q 0x00000000
+------
+22137 0200000200420644 (lc=21007570740 34201736170)
+(jump) a=0 m=m[0] pc 20042, P !next pf 
+a=0 (504), m=0 (504)
+------
+22140 0000025210410030 (lc=21007570740 34201736170)
+(alu) SETM a=0 m=52 MD C=0 alu-> ->a_mem[210] 
+a=0 (504), m=52 (40)
+alu_op 3, ir8 0, ir7 0, c 0, dest 4210, out_bus 1
+a_memory[210] <- 40
+alu_out 0x00000020, alu_carry 0, q 0x00000000
+------
+22141 0026442442010310 (lc=21007570740 34201736170)
+(alu) M+A [ADD] a=551 m=5 m[5] C=0 alu-> ->VMA,start-read ,m[0] 
+a=551 (1), m=5 (502)
+alu_op 11, ir8 0, ir7 1, c 0, dest 1040, out_bus 1
+read_mem(vaddr=503)
+read_mem(vaddr=503) -> pn 1, offset 103, map 263200001 (40000000)
+read_mem(vaddr=503) -> 77772045
+a,m_memory[0] <- 503
+alu_out 0x00000143, alu_carry 0, q 0x00000000
+------
+22142 0200000200420644 (lc=21007570740 34201736170)
+(jump) a=0 m=m[0] pc 20042, P !next pf 
+a=0 (503), m=0 (503)
+------
+22143 0000025042010030 (lc=21007570740 34201736170)
+(alu) SETM a=0 m=52 MD C=0 alu-> ->VMA,start-read ,m[0] 
+a=0 (503), m=52 (77772045)
+alu_op 3, ir8 0, ir7 0, c 0, dest 1040, out_bus 1
+read_mem(vaddr=77772045)
+read_mem(vaddr=77772045) -> pn 37764, offset 45, map 263037764 (40000000)
+a,m_memory[0] <- 77772045
+alu_out 0x00fff425, alu_carry 0, q 0x00000000
+------
+22144 0200000200420644 (lc=21007570740 34201736170)
+(jump) a=0 m=m[0] pc 20042, P !next pf 
+a=0 (77772045), m=0 (77772045)
+------
+22145 0010425001550010 (lc=21007570740 34201736170)
+(alu) AND a=210 m=52 MD C=0 alu-> -><none>,m[33] 
+a=210 (40), m=52 (4)
+alu_op 1, ir8 0, ir7 0, c 0, dest 33, out_bus 1
+a,m_memory[33] <- 0
+alu_out 0x00000000, alu_carry 0, q 0x00000000
+------
+22146 0200115620040343 (lc=21007570740 34201736170)
+(jump) a=2 m=m[33] pc 22004, !next !jump M-src = A-src 
+a=2 (0), m=33 (0)
+------
+22147 0200000221310247 (lc=21007570740 34201736170)
+(jump) a=0 m=m[0] pc 22131, !next jump-always 
+a=0 (77772045), m=0 (77772045)
+no_exec_next; u_pc 22132
+------
+INND0:
+22131 0000142442010310 (lc=21007570740 34201736170)
+(alu) M+A [ADD] a=3 m=5 m[5] C=0 alu-> ->VMA,start-read ,m[0] 
+a=3 (37777777777), m=5 (502)
+alu_op 11, ir8 0, ir7 1, c 0, dest 1040, out_bus 1
+read_mem(vaddr=501)
+read_mem(vaddr=501) -> pn 1, offset 101, map 263200001 (40000000)
+read_mem(vaddr=501) -> 0
+a,m_memory[0] <- 501
+alu_out 0x00000141, alu_carry 0, q 0x00000000
+------
+22132 0200000200420644 (lc=21007570740 34201736170)
+(jump) a=0 m=m[0] pc 20042, P !next pf 
+a=0 (501), m=0 (501)
+------
+22133 0600125060011340 (lc=21007570740 34201736170)
+(byte) a=2 m=MD ldb pos=0, width=30 ->MD ,m[0] 
+a=2 (0), m=52 (0), dest=1400
+widthm1 27, pos 0, mr_sr_bits 1
+left_mask_index 27, right_mask_index 0
+left_mask 77777777, right_mask 37777777777, mask 77777777
+ldb; m 0
+ldb; m-rot 0, mask 77777777, result 0
+md<-0
+a,m_memory[0] <- 0
+------
+22134 0200125221500243 (lc=21007570740 34201736170)
+(jump) a=2 m=MD pc 22150, !next M-src = A-src 
+a=2 (0), m=52 (0)
+no_exec_next; u_pc 22151
+------
+INTRX0:
+22150 0016300042010050 (lc=21007570740 34201736170)
+(alu) SETA a=346 m=0 m[0] C=0 alu-> ->VMA,start-read ,m[0] 
+a=346 (77377760), m=0 (0)
+alu_op 5, ir8 0, ir7 0, c 0, dest 1040, out_bus 1
+read_mem(vaddr=77377760)
+read_mem(vaddr=77377760) -> pn 36777, offset 360, map 60036777 (40000000)
+a,m_memory[0] <- 77377760
+alu_out 0x00fdfff0, alu_carry 0, q 0x00000000
+------
+22151 0200000200420644 (lc=21007570740 34201736170)
+(jump) a=0 m=m[0] pc 20042, P !next pf 
+a=0 (77377760), m=0 (77377760)
+------
+22152 0200025221700334 (lc=21007570740 34201736170)
+(jump) a=0 m=MD pc 22170, !next !jump m-rot<< 34
+a=0 (77377760), m=52 (14)
+jump-if-bit; rot 34, before 14 after 30000000000
+no_exec_next; u_pc 22171
+------
+INTRX1:
+22170 0214101221740243 (lc=21007570740 34201736170)
+(jump) a=302 m=m[2] pc 22174, !next M-src = A-src 
+a=302 (0), m=2 (0)
+no_exec_next; u_pc 22175
+------
+INTRX2:
+22174 0200000220560247 (lc=21007570740 34201736170)
+(jump) a=0 m=m[0] pc 22056, !next jump-always 
+a=0 (77377760), m=0 (77377760)
+no_exec_next; u_pc 22057
+------
+XB-INTR-RET:
+22056 0601301001330016 (lc=21007570740 34201736170)
+(byte) a=26 m=m[2] dpb pos=16, width=1 -><none>,m[26] 
+a=26 (500042042), m=2 (0), dest=26
+widthm1 0, pos 16, mr_sr_bits 3
+left_mask_index 16, right_mask_index 16
+left_mask 77777, right_mask 37777740000, mask 40000
+dpb; m 0, pos 16
+dpb; mask 40000, result 500002042
+a,m_memory[26] <- 500002042
+------
+22057 0010540060010050 (lc=21007570740 34201736170)
+(alu) SETA a=213 m=0 m[0] C=0 alu-> ->MD ,m[0] 
+a=213 (500000661), m=0 (77377760)
+alu_op 5, ir8 0, ir7 0, c 0, dest 1400, out_bus 1
+md<-500000661
+a,m_memory[0] <- 500000661
+alu_out 0x050001b1, alu_carry 0, q 0x00000000
+------
+22060 0010500040010050 (lc=21007570740 34201736170)
+(alu) SETA a=212 m=0 m[0] C=0 alu-> ->VMA ,m[0] 
+a=212 (500124425), m=0 (500000661)
+alu_op 5, ir8 0, ir7 0, c 0, dest 1000, out_bus 1
+a,m_memory[0] <- 500124425
+alu_out 0x0500a915, alu_carry 0, q 0x00000000
+------
+22061 0010700000510050 (lc=21007570740 34201736170)
+(alu) SETA a=216 m=0 m[0] C=0 alu-> -><none>,m[12] 
+a=216 (603251270), m=0 (500124425)
+alu_op 5, ir8 0, ir7 0, c 0, dest 12, out_bus 1
+a,m_memory[12] <- 603251270
+alu_out 0x060d52b8, alu_carry 0, q 0x00000000
+------
+22062 0110640000310050 (lc=21007570740 34201736170)
+popj; (alu) SETA a=215 m=0 m[0] C=0 alu-> -><none>,m[6] 
+a=215 (2), m=0 (500124425)
+alu_op 5, ir8 0, ir7 0, c 0, dest 6, out_bus 1
+a,m_memory[6] <- 2
+alu_out 0x00000002, alu_carry 0, q 0x00000000
+popj; reading spc[4] -> 767
+------
+22063 0010600000250050 (lc=21007570740 34201736170)
+(alu) SETA a=214 m=0 m[0] C=0 alu-> -><none>,m[5] 
+a=214 (0), m=0 (500124425)
+alu_op 5, ir8 0, ir7 0, c 0, dest 5, out_bus 1
+a,m_memory[5] <- 0
+alu_out 0x00000000, alu_carry 0, q 0x00000000
+------
+767 0600125000511340 (lc=21007570740 34201736170)
+(byte) a=2 m=MD ldb pos=0, width=30 -><none>,m[12] 
+a=2 (0), m=52 (500000661), dest=12
+widthm1 27, pos 0, mr_sr_bits 1
+left_mask_index 27, right_mask_index 0
+left_mask 77777777, right_mask 37777777777, mask 77777777
+ldb; m 500000661
+ldb; m-rot 500000661, mask 77777777, result 661
+a,m_memory[12] <- 661
+------
+770 0000305001250310 (lc=21007570740 34201736170)
+(alu) M+A [ADD] a=6 m=12 m[12] C=0 alu-> -><none>,m[25] 
+a=6 (2), m=12 (661)
+alu_op 11, ir8 0, ir7 1, c 0, dest 25, out_bus 1
+a,m_memory[25] <- 663
+alu_out 0x000001b3, alu_carry 0, q 0x00000000
+------
+771 0201212410120342 (lc=21007570740 34201736170)
+(jump) a=24 m=m[25] pc 1012, !next !jump M-src <= A-src 
+a=24 (4000), m=25 (663)
+------
+772 0601265001220370 (lc=21007570740 34201736170)
+(byte) a=25 m=MD sel dep (a<-m&mask) pos=30, width=10 -><none>,m[24] 
+a=25 (663), m=52 (500000661), dest=24
+widthm1 7, pos 30, mr_sr_bits 2
+left_mask_index 37, right_mask_index 30
+left_mask 37777777777, right_mask 37700000000, mask 37700000000
+sel-dep; a 663, m 500000661, mask 37700000000 -> 500000663
+a,m_memory[24] <- 500000663
+------
+773 0016650042010310 (lc=21007570740 34201736170)
+(alu) M+A [ADD] a=355 m=20 m[20] C=0 alu-> ->VMA,start-read ,m[0] 
+a=355 (500122400), m=20 (25)
+alu_op 11, ir8 0, ir7 1, c 0, dest 1040, out_bus 1
+read_mem(vaddr=500122425)
+read_mem(vaddr=500122425) -> pn 245, offset 25, map 263200245 (40000000)
+read_mem(vaddr=500122425) -> 500331400
+a,m_memory[0] <- 500122425
+alu_out 0x0500a515, alu_carry 0, q 0x00000000
+------
+774 0200000200410645 (lc=21007570740 34201736170)
+(jump) a=0 m=m[0] pc 20041, P !next pf/int 
+a=0 (500122425), m=0 (500122425)
+jump i|pf
+writing spc[4] <- 775
+no_exec_next; u_pc 20042
+------
+PGF-R-I:
+20041 0200000217420344 (lc=21007570740 34201736170)
+(jump) a=0 m=m[0] pc 21742, !next !jump pf 
+a=0 (500122425), m=0 (500122425)
+no_exec_next; u_pc 21743
+------
+INTR:
+21742 0200013003730622 (lc=21007570740 34201736170)
+(jump) a=0 m=m[26] pc 373, P !next m-rot<< 22
+a=0 (500122425), m=26 (500002042)
+jump-if-bit; rot 22, before 500002042 after 2042012000
+------
+21743 0000024210510030 (lc=21007570740 34201736170)
+(alu) SETM a=0 m=50 VMA C=0 alu-> ->a_mem[212] 
+a=0 (500122425), m=50 (500122425)
+alu_op 3, ir8 0, ir7 0, c 0, dest 4212, out_bus 1
+a_memory[212] <- 500122425
+alu_out 0x0500a515, alu_carry 0, q 0x00000000
+------
+21744 0000025210550030 (lc=21007570740 34201736170)
+(alu) SETM a=0 m=52 MD C=0 alu-> ->a_mem[213] 
+a=0 (500122425), m=52 (500331400)
+alu_op 3, ir8 0, ir7 0, c 0, dest 4213, out_bus 1
+a_memory[213] <- 500331400
+alu_out 0x0501b300, alu_carry 0, q 0x00000000
+------
+21745 0601301401330016 (lc=21007570740 34201736170)
+(byte) a=26 m=m[3] dpb pos=16, width=1 -><none>,m[26] 
+a=26 (500002042), m=3 (37777777777), dest=26
+widthm1 0, pos 16, mr_sr_bits 3
+left_mask_index 16, right_mask_index 16
+left_mask 77777, right_mask 37777740000, mask 40000
+dpb; m 37777777777, pos 16
+dpb; mask 40000, result 500042042
+a,m_memory[26] <- 500042042
+------
+21746 0027140042010050 (lc=21007570740 34201736170)
+(alu) SETA a=563 m=0 m[0] C=0 alu-> ->VMA,start-read ,m[0] 
+a=563 (77773020), m=0 (500122425)
+alu_op 5, ir8 0, ir7 0, c 0, dest 1040, out_bus 1
+read_mem(vaddr=77773020)
+read_mem(vaddr=77773020) -> pn 37766, offset 20, map 263037766 (40000000)
+read_mem(vaddr=77773020) -> 0
+a,m_memory[0] <- 77773020
+alu_out 0x00fff610, alu_carry 0, q 0x00000000
+------
+21747 0200000200420644 (lc=21007570740 34201736170)
+(jump) a=0 m=m[0] pc 20042, P !next pf 
+a=0 (77773020), m=0 (77773020)
+------
+21750 0000002610610030 (lc=21007570740 34201736170)
+(alu) SETM a=0 m=5 m[5] C=0 alu-> ->a_mem[214] 
+a=0 (77773020), m=5 (0)
+alu_op 3, ir8 0, ir7 0, c 0, dest 4214, out_bus 1
+a_memory[214] <- 0
+alu_out 0x00000000, alu_carry 0, q 0x00000000
+------
+21751 0000003210650030 (lc=21007570740 34201736170)
+(alu) SETM a=0 m=6 m[6] C=0 alu-> ->a_mem[215] 
+a=0 (77773020), m=6 (2)
+alu_op 3, ir8 0, ir7 0, c 0, dest 4215, out_bus 1
+a_memory[215] <- 2
+alu_out 0x00000002, alu_carry 0, q 0x00000000
+------
+21752 0000005210710030 (lc=21007570740 34201736170)
+(alu) SETM a=0 m=12 m[12] C=0 alu-> ->a_mem[216] 
+a=0 (77773020), m=12 (661)
+alu_op 3, ir8 0, ir7 0, c 0, dest 4216, out_bus 1
+a_memory[216] <- 661
+alu_out 0x000001b1, alu_carry 0, q 0x00000000
+------
+21753 0600125210750037 (lc=21007570740 34201736170)
+(byte) a=2 m=MD ldb pos=37, width=1 ->a_mem[217] 
+a=2 (0), m=52 (0), dest=4217
+widthm1 0, pos 37, mr_sr_bits 1
+left_mask_index 0, right_mask_index 0
+left_mask 1, right_mask 37777777777, mask 1
+ldb; m 0
+ldb; m-rot 0, mask 1, result 0
+a_memory[217] <- 0
+------
+21754 0210741221220243 (lc=21007570740 34201736170)
+(jump) a=217 m=m[2] pc 22122, !next M-src = A-src 
+a=217 (0), m=2 (0)
+no_exec_next; u_pc 22123
+------
+INNL0:
+22122 0002700042310050 (lc=21007570740 34201736170)
+(alu) SETA a=56 m=0 m[0] C=0 alu-> ->VMA,start-read ,m[6] 
+a=56 (577772060), m=0 (77773020)
+alu_op 5, ir8 0, ir7 0, c 0, dest 1046, out_bus 1
+read_mem(vaddr=577772060)
+read_mem(vaddr=577772060) -> pn 37764, offset 60, map 263037764 (40000000)
+a,m_memory[6] <- 577772060
+alu_out 0x05fff430, alu_carry 0, q 0x00000000
+------
+22123 0200000200420644 (lc=21007570740 34201736170)
+(jump) a=0 m=m[0] pc 20042, P !next pf 
+a=0 (77773020), m=0 (77773020)
+------
+22124 0200025221260334 (lc=21007570740 34201736170)
+(jump) a=0 m=MD pc 22126, !next !jump m-rot<< 34
+a=0 (77773020), m=52 (220)
+jump-if-bit; rot 34, before 220 after 11
+------
+22125 0200025221750221 (lc=21007570740 34201736170)
+(jump) a=0 m=MD pc 22175, !next m-rot<< 21
+a=0 (77773020), m=52 (220)
+jump-if-bit; rot 21, before 220 after 110000000
+------
+INNL1:
+22126 0200025221300333 (lc=21007570740 34201736170)
+(jump) a=0 m=MD pc 22130, !next !jump m-rot<< 33
+a=0 (77773020), m=52 (220)
+jump-if-bit; rot 33, before 220 after 20000000004
+no_exec_next; u_pc 22131
+------
+INNL2:
+22130 0030600000250050 (lc=21007570740 34201736170)
+(alu) SETA a=614 m=0 m[0] C=0 alu-> -><none>,m[5] 
+a=614 (413), m=0 (77773020)
+alu_op 5, ir8 0, ir7 0, c 0, dest 5, out_bus 1
+a,m_memory[5] <- 413
+alu_out 0x0000010b, alu_carry 0, q 0x00000000
+------
+INND0:
+22131 0000142442010310 (lc=21007570740 34201736170)
+(alu) M+A [ADD] a=3 m=5 m[5] C=0 alu-> ->VMA,start-read ,m[0] 
+a=3 (37777777777), m=5 (413)
+alu_op 11, ir8 0, ir7 1, c 0, dest 1040, out_bus 1
+read_mem(vaddr=412)
+read_mem(vaddr=412) -> pn 1, offset 12, map 263200001 (40000000)
+read_mem(vaddr=412) -> 30500000500
+a,m_memory[0] <- 412
+alu_out 0x0000010a, alu_carry 0, q 0x00000000
+------
+22132 0200000200420644 (lc=21007570740 34201736170)
+(jump) a=0 m=m[0] pc 20042, P !next pf 
+a=0 (412), m=0 (412)
+------
+22133 0600125060011340 (lc=21007570740 34201736170)
+(byte) a=2 m=MD ldb pos=0, width=30 ->MD ,m[0] 
+a=2 (0), m=52 (30500000500), dest=1400
+widthm1 27, pos 0, mr_sr_bits 1
+left_mask_index 27, right_mask_index 0
+left_mask 77777777, right_mask 37777777777, mask 77777777
+ldb; m 30500000500
+ldb; m-rot 30500000500, mask 77777777, result 500
+md<-500
+a,m_memory[0] <- 500
+------
+22134 0200125221500243 (lc=21007570740 34201736170)
+(jump) a=2 m=MD pc 22150, !next M-src = A-src 
+a=2 (0), m=52 (500)
+------
+22135 0027365000250310 (lc=21007570740 34201736170)
+(alu) M+A [ADD] a=567 m=52 MD C=0 alu-> -><none>,m[5] 
+a=567 (2), m=52 (500)
+alu_op 11, ir8 0, ir7 1, c 0, dest 5, out_bus 1
+a,m_memory[5] <- 502
+alu_out 0x00000142, alu_carry 0, q 0x00000000
+------
+22136 0027342442010310 (lc=21007570740 34201736170)
+(alu) M+A [ADD] a=567 m=5 m[5] C=0 alu-> ->VMA,start-read ,m[0] 
+a=567 (2), m=5 (502)
+alu_op 11, ir8 0, ir7 1, c 0, dest 1040, out_bus 1
+read_mem(vaddr=504)
+read_mem(vaddr=504) -> pn 1, offset 104, map 263200001 (40000000)
+read_mem(vaddr=504) -> 40
+a,m_memory[0] <- 504
+alu_out 0x00000144, alu_carry 0, q 0x00000000
+------
+22137 0200000200420644 (lc=21007570740 34201736170)
+(jump) a=0 m=m[0] pc 20042, P !next pf 
+a=0 (504), m=0 (504)
+------
+22140 0000025210410030 (lc=21007570740 34201736170)
+(alu) SETM a=0 m=52 MD C=0 alu-> ->a_mem[210] 
+a=0 (504), m=52 (40)
+alu_op 3, ir8 0, ir7 0, c 0, dest 4210, out_bus 1
+a_memory[210] <- 40
+alu_out 0x00000020, alu_carry 0, q 0x00000000
+------
+22141 0026442442010310 (lc=21007570740 34201736170)
+(alu) M+A [ADD] a=551 m=5 m[5] C=0 alu-> ->VMA,start-read ,m[0] 
+a=551 (1), m=5 (502)
+alu_op 11, ir8 0, ir7 1, c 0, dest 1040, out_bus 1
+read_mem(vaddr=503)
+read_mem(vaddr=503) -> pn 1, offset 103, map 263200001 (40000000)
+read_mem(vaddr=503) -> 77772045
+a,m_memory[0] <- 503
+alu_out 0x00000143, alu_carry 0, q 0x00000000
+------
+22142 0200000200420644 (lc=21007570740 34201736170)
+(jump) a=0 m=m[0] pc 20042, P !next pf 
+a=0 (503), m=0 (503)
+------
+22143 0000025042010030 (lc=21007570740 34201736170)
+(alu) SETM a=0 m=52 MD C=0 alu-> ->VMA,start-read ,m[0] 
+a=0 (503), m=52 (77772045)
+alu_op 3, ir8 0, ir7 0, c 0, dest 1040, out_bus 1
+read_mem(vaddr=77772045)
+read_mem(vaddr=77772045) -> pn 37764, offset 45, map 263037764 (40000000)
+a,m_memory[0] <- 77772045
+alu_out 0x00fff425, alu_carry 0, q 0x00000000
+------
+22144 0200000200420644 (lc=21007570740 34201736170)
+(jump) a=0 m=m[0] pc 20042, P !next pf 
+a=0 (77772045), m=0 (77772045)
+------
+22145 0010425001550010 (lc=21007570740 34201736170)
+(alu) AND a=210 m=52 MD C=0 alu-> -><none>,m[33] 
+a=210 (40), m=52 (4)
+alu_op 1, ir8 0, ir7 0, c 0, dest 33, out_bus 1
+a,m_memory[33] <- 0
+alu_out 0x00000000, alu_carry 0, q 0x00000000
+------
+22146 0200115620040343 (lc=21007570740 34201736170)
+(jump) a=2 m=m[33] pc 22004, !next !jump M-src = A-src 
+a=2 (0), m=33 (0)
+------
+22147 0200000221310247 (lc=21007570740 34201736170)
+(jump) a=0 m=m[0] pc 22131, !next jump-always 
+a=0 (77772045), m=0 (77772045)
+no_exec_next; u_pc 22132
+------
+INND0:
+22131 0000142442010310 (lc=21007570740 34201736170)
+(alu) M+A [ADD] a=3 m=5 m[5] C=0 alu-> ->VMA,start-read ,m[0] 
+a=3 (37777777777), m=5 (502)
+alu_op 11, ir8 0, ir7 1, c 0, dest 1040, out_bus 1
+read_mem(vaddr=501)
+read_mem(vaddr=501) -> pn 1, offset 101, map 263200001 (40000000)
+read_mem(vaddr=501) -> 0
+a,m_memory[0] <- 501
+alu_out 0x00000141, alu_carry 0, q 0x00000000
+------
+22132 0200000200420644 (lc=21007570740 34201736170)
+(jump) a=0 m=m[0] pc 20042, P !next pf 
+a=0 (501), m=0 (501)
+------
+22133 0600125060011340 (lc=21007570740 34201736170)
+(byte) a=2 m=MD ldb pos=0, width=30 ->MD ,m[0] 
+a=2 (0), m=52 (0), dest=1400
+widthm1 27, pos 0, mr_sr_bits 1
+left_mask_index 27, right_mask_index 0
+left_mask 77777777, right_mask 37777777777, mask 77777777
+ldb; m 0
+ldb; m-rot 0, mask 77777777, result 0
+md<-0
+a,m_memory[0] <- 0
+------
+22134 0200125221500243 (lc=21007570740 34201736170)
+(jump) a=2 m=MD pc 22150, !next M-src = A-src 
+a=2 (0), m=52 (0)
+no_exec_next; u_pc 22151
+------
+INTRX0:
+22150 0016300042010050 (lc=21007570740 34201736170)
+(alu) SETA a=346 m=0 m[0] C=0 alu-> ->VMA,start-read ,m[0] 
+a=346 (77377760), m=0 (0)
+alu_op 5, ir8 0, ir7 0, c 0, dest 1040, out_bus 1
+read_mem(vaddr=77377760)
+read_mem(vaddr=77377760) -> pn 36777, offset 360, map 60036777 (40000000)
+a,m_memory[0] <- 77377760
+alu_out 0x00fdfff0, alu_carry 0, q 0x00000000
+------
+22151 0200000200420644 (lc=21007570740 34201736170)
+(jump) a=0 m=m[0] pc 20042, P !next pf 
+a=0 (77377760), m=0 (77377760)
+------
+22152 0200025221700334 (lc=21007570740 34201736170)
+(jump) a=0 m=MD pc 22170, !next !jump m-rot<< 34
+a=0 (77377760), m=52 (34)
+jump-if-bit; rot 34, before 34 after 30000000001
+------
+22153 0026765064010020 (lc=21007570740 34201736170)
+(alu) ANDCA a=557 m=52 MD C=0 alu-> ->MD,start-write ,m[0] 
+a=557 (20), m=52 (34)
+alu_op 2, ir8 0, ir7 0, c 0, dest 1500, out_bus 1
+write_mem(vaddr=77377760,v=14)
+write_mem(vaddr=77377760) -> pn 36777, offset 360, map 60036777 (20000000)
+a,m_memory[0] <- 14
+alu_out 0x0000000c, alu_carry 0, q 0x00000000
+------
+22154 0200000200600644 (lc=21007570740 34201736170)
+(jump) a=0 m=m[0] pc 20060, P !next pf 
+a=0 (14), m=0 (14)
+------
+22155 0212201221600242 (lc=21007570740 34201736170)
+(jump) a=244 m=m[2] pc 22160, !next M-src <= A-src 
+a=244 (0), m=2 (0)
+no_exec_next; u_pc 22161
+------
+60CYC-0:
+22160 0214101221620343 (lc=21007570740 34201736170)
+(jump) a=302 m=m[2] pc 22162, !next !jump M-src = A-src 
+a=302 (0), m=2 (0)
+------
+22161 0014641214650314 (lc=21007570740 34201736170)
+(alu) M+A [ADD] a=315 m=2 m[2] C=1 alu-> ->a_mem[315] 
+a=315 (2), m=2 (0)
+alu_op 11, ir8 0, ir7 1, c 1, dest 4315, out_bus 1
+a_memory[315] <- 3
+alu_out 0x00000003, alu_carry 0, q 0x00000000
+------
+60CYC-1:
+22162 0200000176270647 (lc=21007570740 34201736170)
+(jump) a=0 m=m[0] pc 17627, P !next jump-always 
+a=0 (14), m=0 (14)
+writing spc[5] <- 22163
+no_exec_next; u_pc 17630
+------
+TRACK-MOUSE:
+17627 0604641001570370 (lc=21007570740 34201736170)
+(byte) a=115 m=m[2] dpb pos=30, width=10 -><none>,m[33] 
+a=115 (500000001), m=2 (0), dest=33
+widthm1 7, pos 30, mr_sr_bits 3
+left_mask_index 37, right_mask_index 30
+left_mask 37777777777, right_mask 37700000000, mask 37700000000
+dpb; m 0, pos 30
+dpb; mask 37700000000, result 1
+a,m_memory[33] <- 1
+------
+17630 0200115400001243 (lc=21007570740 34201736170)
+(jump) a=2 m=m[33] pc 0, R !next M-src = A-src 
+a=2 (0), m=33 (1)
+------
+17631 0025100042010050 (lc=21007570740 34201736170)
+(alu) SETA a=522 m=0 m[0] C=0 alu-> ->VMA,start-read ,m[0] 
+a=522 (77772042), m=0 (14)
+alu_op 5, ir8 0, ir7 0, c 0, dest 1040, out_bus 1
+read_mem(vaddr=77772042)
+read_mem(vaddr=77772042) -> pn 37764, offset 42, map 263037764 (40000000)
+a,m_memory[0] <- 77772042
+alu_out 0x00fff422, alu_carry 0, q 0x00000000
+------
+17632 0200000200420644 (lc=21007570740 34201736170)
+(jump) a=0 m=m[0] pc 20042, P !next pf 
+a=0 (77772042), m=0 (77772042)
+------
+17633 0000011225510030 (lc=21007570740 34201736170)
+(alu) SETM a=0 m=22 m[22] C=0 alu-> ->a_mem[532] 
+a=0 (77772042), m=22 (10000000000)
+alu_op 3, ir8 0, ir7 0, c 0, dest 4532, out_bus 1
+a_memory[532] <- 10000000000
+alu_out 0x40000000, alu_carry 0, q 0x00000000
+------
+17634 0000011625550030 (lc=21007570740 34201736170)
+(alu) SETM a=0 m=23 m[23] C=0 alu-> ->a_mem[533] 
+a=0 (77772042), m=23 (0)
+alu_op 3, ir8 0, ir7 0, c 0, dest 4533, out_bus 1
+a_memory[533] <- 0
+alu_out 0x00000000, alu_carry 0, q 0x00000000
+------
+17635 0000004625610030 (lc=21007570740 34201736170)
+(alu) SETM a=0 m=11 m[11] C=0 alu-> ->a_mem[534] 
+a=0 (77772042), m=11 (1)
+alu_op 3, ir8 0, ir7 0, c 0, dest 4534, out_bus 1
+a_memory[534] <- 1
+alu_out 0x00000001, alu_carry 0, q 0x00000000
+------
+17636 0000025000250030 (lc=21007570740 34201736170)
+(alu) SETM a=0 m=52 MD C=0 alu-> -><none>,m[5] 
+a=0 (77772042), m=52 (125)
+alu_op 3, ir8 0, ir7 0, c 0, dest 5, out_bus 1
+a,m_memory[5] <- 125
+alu_out 0x00000055, alu_carry 0, q 0x00000000
+------
+17637 0026464042010310 (lc=21007570740 34201736170)
+(alu) M+A [ADD] a=551 m=50 VMA C=0 alu-> ->VMA,start-read ,m[0] 
+a=551 (1), m=50 (77772042)
+alu_op 11, ir8 0, ir7 1, c 0, dest 1040, out_bus 1
+read_mem(vaddr=77772043)
+read_mem(vaddr=77772043) -> pn 37764, offset 43, map 263037764 (40000000)
+a,m_memory[0] <- 77772043
+alu_out 0x00fff423, alu_carry 0, q 0x00000000
+------
+17640 0200000200420644 (lc=21007570740 34201736170)
+(jump) a=0 m=m[0] pc 20042, P !next pf 
+a=0 (77772043), m=0 (77772043)
+------
+17641 0025002401550060 (lc=21007570740 34201736170)
+(alu) XOR a=520 m=5 m[5] C=0 alu-> -><none>,m[33] 
+a=520 (125), m=5 (125)
+alu_op 6, ir8 0, ir7 0, c 0, dest 33, out_bus 1
+a,m_memory[33] <- 0
+alu_out 0x00000000, alu_carry 0, q 0x00000000
+------
+17642 0600115401550124 (lc=21007570740 34201736170)
+(byte) a=2 m=m[33] ldb pos=24, width=3 -><none>,m[33] 
+a=2 (0), m=33 (0), dest=33
+widthm1 2, pos 24, mr_sr_bits 1
+left_mask_index 2, right_mask_index 0
+left_mask 7, right_mask 37777777777, mask 7
+ldb; m 0
+ldb; m-rot 0, mask 7, result 0
+a,m_memory[33] <- 0
+------
+17643 0200115576670043 (lc=21007570740 34201736170)
+(jump) a=2 m=m[33] pc 17667, M-src = A-src 
+a=2 (0), m=33 (0)
+------
+17644 0000025000310030 (lc=21007570740 34201736170)
+(alu) SETM a=0 m=52 MD C=0 alu-> -><none>,m[6] 
+a=0 (77772043), m=52 (570)
+alu_op 3, ir8 0, ir7 0, c 0, dest 6, out_bus 1
+a,m_memory[6] <- 570
+alu_out 0x00000178, alu_carry 0, q 0x00000000
+------
+TRACK-MOUSE-1:
+17667 0025002400250264 (lc=21007570740 34201736170)
+(alu) M-A-1 [M-A-1] a=520 m=5 m[5] C=1 alu-> -><none>,m[5] 
+a=520 (125), m=5 (125)
+alu_op 6, ir8 0, ir7 1, c 1, dest 5, out_bus 1
+a,m_memory[5] <- 0
+alu_out 0x00000000, alu_carry 0, q 0x00000000
+------
+17670 0025002625010310 (lc=21007570740 34201736170)
+(alu) M+A [ADD] a=520 m=5 m[5] C=0 alu-> ->a_mem[520] 
+a=520 (125), m=5 (0)
+alu_op 11, ir8 0, ir7 1, c 0, dest 4520, out_bus 1
+a_memory[520] <- 125
+alu_out 0x00000055, alu_carry 0, q 0x00000000
+------
+17671 0600102436010025 (lc=21007570740 34201736170)
+(byte) a=2 m=m[5] ldb pos=25, width=1 ->OA-reg-hi ,m[0] 
+a=2 (0), m=5 (0), dest=740
+widthm1 0, pos 25, mr_sr_bits 1
+left_mask_index 0, right_mask_index 0
+left_mask 1, right_mask 37777777777, mask 1
+ldb; m 0
+ldb; m-rot 0, mask 1, result 0
+setting oa_reg hi 0
+a,m_memory[0] <- 0
+merging oa hi 0
+------
+17672 0600241000271213 (lc=21007570740 34201736170)
+(byte) a=5 m=m[2] dpb pos=13, width=25 -><none>,m[5] 
+a=5 (0), m=2 (0), dest=5
+widthm1 24, pos 13, mr_sr_bits 3
+left_mask_index 37, right_mask_index 13
+left_mask 37777777777, right_mask 37777774000, mask 37777774000
+dpb; m 0, pos 13
+dpb; mask 37777774000, result 0
+a,m_memory[5] <- 0
+------
+17673 0025043000310264 (lc=21007570740 34201736170)
+(alu) M-A-1 [M-A-1] a=521 m=6 m[6] C=1 alu-> -><none>,m[6] 
+a=521 (570), m=6 (570)
+alu_op 6, ir8 0, ir7 1, c 1, dest 6, out_bus 1
+a,m_memory[6] <- 0
+alu_out 0x00000000, alu_carry 0, q 0x00000000
+------
+17674 0025043225050310 (lc=21007570740 34201736170)
+(alu) M+A [ADD] a=521 m=6 m[6] C=0 alu-> ->a_mem[521] 
+a=521 (570), m=6 (0)
+alu_op 11, ir8 0, ir7 1, c 0, dest 4521, out_bus 1
+a_memory[521] <- 570
+alu_out 0x00000178, alu_carry 0, q 0x00000000
+------
+17675 0600103036010025 (lc=21007570740 34201736170)
+(byte) a=2 m=m[6] ldb pos=25, width=1 ->OA-reg-hi ,m[0] 
+a=2 (0), m=6 (0), dest=740
+widthm1 0, pos 25, mr_sr_bits 1
+left_mask_index 0, right_mask_index 0
+left_mask 1, right_mask 37777777777, mask 1
+ldb; m 0
+ldb; m-rot 0, mask 1, result 0
+setting oa_reg hi 0
+a,m_memory[0] <- 0
+merging oa hi 0
+------
+17676 0600301000331213 (lc=21007570740 34201736170)
+(byte) a=6 m=m[2] dpb pos=13, width=25 -><none>,m[6] 
+a=6 (0), m=2 (0), dest=6
+widthm1 24, pos 13, mr_sr_bits 3
+left_mask_index 37, right_mask_index 13
+left_mask 37777777777, right_mask 37777774000, mask 37777774000
+dpb; m 0, pos 13
+dpb; mask 37777774000, result 0
+a,m_memory[6] <- 0
+------
+17677 0605241001570370 (lc=21007570740 34201736170)
+(byte) a=125 m=m[2] dpb pos=30, width=10 -><none>,m[33] 
+a=125 (500000046), m=2 (0), dest=33
+widthm1 7, pos 30, mr_sr_bits 3
+left_mask_index 37, right_mask_index 30
+left_mask 37777777777, right_mask 37700000000, mask 37700000000
+dpb; m 0, pos 30
+dpb; mask 37700000000, result 46
+a,m_memory[33] <- 46
+------
+17700 0200115577030243 (lc=21007570740 34201736170)
+(jump) a=2 m=m[33] pc 17703, !next M-src = A-src 
+a=2 (0), m=33 (46)
+------
+17701 0600115610051174 (lc=21007570740 34201736170)
+(byte) a=2 m=m[33] ldb pos=34, width=24 ->a_mem[201] 
+a=2 (0), m=33 (46), dest=4201
+widthm1 23, pos 34, mr_sr_bits 1
+left_mask_index 23, right_mask_index 0
+left_mask 3777777, right_mask 37777777777, mask 3777777
+ldb; m 46
+ldb; m-rot 14000000002, mask 3777777, result 2
+a_memory[201] <- 2
+------
+17702 0010055401550260 (lc=21007570740 34201736170)
+(alu) M-A-1 [M-A-1] a=201 m=33 m[33] C=0 alu-> -><none>,m[33] 
+a=201 (2), m=33 (46)
+alu_op 6, ir8 0, ir7 1, c 0, dest 33, out_bus 1
+a,m_memory[33] <- 43
+alu_out 0x00000023, alu_carry 0, q 0x00000000
+------
+TRACK-MOUSE-1C:
+17703 0200102577060141 (lc=21007570740 34201736170)
+(jump) a=2 m=m[5] pc 17706, !jump M-src < A-src 
+a=2 (0), m=5 (0)
+------
+17704 0600102610071642 (lc=21007570740 34201736170)
+(byte) a=2 m=m[5] dpb pos=2, width=36 ->a_mem[201] 
+a=2 (0), m=5 (0), dest=4201
+widthm1 35, pos 2, mr_sr_bits 3
+left_mask_index 37, right_mask_index 2
+left_mask 37777777777, right_mask 37777777774, mask 37777777774
+dpb; m 0, pos 2
+dpb; mask 37777777774, result 0
+a_memory[201] <- 0
+------
+TRACK-MOUSE-1A:
+17706 0010055401550310 (lc=21007570740 34201736170)
+(alu) M+A [ADD] a=201 m=33 m[33] C=0 alu-> -><none>,m[33] 
+a=201 (0), m=33 (43)
+alu_op 11, ir8 0, ir7 1, c 0, dest 33, out_bus 1
+a,m_memory[33] <- 43
+alu_out 0x00000023, alu_carry 0, q 0x00000000
+------
+17707 0626255605251340 (lc=21007570740 34201736170)
+(byte) a=545 m=m[33] ldb pos=0, width=30 ->a_mem[125] 
+a=545 (500000000), m=33 (43), dest=4125
+widthm1 27, pos 0, mr_sr_bits 1
+left_mask_index 27, right_mask_index 0
+left_mask 77777777, right_mask 37777777777, mask 77777777
+ldb; m 43
+ldb; m-rot 43, mask 77777777, result 500000043
+a_memory[125] <- 500000043
+------
+17710 0605201001570370 (lc=21007570740 34201736170)
+(byte) a=124 m=m[2] dpb pos=30, width=10 -><none>,m[33] 
+a=124 (500000016), m=2 (0), dest=33
+widthm1 7, pos 30, mr_sr_bits 3
+left_mask_index 37, right_mask_index 30
+left_mask 37777777777, right_mask 37700000000, mask 37700000000
+dpb; m 0, pos 30
+dpb; mask 37700000000, result 16
+a,m_memory[33] <- 16
+------
+17711 0200115577140243 (lc=21007570740 34201736170)
+(jump) a=2 m=m[33] pc 17714, !next M-src = A-src 
+a=2 (0), m=33 (16)
+------
+17712 0600115610051174 (lc=21007570740 34201736170)
+(byte) a=2 m=m[33] ldb pos=34, width=24 ->a_mem[201] 
+a=2 (0), m=33 (16), dest=4201
+widthm1 23, pos 34, mr_sr_bits 1
+left_mask_index 23, right_mask_index 0
+left_mask 3777777, right_mask 37777777777, mask 3777777
+ldb; m 16
+ldb; m-rot 34000000000, mask 3777777, result 0
+a_memory[201] <- 0
+------
+17713 0010055401550260 (lc=21007570740 34201736170)
+(alu) M-A-1 [M-A-1] a=201 m=33 m[33] C=0 alu-> -><none>,m[33] 
+a=201 (0), m=33 (16)
+alu_op 6, ir8 0, ir7 1, c 0, dest 33, out_bus 1
+a,m_memory[33] <- 15
+alu_out 0x0000000d, alu_carry 0, q 0x00000000
+------
+TRACK-MOUSE-1D:
+17714 0200103177170141 (lc=21007570740 34201736170)
+(jump) a=2 m=m[6] pc 17717, !jump M-src < A-src 
+a=2 (0), m=6 (0)
+------
+17715 0600103210071642 (lc=21007570740 34201736170)
+(byte) a=2 m=m[6] dpb pos=2, width=36 ->a_mem[201] 
+a=2 (0), m=6 (0), dest=4201
+widthm1 35, pos 2, mr_sr_bits 3
+left_mask_index 37, right_mask_index 2
+left_mask 37777777777, right_mask 37777777774, mask 37777777774
+dpb; m 0, pos 2
+dpb; mask 37777777774, result 0
+a_memory[201] <- 0
+------
+TRACK-MOUSE-1B:
+17717 0010055401550310 (lc=21007570740 34201736170)
+(alu) M+A [ADD] a=201 m=33 m[33] C=0 alu-> -><none>,m[33] 
+a=201 (0), m=33 (15)
+alu_op 11, ir8 0, ir7 1, c 0, dest 33, out_bus 1
+a,m_memory[33] <- 15
+alu_out 0x0000000d, alu_carry 0, q 0x00000000
+------
+17720 0626255605211340 (lc=21007570740 34201736170)
+(byte) a=545 m=m[33] ldb pos=0, width=30 ->a_mem[124] 
+a=545 (500000000), m=33 (15), dest=4124
+widthm1 27, pos 0, mr_sr_bits 1
+left_mask_index 27, right_mask_index 0
+left_mask 77777777, right_mask 37777777777, mask 77777777
+ldb; m 15
+ldb; m-rot 15, mask 77777777, result 500000015
+a_memory[124] <- 500000015
+------
+17721 0000302401550070 (lc=21007570740 34201736170)
+(alu) IOR a=6 m=5 m[5] C=0 alu-> -><none>,m[33] 
+a=6 (0), m=5 (0)
+alu_op 7, ir8 0, ir7 0, c 0, dest 33, out_bus 1
+a,m_memory[33] <- 0
+alu_out 0x00000000, alu_carry 0, q 0x00000000
+------
+17722 0200115577730243 (lc=21007570740 34201736170)
+(jump) a=2 m=m[33] pc 17773, !next M-src = A-src 
+a=2 (0), m=33 (0)
+no_exec_next; u_pc 17774
+------
+TRACK-MOUSE-XSC-NO-MOTION:
+17773 0604641000530370 (lc=21007570740 34201736170)
+(byte) a=115 m=m[2] dpb pos=30, width=10 -><none>,m[12] 
+a=115 (500000001), m=2 (0), dest=12
+widthm1 7, pos 30, mr_sr_bits 3
+left_mask_index 37, right_mask_index 30
+left_mask 37777777777, right_mask 37700000000, mask 37700000000
+dpb; m 0, pos 30
+dpb; mask 37700000000, result 1
+a,m_memory[12] <- 1
+------
+17774 0227345200130241 (lc=21007570740 34201736170)
+(jump) a=567 m=m[12] pc 20013, !next M-src < A-src 
+a=567 (2), m=12 (1)
+no_exec_next; u_pc 20014
+------
+TRACK-MOUSE-9:
+20013 0025500001110050 (lc=21007570740 34201736170)
+(alu) SETA a=532 m=0 m[0] C=0 alu-> -><none>,m[22] 
+a=532 (10000000000), m=0 (0)
+alu_op 5, ir8 0, ir7 0, c 0, dest 22, out_bus 1
+a,m_memory[22] <- 10000000000
+alu_out 0x40000000, alu_carry 0, q 0x00000000
+------
+20014 0125540001150050 (lc=21007570740 34201736170)
+popj; (alu) SETA a=533 m=0 m[0] C=0 alu-> -><none>,m[23] 
+a=533 (0), m=0 (0)
+alu_op 5, ir8 0, ir7 0, c 0, dest 23, out_bus 1
+a,m_memory[23] <- 0
+alu_out 0x00000000, alu_carry 0, q 0x00000000
+popj; reading spc[5] -> 22163
+------
+20015 0025600000450050 (lc=21007570740 34201736170)
+(alu) SETA a=534 m=0 m[0] C=0 alu-> -><none>,m[11] 
+a=534 (1), m=0 (0)
+alu_op 5, ir8 0, ir7 0, c 0, dest 11, out_bus 1
+a,m_memory[11] <- 1
+alu_out 0x00000001, alu_carry 0, q 0x00000000
+------
+22163 0216241221700041 (lc=21007570740 34201736170)
+(jump) a=345 m=m[2] pc 22170, M-src < A-src 
+a=345 (65), m=2 (0)
+------
+22164 0016241616250310 (lc=21007570740 34201736170)
+(alu) M+A [ADD] a=345 m=3 m[3] C=0 alu-> ->a_mem[345] 
+a=345 (65), m=3 (37777777777)
+alu_op 11, ir8 0, ir7 1, c 0, dest 4345, out_bus 1
+a_memory[345] <- 64
+alu_out 0x00000034, alu_carry 0, q 0x00000000
+------
+INTRX1:
+22170 0214101221740243 (lc=21007570740 34201736170)
+(jump) a=302 m=m[2] pc 22174, !next M-src = A-src 
+a=302 (0), m=2 (0)
+no_exec_next; u_pc 22175
+------
+INTRX2:
+22174 0200000220560247 (lc=21007570740 34201736170)
+(jump) a=0 m=m[0] pc 22056, !next jump-always 
+a=0 (0), m=0 (0)
+no_exec_next; u_pc 22057
+------
+XB-INTR-RET:
+22056 0601301001330016 (lc=21007570740 34201736170)
+(byte) a=26 m=m[2] dpb pos=16, width=1 -><none>,m[26] 
+a=26 (500042042), m=2 (0), dest=26
+widthm1 0, pos 16, mr_sr_bits 3
+left_mask_index 16, right_mask_index 16
+left_mask 77777, right_mask 37777740000, mask 40000
+dpb; m 0, pos 16
+dpb; mask 40000, result 500002042
+a,m_memory[26] <- 500002042
+------
+22057 0010540060010050 (lc=21007570740 34201736170)
+(alu) SETA a=213 m=0 m[0] C=0 alu-> ->MD ,m[0] 
+a=213 (500331400), m=0 (0)
+alu_op 5, ir8 0, ir7 0, c 0, dest 1400, out_bus 1
+md<-500331400
+a,m_memory[0] <- 500331400
+alu_out 0x0501b300, alu_carry 0, q 0x00000000
+------
+22060 0010500040010050 (lc=21007570740 34201736170)
+(alu) SETA a=212 m=0 m[0] C=0 alu-> ->VMA ,m[0] 
+a=212 (500122425), m=0 (500331400)
+alu_op 5, ir8 0, ir7 0, c 0, dest 1000, out_bus 1
+a,m_memory[0] <- 500122425
+alu_out 0x0500a515, alu_carry 0, q 0x00000000
+------
+22061 0010700000510050 (lc=21007570740 34201736170)
+(alu) SETA a=216 m=0 m[0] C=0 alu-> -><none>,m[12] 
+a=216 (661), m=0 (500122425)
+alu_op 5, ir8 0, ir7 0, c 0, dest 12, out_bus 1
+a,m_memory[12] <- 661
+alu_out 0x000001b1, alu_carry 0, q 0x00000000
+------
+22062 0110640000310050 (lc=21007570740 34201736170)
+popj; (alu) SETA a=215 m=0 m[0] C=0 alu-> -><none>,m[6] 
+a=215 (2), m=0 (500122425)
+alu_op 5, ir8 0, ir7 0, c 0, dest 6, out_bus 1
+a,m_memory[6] <- 2
+alu_out 0x00000002, alu_carry 0, q 0x00000000
+popj; reading spc[4] -> 775
+------
+22063 0010600000250050 (lc=21007570740 34201736170)
+(alu) SETA a=214 m=0 m[0] C=0 alu-> -><none>,m[5] 
+a=214 (0), m=0 (500122425)
+alu_op 5, ir8 0, ir7 0, c 0, dest 5, out_bus 1
+a,m_memory[5] <- 0
+alu_out 0x00000000, alu_carry 0, q 0x00000000
+------
+775 0000013211410030 (lc=21007570740 34201736170)
+(alu) SETM a=0 m=26 m[26] C=0 alu-> ->a_mem[230] 
+a=0 (500122425), m=26 (500002042)
+alu_op 3, ir8 0, ir7 0, c 0, dest 4230, out_bus 1
+a_memory[230] <- 500002042
+alu_out 0x05000422, alu_carry 0, q 0x00000000
+------
+776 0600125000451340 (lc=21007570740 34201736170)
+(byte) a=2 m=MD ldb pos=0, width=30 -><none>,m[11] 
+a=2 (0), m=52 (500331400), dest=11
+widthm1 27, pos 0, mr_sr_bits 1
+left_mask_index 27, right_mask_index 0
+left_mask 77777777, right_mask 37777777777, mask 77777777
+ldb; m 500331400
+ldb; m-rot 500331400, mask 77777777, result 331400
+a,m_memory[11] <- 331400
+------
+777 0000504442510310 (lc=21007570740 34201736170)
+(alu) M+A [ADD] a=12 m=11 m[11] C=0 alu-> ->VMA,start-read ,m[12] 
+a=12 (661), m=11 (331400)
+alu_op 11, ir8 0, ir7 1, c 0, dest 1052, out_bus 1
+read_mem(vaddr=332261)
+read_mem(vaddr=332261) -> pn 0, offset 261, map 200000000 (40000000)
+read_mem(vaddr=332261) access fault
+a,m_memory[12] <- 332261
+alu_out 0x0001b4b1, alu_carry 0, q 0x00000000
+------
+1000 0600105001250340 (lc=21007570740 34201736170)
+(byte) a=2 m=m[12] ldb pos=0, width=10 -><none>,m[25] 
+a=2 (0), m=12 (332261), dest=25
+widthm1 7, pos 0, mr_sr_bits 1
+left_mask_index 7, right_mask_index 0
+left_mask 377, right_mask 37777777777, mask 377
+ldb; m 332261
+ldb; m-rot 332261, mask 377, result 261
+a,m_memory[25] <- 261
+------
+1001 0200112410040143 (lc=21007570740 34201736170)
+(jump) a=2 m=m[25] pc 1004, !jump M-src = A-src 
+a=2 (0), m=25 (261)
+------
+1002 0000312401250310 (lc=21007570740 34201736170)
+(alu) M+A [ADD] a=6 m=25 m[25] C=0 alu-> -><none>,m[25] 
+a=6 (2), m=25 (261)
+alu_op 11, ir8 0, ir7 1, c 0, dest 25, out_bus 1
+a,m_memory[25] <- 263
+alu_out 0x000000b3, alu_carry 0, q 0x00000000
+------
+CONSF2:
+1004 0200000200410645 (lc=21007570740 34201736170)
+(jump) a=0 m=m[0] pc 20041, P !next pf/int 
+a=0 (500122425), m=0 (500122425)
+jump i|pf
+writing spc[4] <- 1005
+no_exec_next; u_pc 20042
+------
+PGF-R-I:
+20041 0200000217420344 (lc=21007570740 34201736170)
+(jump) a=0 m=m[0] pc 21742, !next !jump pf 
+a=0 (500122425), m=0 (500122425)
+------
+PGF-R:
+20042 0000024060010030 (lc=21007570740 34201736170)
+(alu) SETM a=0 m=50 VMA C=0 alu-> ->MD ,m[0] 
+a=0 (500122425), m=50 (332261)
+alu_op 3, ir8 0, ir7 0, c 0, dest 1400, out_bus 1
+md<-332261
+a,m_memory[0] <- 332261
+alu_out 0x0001b4b1, alu_carry 0, q 0x00000000
+------
+20043 1400024404200154 (i-long) (lc=21007570740 34201736170)
+(dispatch) m=MAP[MD] disp-const 0, disp-addr 420, map 0, len 3, rot 14 
+l1_data 26, l2_data 200000000
+read map[md=332261] -> 12600000000
+m-src 12600000000, rotated 2540, mask 7, result 0
+dispatch[420] -> 520245 P 
+writing spc[5] <- 20045
+------
+20044 0601301001330015 (lc=21007570740 34201736170)
+(byte) a=26 m=m[2] dpb pos=15, width=1 -><none>,m[26] 
+a=26 (500002042), m=2 (0), dest=26
+widthm1 0, pos 15, mr_sr_bits 3
+left_mask_index 15, right_mask_index 15
+left_mask 37777, right_mask 37777760000, mask 20000
+dpb; m 0, pos 15
+dpb; mask 20000, result 500002042
+a,m_memory[26] <- 500002042
+------
+PGF-MAP-MISS:
+20245 0200000201710447 (lc=21007570740 34201736170)
+(jump) a=0 m=m[0] pc 20171, P jump-always 
+a=0 (332261), m=0 (332261)
+writing spc[6] <- 20247
+------
+20246 0600124401550210 (lc=21007570740 34201736170)
+(byte) a=2 m=MAP[MD] ldb pos=10, width=5 -><none>,m[33] 
+l1_data 26, l2_data 200000000
+read map[md=332261] -> 12600000000
+a=2 (0), m=51 (12600000000), dest=33
+widthm1 4, pos 10, mr_sr_bits 1
+left_mask_index 4, right_mask_index 0
+left_mask 37, right_mask 37777777777, mask 37
+ldb; m 12600000000
+ldb; m-rot 126, mask 37, result 26
+a,m_memory[33] <- 26
+------
+PGF-SAVE:
+20171 0000024211010030 (lc=21007570740 34201736170)
+(alu) SETM a=0 m=50 VMA C=0 alu-> ->a_mem[220] 
+a=0 (332261), m=50 (332261)
+alu_op 3, ir8 0, ir7 0, c 0, dest 4220, out_bus 1
+a_memory[220] <- 332261
+alu_out 0x0001b4b1, alu_carry 0, q 0x00000000
+------
+PGF-SAVE-1:
+20172 0000002611150030 (lc=21007570740 34201736170)
+(alu) SETM a=0 m=5 m[5] C=0 alu-> ->a_mem[223] 
+a=0 (332261), m=5 (0)
+alu_op 3, ir8 0, ir7 0, c 0, dest 4223, out_bus 1
+a_memory[223] <- 0
+alu_out 0x00000000, alu_carry 0, q 0x00000000
+------
+20173 0100003211210030 (lc=21007570740 34201736170)
+popj; (alu) SETM a=0 m=6 m[6] C=0 alu-> ->a_mem[224] 
+a=0 (332261), m=6 (2)
+alu_op 3, ir8 0, ir7 0, c 0, dest 4224, out_bus 1
+a_memory[224] <- 2
+alu_out 0x00000002, alu_carry 0, q 0x00000000
+popj; reading spc[6] -> 20247
+------
+20174 0000005211110030 (lc=21007570740 34201736170)
+(alu) SETM a=0 m=12 m[12] C=0 alu-> ->a_mem[222] 
+a=0 (332261), m=12 (332261)
+alu_op 3, ir8 0, ir7 0, c 0, dest 4222, out_bus 1
+a_memory[222] <- 332261
+alu_out 0x0001b4b1, alu_carry 0, q 0x00000000
+------
+20247 0231655602200643 (lc=21007570740 34201736170)
+(jump) a=635 m=m[33] pc 20220, P !next M-src = A-src 
+a=635 (37), m=33 (26)
+------
+20250 0006001206010314 (lc=21007570740 34201736170)
+(alu) M+A [ADD] a=140 m=2 m[2] C=1 alu-> ->a_mem[140] 
+a=140 (652174), m=2 (0)
+alu_op 11, ir8 0, ir7 1, c 1, dest 4140, out_bus 1
+a_memory[140] <- 652175
+alu_out 0x0003547d, alu_carry 0, q 0x00000000
+------
+20251 0611001000520370 (lc=21007570740 34201736170)
+(byte) a=220 m=m[2] sel dep (a<-m&mask) pos=30, width=10 -><none>,m[12] 
+a=220 (332261), m=2 (0), dest=12
+widthm1 7, pos 30, mr_sr_bits 2
+left_mask_index 37, right_mask_index 30
+left_mask 37777777777, right_mask 37700000000, mask 37700000000
+sel-dep; a 332261, m 0, mask 37700000000 -> 332261
+a,m_memory[12] <- 332261
+------
+20252 0241645202600241 (lc=21007570740 34201736170)
+(jump) a=1035 m=m[12] pc 20260, !next M-src < A-src 
+a=1035 (76776000), m=12 (332261)
+no_exec_next; u_pc 20261
+------
+PGF-L2A:
+20260 0200000204510647 (lc=21007570740 34201736170)
+(jump) a=0 m=m[0] pc 20451, P !next jump-always 
+a=0 (332261), m=0 (332261)
+writing spc[6] <- 20261
+no_exec_next; u_pc 20452
+------
+SEARCH-PAGE-HASH-TABLE:
+20451 0000005210150030 (lc=21007570740 34201736170)
+(alu) SETM a=0 m=12 m[12] C=0 alu-> ->a_mem[203] 
+a=0 (332261), m=12 (332261)
+alu_op 3, ir8 0, ir7 0, c 0, dest 4203, out_bus 1
+a_memory[203] <- 332261
+alu_out 0x0001b4b1, alu_carry 0, q 0x00000000
+------
+20452 0200000204670647 (lc=21007570740 34201736170)
+(jump) a=0 m=m[0] pc 20467, P !next jump-always 
+a=0 (332261), m=0 (332261)
+writing spc[7] <- 20453
+no_exec_next; u_pc 20470
+------
+COMPUTE-PAGE-HASH:
+20467 0600105210050462 (lc=21007570740 34201736170)
+(byte) a=2 m=m[12] ldb pos=22, width=12 ->a_mem[201] 
+a=2 (0), m=12 (332261), dest=4201
+widthm1 11, pos 22, mr_sr_bits 1
+left_mask_index 11, right_mask_index 0
+left_mask 1777, right_mask 37777777777, mask 1777
+ldb; m 332261
+ldb; m-rot 32261000006, mask 1777, result 6
+a_memory[201] <- 6
+------
+20470 0600105000511174 (lc=21007570740 34201736170)
+(byte) a=2 m=m[12] ldb pos=34, width=24 -><none>,m[12] 
+a=2 (0), m=12 (332261), dest=12
+widthm1 23, pos 34, mr_sr_bits 1
+left_mask_index 23, right_mask_index 0
+left_mask 3777777, right_mask 37777777777, mask 3777777
+ldb; m 332261
+ldb; m-rot 2000015513, mask 3777777, result 15513
+a,m_memory[12] <- 15513
+------
+20471 0031705000510020 (lc=21007570740 34201736170)
+(alu) ANDCA a=636 m=12 m[12] C=0 alu-> -><none>,m[12] 
+a=636 (17), m=12 (15513)
+alu_op 2, ir8 0, ir7 0, c 0, dest 12, out_bus 1
+a,m_memory[12] <- 15500
+alu_out 0x00001b40, alu_carry 0, q 0x00000000
+------
+20472 0010045000510060 (lc=21007570740 34201736170)
+(alu) XOR a=201 m=12 m[12] C=0 alu-> -><none>,m[12] 
+a=201 (6), m=12 (15500)
+alu_op 6, ir8 0, ir7 0, c 0, dest 12, out_bus 1
+a,m_memory[12] <- 15506
+alu_out 0x00001b46, alu_carry 0, q 0x00000000
+------
+20473 0013445000510010 (lc=21007570740 34201736170)
+(alu) AND a=271 m=12 m[12] C=0 alu-> -><none>,m[12] 
+a=271 (177776), m=12 (15506)
+alu_op 1, ir8 0, ir7 0, c 0, dest 12, out_bus 1
+a,m_memory[12] <- 15506
+alu_out 0x00001b46, alu_carry 0, q 0x00000000
+------
+20474 0313505000001241 (lc=21007570740 34201736170)
+popj; (jump) a=272 m=m[12] pc 0, R !next M-src < A-src 
+a=272 (100000), m=12 (15506)
+reading spc[7] -> 20453
+no_exec_next; u_pc 20454
+------
+SPHT1:
+20453 0016545042010310 (lc=21007570740 34201736170)
+(alu) M+A [ADD] a=353 m=12 m[12] C=0 alu-> ->VMA,start-read ,m[0] 
+a=353 (500002400), m=12 (15506)
+alu_op 11, ir8 0, ir7 1, c 0, dest 1040, out_bus 1
+read_mem(vaddr=500020106)
+read_mem(vaddr=500020106) -> pn 40, offset 106, map 263200040 (40000000)
+read_mem(vaddr=500020106) -> 500332141
+a,m_memory[0] <- 500020106
+alu_out 0x05002046, alu_carry 0, q 0x00000000
+------
+20454 0200000003730644 (lc=21007570740 34201736170)
+(jump) a=0 m=m[0] pc 373, P !next pf 
+a=0 (500020106), m=0 (500020106)
+------
+20455 0027345000510310 (lc=21007570740 34201736170)
+(alu) M+A [ADD] a=567 m=12 m[12] C=0 alu-> -><none>,m[12] 
+a=567 (2), m=12 (15506)
+alu_op 11, ir8 0, ir7 1, c 0, dest 12, out_bus 1
+a,m_memory[12] <- 15510
+alu_out 0x00001b48, alu_carry 0, q 0x00000000
+------
+20456 0213505204600241 (lc=21007570740 34201736170)
+(jump) a=272 m=m[12] pc 20460, !next M-src < A-src 
+a=272 (100000), m=12 (15510)
+no_exec_next; u_pc 20461
+------
+SPHT2:
+20460 0200025000001332 (lc=21007570740 34201736170)
+(jump) a=0 m=MD pc 0, R !next !jump m-rot<< 32
+a=0 (500020106), m=52 (500332141)
+jump-if-bit; rot 32, before 500332141 after 20405003321
+------
+20461 0010165000250060 (lc=21007570740 34201736170)
+(alu) XOR a=203 m=52 MD C=0 alu-> -><none>,m[5] 
+a=203 (332261), m=52 (500332141)
+alu_op 6, ir8 0, ir7 0, c 0, dest 5, out_bus 1
+a,m_memory[5] <- 500000320
+alu_out 0x050000d0, alu_carry 0, q 0x00000000
+------
+20462 0700102400310770 (lc=21007570740 34201736170)
+popj; (byte) a=2 m=m[5] ldb pos=30, width=20 -><none>,m[6] 
+a=2 (0), m=5 (500000320), dest=6
+widthm1 17, pos 30, mr_sr_bits 1
+left_mask_index 17, right_mask_index 0
+left_mask 177777, right_mask 37777777777, mask 177777
+ldb; m 500000320
+ldb; m-rot 32001200000, mask 177777, result 0
+a,m_memory[6] <- 0
+popj; reading spc[6] -> 20261
+------
+20463 0200103204530743 (lc=21007570740 34201736170)
+(jump) a=2 m=m[6] pc 20453, P !next !jump M-src = A-src 
+a=2 (0), m=6 (0)
+------
+20261 1400025004000140 (i-long) (lc=21007570740 34201736170)
+(dispatch) m=MD disp-const 0, disp-addr 400, map 0, len 3, rot 0 
+m-src 500332141, rotated 500332141, mask 7, result 1
+dispatch[401] -> 60436 N 
+no_exec_next; u_pc 20437
+------
+PGF-RL:
+20436 0011000060010050 (lc=21007570740 34201736170)
+(alu) SETA a=220 m=0 m[0] C=0 alu-> ->MD ,m[0] 
+a=220 (332261), m=0 (500020106)
+alu_op 5, ir8 0, ir7 0, c 0, dest 1400, out_bus 1
+md<-332261
+a,m_memory[0] <- 332261
+alu_out 0x0001b4b1, alu_carry 0, q 0x00000000
+------
+20437 0600124400510210 (lc=21007570740 34201736170)
+(byte) a=2 m=MAP[MD] ldb pos=10, width=5 -><none>,m[12] 
+l1_data 26, l2_data 200000000
+read map[md=332261] -> 2600000000
+a=2 (0), m=51 (2600000000), dest=12
+widthm1 4, pos 10, mr_sr_bits 1
+left_mask_index 4, right_mask_index 0
+left_mask 37, right_mask 37777777777, mask 37
+ldb; m 2600000000
+ldb; m-rot 26, mask 37, result 26
+a,m_memory[12] <- 26
+------
+20440 0231645003730643 (lc=21007570740 34201736170)
+(jump) a=635 m=m[12] pc 373, P !next M-src = A-src 
+a=635 (37), m=12 (26)
+------
+20441 0026464042010310 (lc=21007570740 34201736170)
+(alu) M+A [ADD] a=551 m=50 VMA C=0 alu-> ->VMA,start-read ,m[0] 
+a=551 (1), m=50 (500020106)
+alu_op 11, ir8 0, ir7 1, c 0, dest 1040, out_bus 1
+read_mem(vaddr=500020107)
+read_mem(vaddr=500020107) -> pn 40, offset 107, map 263200040 (40000000)
+read_mem(vaddr=500020107) -> 562200460
+a,m_memory[0] <- 500020107
+alu_out 0x05002047, alu_carry 0, q 0x00000000
+------
+20442 0200000003730644 (lc=21007570740 34201736170)
+(jump) a=0 m=m[0] pc 373, P !next pf 
+a=0 (500020107), m=0 (500020107)
+------
+20443 0011140000250050 (lc=21007570740 34201736170)
+(alu) SETA a=223 m=0 m[0] C=0 alu-> -><none>,m[5] 
+a=223 (0), m=0 (500020107)
+alu_op 5, ir8 0, ir7 0, c 0, dest 5, out_bus 1
+a,m_memory[5] <- 0
+alu_out 0x00000000, alu_carry 0, q 0x00000000
+------
+20444 0011200000310050 (lc=21007570740 34201736170)
+(alu) SETA a=224 m=0 m[0] C=0 alu-> -><none>,m[6] 
+a=224 (2), m=0 (500020107)
+alu_op 5, ir8 0, ir7 0, c 0, dest 6, out_bus 1
+a,m_memory[6] <- 2
+alu_out 0x00000002, alu_carry 0, q 0x00000000
+------
+20445 1400025003200154 (i-long) (lc=21007570740 34201736170)
+(dispatch) m=MD disp-const 0, disp-addr 320, map 0, len 3, rot 14 
+m-src 562200460, rotated 22004600134, mask 7, result 4
+dispatch[324] -> 700000 P R 
+------
+20446 0626525040011340 (lc=21007570740 34201736170)
+(byte) a=552 m=MD ldb pos=0, width=30 ->VMA ,m[0] 
+a=552 (200000000), m=52 (562200460), dest=1000
+widthm1 27, pos 0, mr_sr_bits 1
+left_mask_index 27, right_mask_index 0
+left_mask 77777777, right_mask 37777777777, mask 77777777
+ldb; m 562200460
+ldb; m-rot 562200460, mask 77777777, result 262200460
+a,m_memory[0] <- 262200460
+------
+20447 0111000066010050 (lc=21007570740 34201736170)
+popj; (alu) SETA a=220 m=0 m[0] C=0 alu-> ->MD,write-map ,m[0] 
+a=220 (332261), m=0 (262200460)
+alu_op 5, ir8 0, ir7 0, c 0, dest 1540, out_bus 1
+memory-data-write-map md=332261, vma=262200460 (addr 15)
+a,m_memory[0] <- 332261
+alu_out 0x0001b4b1, alu_carry 0, q 0x00000000
+popj; reading spc[5] -> 20045
+------
+20450 0011100000510050 (lc=21007570740 34201736170)
+(alu) SETA a=222 m=0 m[0] C=0 alu-> -><none>,m[12] 
+a=222 (332261), m=0 (332261)
+alu_op 5, ir8 0, ir7 0, c 0, dest 12, out_bus 1
+a,m_memory[12] <- 332261
+alu_out 0x0001b4b1, alu_carry 0, q 0x00000000
+------
+20045 0011000042010050 (lc=21007570740 34201736170)
+(alu) SETA a=220 m=0 m[0] C=0 alu-> ->VMA,start-read ,m[0] 
+a=220 (332261), m=0 (332261)
+alu_op 5, ir8 0, ir7 0, c 0, dest 1040, out_bus 1
+read_mem(vaddr=332261)
+read_mem(vaddr=332261) -> pn 460, offset 261, map 262200460 (40000000)
+read_mem(vaddr=332261) -> 332261
+a,m_memory[0] <- 332261
+alu_out 0x0001b4b1, alu_carry 0, q 0x00000000
+------
+20046 0100000000010000 (lc=21007570740 34201736170)
+popj; (alu) SETZ a=0 m=0 m[0] C=0 alu-> -><none>,m[0] 
+a=0 (332261), m=0 (332261)
+alu_op 0, ir8 0, ir7 0, c 0, dest 0, out_bus 1
+a,m_memory[0] <- 0
+alu_out 0x00000000, alu_carry 0, q 0x00000000
+popj; reading spc[4] -> 1005
+------
+20047 0200000200420644 (lc=21007570740 34201736170)
+(jump) a=0 m=m[0] pc 20042, P !next pf 
+a=0 (0), m=0 (0)
+------
+1005 0026552401250264 (lc=21007570740 34201736170)
+(alu) M-A-1 [M-A-1] a=553 m=25 m[25] C=1 alu-> -><none>,m[25] 
+a=553 (400), m=25 (263)
+alu_op 6, ir8 0, ir7 1, c 1, dest 25, out_bus 1
+a,m_memory[25] <- 37777777663
+alu_out 0xffffffb3, alu_carry 1, q 0x00000000
+------
+1006 0200112400001042 (lc=21007570740 34201736170)
+(jump) a=2 m=m[25] pc 0, R M-src <= A-src 
+a=2 (0), m=25 (37777777663)
+reading spc[3] -> 706
+------
+1007 0011425001310050 (lc=21007570740 34201736170)
+(alu) SETA a=230 m=52 MD C=0 alu-> -><none>,m[26] 
+a=230 (500002042), m=52 (332261)
+alu_op 5, ir8 0, ir7 0, c 0, dest 26, out_bus 1
+a,m_memory[26] <- 500002042
+alu_out 0x05000422, alu_carry 0, q 0x00000000
+------
+706 0200013011600220 (lc=21007570740 34201736170)
+(jump) a=0 m=m[26] pc 1160, !next m-rot<< 20
+a=0 (0), m=26 (500002042)
+jump-if-bit; rot 20, before 500002042 after 410402400
+------
+707 0000007612750030 (lc=21007570740 34201736170)
+(alu) SETM a=0 m=17 m[17] C=0 alu-> ->a_mem[257] 
+a=0 (0), m=17 (500000025)
+alu_op 3, ir8 0, ir7 0, c 0, dest 4257, out_bus 1
+a_memory[257] <- 500000025
+alu_out 0x05000015, alu_carry 0, q 0x00000000
+------
+710 0000010213010030 (lc=21007570740 34201736170)
+(alu) SETM a=0 m=20 m[20] C=0 alu-> ->a_mem[260] 
+a=0 (0), m=20 (25)
+alu_op 3, ir8 0, ir7 0, c 0, dest 4260, out_bus 1
+a_memory[260] <- 25
+alu_out 0x00000015, alu_carry 0, q 0x00000000
+------
+711 0000004613150030 (lc=21007570740 34201736170)
+(alu) SETM a=0 m=11 m[11] C=0 alu-> ->a_mem[263] 
+a=0 (0), m=11 (331400)
+alu_op 3, ir8 0, ir7 0, c 0, dest 4263, out_bus 1
+a_memory[263] <- 331400
+alu_out 0x0001b300, alu_carry 0, q 0x00000000
+------
+712 0000452213050313 (lc=21007570740 34201736170)
+(alu) M+A [ADD] a=11 m=24 m[24] C=0 alu-> Q-R ->a_mem[261] 
+a=11 (331400), m=24 (500000663)
+alu_op 11, ir8 0, ir7 1, c 0, dest 4261, out_bus 1
+q<-alu
+a_memory[261] <- 500332263
+alu_out 0x0501b4b3, alu_carry 0, q 0x0501b4b3
+------
+713 0026463401550264 (lc=21007570740 34201736170)
+(alu) M-A-1 [M-A-1] a=551 m=47 Q C=1 alu-> -><none>,m[33] 
+a=551 (1), m=47 (500332263)
+alu_op 6, ir8 0, ir7 1, c 1, dest 33, out_bus 1
+a,m_memory[33] <- 500332262
+alu_out 0x0501b4b2, alu_carry 0, q 0x0501b4b3
+------
+714 0601541401570340 (lc=21007570740 34201736170)
+(byte) a=33 m=m[3] dpb pos=0, width=10 -><none>,m[33] 
+a=33 (500332262), m=3 (37777777777), dest=33
+widthm1 7, pos 0, mr_sr_bits 3
+left_mask_index 7, right_mask_index 0
+left_mask 377, right_mask 37777777777, mask 377
+dpb; m 37777777777, pos 0
+dpb; mask 377, result 500332377
+a,m_memory[33] <- 500332377
+------
+715 0200000010200047 (lc=21007570740 34201736170)
+(jump) a=0 m=m[0] pc 1020, jump-always 
+a=0 (0), m=0 (0)
+------
+716 0026455613110310 (lc=21007570740 34201736170)
+(alu) M+A [ADD] a=551 m=33 m[33] C=0 alu-> ->a_mem[262] 
+a=551 (1), m=33 (500332377)
+alu_op 11, ir8 0, ir7 1, c 0, dest 4262, out_bus 1
+a_memory[262] <- 500332400
+alu_out 0x0501b500, alu_carry 0, q 0x0501b4b3
+------
+SCAV0:
+1020 0600103000471342 (lc=21007570740 34201736170)
+(byte) a=2 m=m[6] dpb pos=2, width=30 -><none>,m[11] 
+a=2 (0), m=6 (2), dest=11
+widthm1 27, pos 2, mr_sr_bits 3
+left_mask_index 31, right_mask_index 2
+left_mask 377777777, right_mask 37777777774, mask 377777774
+dpb; m 2, pos 2
+dpb; mask 377777774, result 10
+a,m_memory[11] <- 10
+------
+1021 0006744606750313 (lc=21007570740 34201736170)
+(alu) M+A [ADD] a=157 m=11 m[11] C=0 alu-> Q-R ->a_mem[157] 
+a=157 (361734), m=11 (10)
+alu_op 11, ir8 0, ir7 1, c 0, dest 4157, out_bus 1
+q<-alu
+a_memory[157] <- 361744
+alu_out 0x0001e3e4, alu_carry 0, q 0x0001e3e4
+------
+1022 0207023410260041 (lc=21007570740 34201736170)
+(jump) a=160 m=Q pc 1026, M-src < A-src 
+a=160 (0), m=47 (361744)
+------
+1023 0000012211450030 (lc=21007570740 34201736170)
+(alu) SETM a=0 m=24 m[24] C=0 alu-> ->a_mem[231] 
+a=0 (0), m=24 (500000663)
+alu_op 3, ir8 0, ir7 0, c 0, dest 4231, out_bus 1
+a_memory[231] <- 500000663
+alu_out 0x050001b3, alu_carry 0, q 0x0001e3e4
+------
+1024 0603201001570135 (lc=21007570740 34201736170)
+(byte) a=64 m=m[2] dpb pos=35, width=3 -><none>,m[33] 
+a=64 (300000005), m=2 (0), dest=33
+widthm1 2, pos 35, mr_sr_bits 3
+left_mask_index 37, right_mask_index 35
+left_mask 37777777777, right_mask 34000000000, mask 34000000000
+dpb; m 0, pos 35
+dpb; mask 34000000000, result 300000005
+a,m_memory[33] <- 300000005
+------
+1025 0205615410320443 (lc=21007570740 34201736170)
+(jump) a=134 m=m[33] pc 1032, P M-src = A-src 
+a=134 (300000000), m=33 (300000005)
+------
+SCAV0X:
+1026 0017050211510310 (lc=21007570740 34201736170)
+(alu) M+A [ADD] a=361 m=20 m[20] C=0 alu-> ->a_mem[232] 
+a=361 (500124400), m=20 (25)
+alu_op 11, ir8 0, ir7 1, c 0, dest 4232, out_bus 1
+a_memory[232] <- 500124425
+alu_out 0x0500a915, alu_carry 0, q 0x0001e3e4
+------
+1027 0011440060010050 (lc=21007570740 34201736170)
+(alu) SETA a=231 m=0 m[0] C=0 alu-> ->MD ,m[0] 
+a=231 (500000663), m=0 (0)
+alu_op 5, ir8 0, ir7 0, c 0, dest 1400, out_bus 1
+md<-500000663
+a,m_memory[0] <- 500000663
+alu_out 0x050001b3, alu_carry 0, q 0x0001e3e4
+------
+1030 0111500044010050 (lc=21007570740 34201736170)
+popj; (alu) SETA a=232 m=0 m[0] C=0 alu-> ->VMA,start-write ,m[0] 
+a=232 (500124425), m=0 (500000663)
+alu_op 5, ir8 0, ir7 0, c 0, dest 1100, out_bus 1
+write_mem(vaddr=500124425,v=500000663)
+write_mem(vaddr=500124425) -> pn 430, offset 25, map 263000430 (20000000)
+a,m_memory[0] <- 500124425
+alu_out 0x0500a915, alu_carry 0, q 0x0001e3e4
+popj; reading spc[2] -> 11365
+------
+1031 0200000200570645 (lc=21007570740 34201736170)
+(jump) a=0 m=m[0] pc 20057, P !next pf/int 
+a=0 (500124425), m=0 (500124425)
+jump i|pf
+writing spc[2] <- 11365
+no_exec_next; u_pc 20060
+------
+PGF-W-I:
+20057 0200000217420344 (lc=21007570740 34201736170)
+(jump) a=0 m=m[0] pc 21742, !next !jump pf 
+a=0 (500124425), m=0 (500124425)
+no_exec_next; u_pc 21743
+------
+INTR:
+21742 0200013003730622 (lc=21007570740 34201736170)
+(jump) a=0 m=m[26] pc 373, P !next m-rot<< 22
+a=0 (500124425), m=26 (500002042)
+jump-if-bit; rot 22, before 500002042 after 2042012000
+------
+21743 0000024210510030 (lc=21007570740 34201736170)
+(alu) SETM a=0 m=50 VMA C=0 alu-> ->a_mem[212] 
+a=0 (500124425), m=50 (500124425)
+alu_op 3, ir8 0, ir7 0, c 0, dest 4212, out_bus 1
+a_memory[212] <- 500124425
+alu_out 0x0500a915, alu_carry 0, q 0x0001e3e4
+------
+21744 0000025210550030 (lc=21007570740 34201736170)
+(alu) SETM a=0 m=52 MD C=0 alu-> ->a_mem[213] 
+a=0 (500124425), m=52 (500000663)
+alu_op 3, ir8 0, ir7 0, c 0, dest 4213, out_bus 1
+a_memory[213] <- 500000663
+alu_out 0x050001b3, alu_carry 0, q 0x0001e3e4
+------
+21745 0601301401330016 (lc=21007570740 34201736170)
+(byte) a=26 m=m[3] dpb pos=16, width=1 -><none>,m[26] 
+a=26 (500002042), m=3 (37777777777), dest=26
+widthm1 0, pos 16, mr_sr_bits 3
+left_mask_index 16, right_mask_index 16
+left_mask 77777, right_mask 37777740000, mask 40000
+dpb; m 37777777777, pos 16
+dpb; mask 40000, result 500042042
+a,m_memory[26] <- 500042042
+------
+21746 0027140042010050 (lc=21007570740 34201736170)
+(alu) SETA a=563 m=0 m[0] C=0 alu-> ->VMA,start-read ,m[0] 
+a=563 (77773020), m=0 (500124425)
+alu_op 5, ir8 0, ir7 0, c 0, dest 1040, out_bus 1
+read_mem(vaddr=77773020)
+read_mem(vaddr=77773020) -> pn 37766, offset 20, map 263037766 (40000000)
+read_mem(vaddr=77773020) -> 0
+a,m_memory[0] <- 77773020
+alu_out 0x00fff610, alu_carry 0, q 0x0001e3e4
+------
+21747 0200000200420644 (lc=21007570740 34201736170)
+(jump) a=0 m=m[0] pc 20042, P !next pf 
+a=0 (77773020), m=0 (77773020)
+------
+21750 0000002610610030 (lc=21007570740 34201736170)
+(alu) SETM a=0 m=5 m[5] C=0 alu-> ->a_mem[214] 
+a=0 (77773020), m=5 (0)
+alu_op 3, ir8 0, ir7 0, c 0, dest 4214, out_bus 1
+a_memory[214] <- 0
+alu_out 0x00000000, alu_carry 0, q 0x0001e3e4
+------
+21751 0000003210650030 (lc=21007570740 34201736170)
+(alu) SETM a=0 m=6 m[6] C=0 alu-> ->a_mem[215] 
+a=0 (77773020), m=6 (2)
+alu_op 3, ir8 0, ir7 0, c 0, dest 4215, out_bus 1
+a_memory[215] <- 2
+alu_out 0x00000002, alu_carry 0, q 0x0001e3e4
+------
+21752 0000005210710030 (lc=21007570740 34201736170)
+(alu) SETM a=0 m=12 m[12] C=0 alu-> ->a_mem[216] 
+a=0 (77773020), m=12 (332261)
+alu_op 3, ir8 0, ir7 0, c 0, dest 4216, out_bus 1
+a_memory[216] <- 332261
+alu_out 0x0001b4b1, alu_carry 0, q 0x0001e3e4
+------
+21753 0600125210750037 (lc=21007570740 34201736170)
+(byte) a=2 m=MD ldb pos=37, width=1 ->a_mem[217] 
+a=2 (0), m=52 (0), dest=4217
+widthm1 0, pos 37, mr_sr_bits 1
+left_mask_index 0, right_mask_index 0
+left_mask 1, right_mask 37777777777, mask 1
+ldb; m 0
+ldb; m-rot 0, mask 1, result 0
+a_memory[217] <- 0
+------
+21754 0210741221220243 (lc=21007570740 34201736170)
+(jump) a=217 m=m[2] pc 22122, !next M-src = A-src 
+a=217 (0), m=2 (0)
+no_exec_next; u_pc 22123
+------
+INNL0:
+22122 0002700042310050 (lc=21007570740 34201736170)
+(alu) SETA a=56 m=0 m[0] C=0 alu-> ->VMA,start-read ,m[6] 
+a=56 (577772060), m=0 (77773020)
+alu_op 5, ir8 0, ir7 0, c 0, dest 1046, out_bus 1
+read_mem(vaddr=577772060)
+read_mem(vaddr=577772060) -> pn 37764, offset 60, map 263037764 (40000000)
+a,m_memory[6] <- 577772060
+alu_out 0x05fff430, alu_carry 0, q 0x0001e3e4
+------
+22123 0200000200420644 (lc=21007570740 34201736170)
+(jump) a=0 m=m[0] pc 20042, P !next pf 
+a=0 (77773020), m=0 (77773020)
+------
+22124 0200025221260334 (lc=21007570740 34201736170)
+(jump) a=0 m=MD pc 22126, !next !jump m-rot<< 34
+a=0 (77773020), m=52 (220)
+jump-if-bit; rot 34, before 220 after 11
+------
+22125 0200025221750221 (lc=21007570740 34201736170)
+(jump) a=0 m=MD pc 22175, !next m-rot<< 21
+a=0 (77773020), m=52 (220)
+jump-if-bit; rot 21, before 220 after 110000000
+------
+INNL1:
+22126 0200025221300333 (lc=21007570740 34201736170)
+(jump) a=0 m=MD pc 22130, !next !jump m-rot<< 33
+a=0 (77773020), m=52 (220)
+jump-if-bit; rot 33, before 220 after 20000000004
+no_exec_next; u_pc 22131
+------
+INNL2:
+22130 0030600000250050 (lc=21007570740 34201736170)
+(alu) SETA a=614 m=0 m[0] C=0 alu-> -><none>,m[5] 
+a=614 (413), m=0 (77773020)
+alu_op 5, ir8 0, ir7 0, c 0, dest 5, out_bus 1
+a,m_memory[5] <- 413
+alu_out 0x0000010b, alu_carry 0, q 0x0001e3e4
+------
+INND0:
+22131 0000142442010310 (lc=21007570740 34201736170)
+(alu) M+A [ADD] a=3 m=5 m[5] C=0 alu-> ->VMA,start-read ,m[0] 
+a=3 (37777777777), m=5 (413)
+alu_op 11, ir8 0, ir7 1, c 0, dest 1040, out_bus 1
+read_mem(vaddr=412)
+read_mem(vaddr=412) -> pn 1, offset 12, map 263200001 (40000000)
+read_mem(vaddr=412) -> 30500000500
+a,m_memory[0] <- 412
+alu_out 0x0000010a, alu_carry 0, q 0x0001e3e4
+------
+22132 0200000200420644 (lc=21007570740 34201736170)
+(jump) a=0 m=m[0] pc 20042, P !next pf 
+a=0 (412), m=0 (412)
+------
+22133 0600125060011340 (lc=21007570740 34201736170)
+(byte) a=2 m=MD ldb pos=0, width=30 ->MD ,m[0] 
+a=2 (0), m=52 (30500000500), dest=1400
+widthm1 27, pos 0, mr_sr_bits 1
+left_mask_index 27, right_mask_index 0
+left_mask 77777777, right_mask 37777777777, mask 77777777
+ldb; m 30500000500
+ldb; m-rot 30500000500, mask 77777777, result 500
+md<-500
+a,m_memory[0] <- 500
+------
+22134 0200125221500243 (lc=21007570740 34201736170)
+(jump) a=2 m=MD pc 22150, !next M-src = A-src 
+a=2 (0), m=52 (500)
+------
+22135 0027365000250310 (lc=21007570740 34201736170)
+(alu) M+A [ADD] a=567 m=52 MD C=0 alu-> -><none>,m[5] 
+a=567 (2), m=52 (500)
+alu_op 11, ir8 0, ir7 1, c 0, dest 5, out_bus 1
+a,m_memory[5] <- 502
+alu_out 0x00000142, alu_carry 0, q 0x0001e3e4
+------
+22136 0027342442010310 (lc=21007570740 34201736170)
+(alu) M+A [ADD] a=567 m=5 m[5] C=0 alu-> ->VMA,start-read ,m[0] 
+a=567 (2), m=5 (502)
+alu_op 11, ir8 0, ir7 1, c 0, dest 1040, out_bus 1
+read_mem(vaddr=504)
+read_mem(vaddr=504) -> pn 1, offset 104, map 263200001 (40000000)
+read_mem(vaddr=504) -> 40
+a,m_memory[0] <- 504
+alu_out 0x00000144, alu_carry 0, q 0x0001e3e4
+------
+22137 0200000200420644 (lc=21007570740 34201736170)
+(jump) a=0 m=m[0] pc 20042, P !next pf 
+a=0 (504), m=0 (504)
+------
+22140 0000025210410030 (lc=21007570740 34201736170)
+(alu) SETM a=0 m=52 MD C=0 alu-> ->a_mem[210] 
+a=0 (504), m=52 (40)
+alu_op 3, ir8 0, ir7 0, c 0, dest 4210, out_bus 1
+a_memory[210] <- 40
+alu_out 0x00000020, alu_carry 0, q 0x0001e3e4
+------
+22141 0026442442010310 (lc=21007570740 34201736170)
+(alu) M+A [ADD] a=551 m=5 m[5] C=0 alu-> ->VMA,start-read ,m[0] 
+a=551 (1), m=5 (502)
+alu_op 11, ir8 0, ir7 1, c 0, dest 1040, out_bus 1
+read_mem(vaddr=503)
+read_mem(vaddr=503) -> pn 1, offset 103, map 263200001 (40000000)
+read_mem(vaddr=503) -> 77772045
+a,m_memory[0] <- 503
+alu_out 0x00000143, alu_carry 0, q 0x0001e3e4
+------
+22142 0200000200420644 (lc=21007570740 34201736170)
+(jump) a=0 m=m[0] pc 20042, P !next pf 
+a=0 (503), m=0 (503)
+------
+22143 0000025042010030 (lc=21007570740 34201736170)
+(alu) SETM a=0 m=52 MD C=0 alu-> ->VMA,start-read ,m[0] 
+a=0 (503), m=52 (77772045)
+alu_op 3, ir8 0, ir7 0, c 0, dest 1040, out_bus 1
+read_mem(vaddr=77772045)
+read_mem(vaddr=77772045) -> pn 37764, offset 45, map 263037764 (40000000)
+a,m_memory[0] <- 77772045
+alu_out 0x00fff425, alu_carry 0, q 0x0001e3e4
+------
+22144 0200000200420644 (lc=21007570740 34201736170)
+(jump) a=0 m=m[0] pc 20042, P !next pf 
+a=0 (77772045), m=0 (77772045)
+------
+22145 0010425001550010 (lc=21007570740 34201736170)
+(alu) AND a=210 m=52 MD C=0 alu-> -><none>,m[33] 
+a=210 (40), m=52 (4)
+alu_op 1, ir8 0, ir7 0, c 0, dest 33, out_bus 1
+a,m_memory[33] <- 0
+alu_out 0x00000000, alu_carry 0, q 0x0001e3e4
+------
+22146 0200115620040343 (lc=21007570740 34201736170)
+(jump) a=2 m=m[33] pc 22004, !next !jump M-src = A-src 
+a=2 (0), m=33 (0)
+------
+22147 0200000221310247 (lc=21007570740 34201736170)
+(jump) a=0 m=m[0] pc 22131, !next jump-always 
+a=0 (77772045), m=0 (77772045)
+no_exec_next; u_pc 22132
+------
+INND0:
+22131 0000142442010310 (lc=21007570740 34201736170)
+(alu) M+A [ADD] a=3 m=5 m[5] C=0 alu-> ->VMA,start-read ,m[0] 
+a=3 (37777777777), m=5 (502)
+alu_op 11, ir8 0, ir7 1, c 0, dest 1040, out_bus 1
+read_mem(vaddr=501)
+read_mem(vaddr=501) -> pn 1, offset 101, map 263200001 (40000000)
+read_mem(vaddr=501) -> 0
+a,m_memory[0] <- 501
+alu_out 0x00000141, alu_carry 0, q 0x0001e3e4
+------
+22132 0200000200420644 (lc=21007570740 34201736170)
+(jump) a=0 m=m[0] pc 20042, P !next pf 
+a=0 (501), m=0 (501)
+------
+22133 0600125060011340 (lc=21007570740 34201736170)
+(byte) a=2 m=MD ldb pos=0, width=30 ->MD ,m[0] 
+a=2 (0), m=52 (0), dest=1400
+widthm1 27, pos 0, mr_sr_bits 1
+left_mask_index 27, right_mask_index 0
+left_mask 77777777, right_mask 37777777777, mask 77777777
+ldb; m 0
+ldb; m-rot 0, mask 77777777, result 0
+md<-0
+a,m_memory[0] <- 0
+------
+22134 0200125221500243 (lc=21007570740 34201736170)
+(jump) a=2 m=MD pc 22150, !next M-src = A-src 
+a=2 (0), m=52 (0)
+no_exec_next; u_pc 22151
+------
+INTRX0:
+22150 0016300042010050 (lc=21007570740 34201736170)
+(alu) SETA a=346 m=0 m[0] C=0 alu-> ->VMA,start-read ,m[0] 
+a=346 (77377760), m=0 (0)
+alu_op 5, ir8 0, ir7 0, c 0, dest 1040, out_bus 1
+read_mem(vaddr=77377760)
+read_mem(vaddr=77377760) -> pn 36777, offset 360, map 60036777 (40000000)
+a,m_memory[0] <- 77377760
+alu_out 0x00fdfff0, alu_carry 0, q 0x0001e3e4
+------
+22151 0200000200420644 (lc=21007570740 34201736170)
+(jump) a=0 m=m[0] pc 20042, P !next pf 
+a=0 (77377760), m=0 (77377760)
+------
+22152 0200025221700334 (lc=21007570740 34201736170)
+(jump) a=0 m=MD pc 22170, !next !jump m-rot<< 34
+a=0 (77377760), m=52 (34)
+jump-if-bit; rot 34, before 34 after 30000000001
+------
+22153 0026765064010020 (lc=21007570740 34201736170)
+(alu) ANDCA a=557 m=52 MD C=0 alu-> ->MD,start-write ,m[0] 
+a=557 (20), m=52 (34)
+alu_op 2, ir8 0, ir7 0, c 0, dest 1500, out_bus 1
+write_mem(vaddr=77377760,v=14)
+write_mem(vaddr=77377760) -> pn 36777, offset 360, map 60036777 (20000000)
+a,m_memory[0] <- 14
+alu_out 0x0000000c, alu_carry 0, q 0x0001e3e4
+------
+22154 0200000200600644 (lc=21007570740 34201736170)
+(jump) a=0 m=m[0] pc 20060, P !next pf 
+a=0 (14), m=0 (14)
+------
+22155 0212201221600242 (lc=21007570740 34201736170)
+(jump) a=244 m=m[2] pc 22160, !next M-src <= A-src 
+a=244 (0), m=2 (0)
+no_exec_next; u_pc 22161
+------
+60CYC-0:
+22160 0214101221620343 (lc=21007570740 34201736170)
+(jump) a=302 m=m[2] pc 22162, !next !jump M-src = A-src 
+a=302 (0), m=2 (0)
+------
+22161 0014641214650314 (lc=21007570740 34201736170)
+(alu) M+A [ADD] a=315 m=2 m[2] C=1 alu-> ->a_mem[315] 
+a=315 (3), m=2 (0)
+alu_op 11, ir8 0, ir7 1, c 1, dest 4315, out_bus 1
+a_memory[315] <- 4
+alu_out 0x00000004, alu_carry 0, q 0x0001e3e4
+------
+60CYC-1:
+22162 0200000176270647 (lc=21007570740 34201736170)
+(jump) a=0 m=m[0] pc 17627, P !next jump-always 
+a=0 (14), m=0 (14)
+writing spc[3] <- 22163
+no_exec_next; u_pc 17630
+------
+TRACK-MOUSE:
+17627 0604641001570370 (lc=21007570740 34201736170)
+(byte) a=115 m=m[2] dpb pos=30, width=10 -><none>,m[33] 
+a=115 (500000001), m=2 (0), dest=33
+widthm1 7, pos 30, mr_sr_bits 3
+left_mask_index 37, right_mask_index 30
+left_mask 37777777777, right_mask 37700000000, mask 37700000000
+dpb; m 0, pos 30
+dpb; mask 37700000000, result 1
+a,m_memory[33] <- 1
+------
+17630 0200115400001243 (lc=21007570740 34201736170)
+(jump) a=2 m=m[33] pc 0, R !next M-src = A-src 
+a=2 (0), m=33 (1)
+------
+17631 0025100042010050 (lc=21007570740 34201736170)
+(alu) SETA a=522 m=0 m[0] C=0 alu-> ->VMA,start-read ,m[0] 
+a=522 (77772042), m=0 (14)
+alu_op 5, ir8 0, ir7 0, c 0, dest 1040, out_bus 1
+read_mem(vaddr=77772042)
+read_mem(vaddr=77772042) -> pn 37764, offset 42, map 263037764 (40000000)
+a,m_memory[0] <- 77772042
+alu_out 0x00fff422, alu_carry 0, q 0x0001e3e4
+------
+17632 0200000200420644 (lc=21007570740 34201736170)
+(jump) a=0 m=m[0] pc 20042, P !next pf 
+a=0 (77772042), m=0 (77772042)
+------
+17633 0000011225510030 (lc=21007570740 34201736170)
+(alu) SETM a=0 m=22 m[22] C=0 alu-> ->a_mem[532] 
+a=0 (77772042), m=22 (10000000000)
+alu_op 3, ir8 0, ir7 0, c 0, dest 4532, out_bus 1
+a_memory[532] <- 10000000000
+alu_out 0x40000000, alu_carry 0, q 0x0001e3e4
+------
+17634 0000011625550030 (lc=21007570740 34201736170)
+(alu) SETM a=0 m=23 m[23] C=0 alu-> ->a_mem[533] 
+a=0 (77772042), m=23 (0)
+alu_op 3, ir8 0, ir7 0, c 0, dest 4533, out_bus 1
+a_memory[533] <- 0
+alu_out 0x00000000, alu_carry 0, q 0x0001e3e4
+------
+17635 0000004625610030 (lc=21007570740 34201736170)
+(alu) SETM a=0 m=11 m[11] C=0 alu-> ->a_mem[534] 
+a=0 (77772042), m=11 (10)
+alu_op 3, ir8 0, ir7 0, c 0, dest 4534, out_bus 1
+a_memory[534] <- 10
+alu_out 0x00000008, alu_carry 0, q 0x0001e3e4
+------
+17636 0000025000250030 (lc=21007570740 34201736170)
+(alu) SETM a=0 m=52 MD C=0 alu-> -><none>,m[5] 
+a=0 (77772042), m=52 (125)
+alu_op 3, ir8 0, ir7 0, c 0, dest 5, out_bus 1
+a,m_memory[5] <- 125
+alu_out 0x00000055, alu_carry 0, q 0x0001e3e4
+------
+17637 0026464042010310 (lc=21007570740 34201736170)
+(alu) M+A [ADD] a=551 m=50 VMA C=0 alu-> ->VMA,start-read ,m[0] 
+a=551 (1), m=50 (77772042)
+alu_op 11, ir8 0, ir7 1, c 0, dest 1040, out_bus 1
+read_mem(vaddr=77772043)
+read_mem(vaddr=77772043) -> pn 37764, offset 43, map 263037764 (40000000)
+a,m_memory[0] <- 77772043
+alu_out 0x00fff423, alu_carry 0, q 0x0001e3e4
+------
+17640 0200000200420644 (lc=21007570740 34201736170)
+(jump) a=0 m=m[0] pc 20042, P !next pf 
+a=0 (77772043), m=0 (77772043)
+------
+17641 0025002401550060 (lc=21007570740 34201736170)
+(alu) XOR a=520 m=5 m[5] C=0 alu-> -><none>,m[33] 
+a=520 (125), m=5 (125)
+alu_op 6, ir8 0, ir7 0, c 0, dest 33, out_bus 1
+a,m_memory[33] <- 0
+alu_out 0x00000000, alu_carry 0, q 0x0001e3e4
+------
+17642 0600115401550124 (lc=21007570740 34201736170)
+(byte) a=2 m=m[33] ldb pos=24, width=3 -><none>,m[33] 
+a=2 (0), m=33 (0), dest=33
+widthm1 2, pos 24, mr_sr_bits 1
+left_mask_index 2, right_mask_index 0
+left_mask 7, right_mask 37777777777, mask 7
+ldb; m 0
+ldb; m-rot 0, mask 7, result 0
+a,m_memory[33] <- 0
+------
+17643 0200115576670043 (lc=21007570740 34201736170)
+(jump) a=2 m=m[33] pc 17667, M-src = A-src 
+a=2 (0), m=33 (0)
+------
+17644 0000025000310030 (lc=21007570740 34201736170)
+(alu) SETM a=0 m=52 MD C=0 alu-> -><none>,m[6] 
+a=0 (77772043), m=52 (570)
+alu_op 3, ir8 0, ir7 0, c 0, dest 6, out_bus 1
+a,m_memory[6] <- 570
+alu_out 0x00000178, alu_carry 0, q 0x0001e3e4
+------
+TRACK-MOUSE-1:
+17667 0025002400250264 (lc=21007570740 34201736170)
+(alu) M-A-1 [M-A-1] a=520 m=5 m[5] C=1 alu-> -><none>,m[5] 
+a=520 (125), m=5 (125)
+alu_op 6, ir8 0, ir7 1, c 1, dest 5, out_bus 1
+a,m_memory[5] <- 0
+alu_out 0x00000000, alu_carry 0, q 0x0001e3e4
+------
+17670 0025002625010310 (lc=21007570740 34201736170)
+(alu) M+A [ADD] a=520 m=5 m[5] C=0 alu-> ->a_mem[520] 
+a=520 (125), m=5 (0)
+alu_op 11, ir8 0, ir7 1, c 0, dest 4520, out_bus 1
+a_memory[520] <- 125
+alu_out 0x00000055, alu_carry 0, q 0x0001e3e4
+------
+17671 0600102436010025 (lc=21007570740 34201736170)
+(byte) a=2 m=m[5] ldb pos=25, width=1 ->OA-reg-hi ,m[0] 
+a=2 (0), m=5 (0), dest=740
+widthm1 0, pos 25, mr_sr_bits 1
+left_mask_index 0, right_mask_index 0
+left_mask 1, right_mask 37777777777, mask 1
+ldb; m 0
+ldb; m-rot 0, mask 1, result 0
+setting oa_reg hi 0
+a,m_memory[0] <- 0
+merging oa hi 0
+------
+17672 0600241000271213 (lc=21007570740 34201736170)
+(byte) a=5 m=m[2] dpb pos=13, width=25 -><none>,m[5] 
+a=5 (0), m=2 (0), dest=5
+widthm1 24, pos 13, mr_sr_bits 3
+left_mask_index 37, right_mask_index 13
+left_mask 37777777777, right_mask 37777774000, mask 37777774000
+dpb; m 0, pos 13
+dpb; mask 37777774000, result 0
+a,m_memory[5] <- 0
+------
+17673 0025043000310264 (lc=21007570740 34201736170)
+(alu) M-A-1 [M-A-1] a=521 m=6 m[6] C=1 alu-> -><none>,m[6] 
+a=521 (570), m=6 (570)
+alu_op 6, ir8 0, ir7 1, c 1, dest 6, out_bus 1
+a,m_memory[6] <- 0
+alu_out 0x00000000, alu_carry 0, q 0x0001e3e4
+------
+17674 0025043225050310 (lc=21007570740 34201736170)
+(alu) M+A [ADD] a=521 m=6 m[6] C=0 alu-> ->a_mem[521] 
+a=521 (570), m=6 (0)
+alu_op 11, ir8 0, ir7 1, c 0, dest 4521, out_bus 1
+a_memory[521] <- 570
+alu_out 0x00000178, alu_carry 0, q 0x0001e3e4
+------
+17675 0600103036010025 (lc=21007570740 34201736170)
+(byte) a=2 m=m[6] ldb pos=25, width=1 ->OA-reg-hi ,m[0] 
+a=2 (0), m=6 (0), dest=740
+widthm1 0, pos 25, mr_sr_bits 1
+left_mask_index 0, right_mask_index 0
+left_mask 1, right_mask 37777777777, mask 1
+ldb; m 0
+ldb; m-rot 0, mask 1, result 0
+setting oa_reg hi 0
+a,m_memory[0] <- 0
+merging oa hi 0
+------
+17676 0600301000331213 (lc=21007570740 34201736170)
+(byte) a=6 m=m[2] dpb pos=13, width=25 -><none>,m[6] 
+a=6 (0), m=2 (0), dest=6
+widthm1 24, pos 13, mr_sr_bits 3
+left_mask_index 37, right_mask_index 13
+left_mask 37777777777, right_mask 37777774000, mask 37777774000
+dpb; m 0, pos 13
+dpb; mask 37777774000, result 0
+a,m_memory[6] <- 0
+------
+17677 0605241001570370 (lc=21007570740 34201736170)
+(byte) a=125 m=m[2] dpb pos=30, width=10 -><none>,m[33] 
+a=125 (500000043), m=2 (0), dest=33
+widthm1 7, pos 30, mr_sr_bits 3
+left_mask_index 37, right_mask_index 30
+left_mask 37777777777, right_mask 37700000000, mask 37700000000
+dpb; m 0, pos 30
+dpb; mask 37700000000, result 43
+a,m_memory[33] <- 43
+------
+17700 0200115577030243 (lc=21007570740 34201736170)
+(jump) a=2 m=m[33] pc 17703, !next M-src = A-src 
+a=2 (0), m=33 (43)
+------
+17701 0600115610051174 (lc=21007570740 34201736170)
+(byte) a=2 m=m[33] ldb pos=34, width=24 ->a_mem[201] 
+a=2 (0), m=33 (43), dest=4201
+widthm1 23, pos 34, mr_sr_bits 1
+left_mask_index 23, right_mask_index 0
+left_mask 3777777, right_mask 37777777777, mask 3777777
+ldb; m 43
+ldb; m-rot 6000000002, mask 3777777, result 2
+a_memory[201] <- 2
+------
+17702 0010055401550260 (lc=21007570740 34201736170)
+(alu) M-A-1 [M-A-1] a=201 m=33 m[33] C=0 alu-> -><none>,m[33] 
+a=201 (2), m=33 (43)
+alu_op 6, ir8 0, ir7 1, c 0, dest 33, out_bus 1
+a,m_memory[33] <- 40
+alu_out 0x00000020, alu_carry 0, q 0x0001e3e4
+------
+TRACK-MOUSE-1C:
+17703 0200102577060141 (lc=21007570740 34201736170)
+(jump) a=2 m=m[5] pc 17706, !jump M-src < A-src 
+a=2 (0), m=5 (0)
+------
+17704 0600102610071642 (lc=21007570740 34201736170)
+(byte) a=2 m=m[5] dpb pos=2, width=36 ->a_mem[201] 
+a=2 (0), m=5 (0), dest=4201
+widthm1 35, pos 2, mr_sr_bits 3
+left_mask_index 37, right_mask_index 2
+left_mask 37777777777, right_mask 37777777774, mask 37777777774
+dpb; m 0, pos 2
+dpb; mask 37777777774, result 0
+a_memory[201] <- 0
+------
+TRACK-MOUSE-1A:
+17706 0010055401550310 (lc=21007570740 34201736170)
+(alu) M+A [ADD] a=201 m=33 m[33] C=0 alu-> -><none>,m[33] 
+a=201 (0), m=33 (40)
+alu_op 11, ir8 0, ir7 1, c 0, dest 33, out_bus 1
+a,m_memory[33] <- 40
+alu_out 0x00000020, alu_carry 0, q 0x0001e3e4
+------
+17707 0626255605251340 (lc=21007570740 34201736170)
+(byte) a=545 m=m[33] ldb pos=0, width=30 ->a_mem[125] 
+a=545 (500000000), m=33 (40), dest=4125
+widthm1 27, pos 0, mr_sr_bits 1
+left_mask_index 27, right_mask_index 0
+left_mask 77777777, right_mask 37777777777, mask 77777777
+ldb; m 40
+ldb; m-rot 40, mask 77777777, result 500000040
+a_memory[125] <- 500000040
+------
+17710 0605201001570370 (lc=21007570740 34201736170)
+(byte) a=124 m=m[2] dpb pos=30, width=10 -><none>,m[33] 
+a=124 (500000015), m=2 (0), dest=33
+widthm1 7, pos 30, mr_sr_bits 3
+left_mask_index 37, right_mask_index 30
+left_mask 37777777777, right_mask 37700000000, mask 37700000000
+dpb; m 0, pos 30
+dpb; mask 37700000000, result 15
+a,m_memory[33] <- 15
+------
+17711 0200115577140243 (lc=21007570740 34201736170)
+(jump) a=2 m=m[33] pc 17714, !next M-src = A-src 
+a=2 (0), m=33 (15)
+------
+17712 0600115610051174 (lc=21007570740 34201736170)
+(byte) a=2 m=m[33] ldb pos=34, width=24 ->a_mem[201] 
+a=2 (0), m=33 (15), dest=4201
+widthm1 23, pos 34, mr_sr_bits 1
+left_mask_index 23, right_mask_index 0
+left_mask 3777777, right_mask 37777777777, mask 3777777
+ldb; m 15
+ldb; m-rot 32000000000, mask 3777777, result 0
+a_memory[201] <- 0
+------
+17713 0010055401550260 (lc=21007570740 34201736170)
+(alu) M-A-1 [M-A-1] a=201 m=33 m[33] C=0 alu-> -><none>,m[33] 
+a=201 (0), m=33 (15)
+alu_op 6, ir8 0, ir7 1, c 0, dest 33, out_bus 1
+a,m_memory[33] <- 14
+alu_out 0x0000000c, alu_carry 0, q 0x0001e3e4
+------
+TRACK-MOUSE-1D:
+17714 0200103177170141 (lc=21007570740 34201736170)
+(jump) a=2 m=m[6] pc 17717, !jump M-src < A-src 
+a=2 (0), m=6 (0)
+------
+17715 0600103210071642 (lc=21007570740 34201736170)
+(byte) a=2 m=m[6] dpb pos=2, width=36 ->a_mem[201] 
+a=2 (0), m=6 (0), dest=4201
+widthm1 35, pos 2, mr_sr_bits 3
+left_mask_index 37, right_mask_index 2
+left_mask 37777777777, right_mask 37777777774, mask 37777777774
+dpb; m 0, pos 2
+dpb; mask 37777777774, result 0
+a_memory[201] <- 0
+------
+TRACK-MOUSE-1B:
+17717 0010055401550310 (lc=21007570740 34201736170)
+(alu) M+A [ADD] a=201 m=33 m[33] C=0 alu-> -><none>,m[33] 
+a=201 (0), m=33 (14)
+alu_op 11, ir8 0, ir7 1, c 0, dest 33, out_bus 1
+a,m_memory[33] <- 14
+alu_out 0x0000000c, alu_carry 0, q 0x0001e3e4
+------
+17720 0626255605211340 (lc=21007570740 34201736170)
+(byte) a=545 m=m[33] ldb pos=0, width=30 ->a_mem[124] 
+a=545 (500000000), m=33 (14), dest=4124
+widthm1 27, pos 0, mr_sr_bits 1
+left_mask_index 27, right_mask_index 0
+left_mask 77777777, right_mask 37777777777, mask 77777777
+ldb; m 14
+ldb; m-rot 14, mask 77777777, result 500000014
+a_memory[124] <- 500000014
+------
+17721 0000302401550070 (lc=21007570740 34201736170)
+(alu) IOR a=6 m=5 m[5] C=0 alu-> -><none>,m[33] 
+a=6 (0), m=5 (0)
+alu_op 7, ir8 0, ir7 0, c 0, dest 33, out_bus 1
+a,m_memory[33] <- 0
+alu_out 0x00000000, alu_carry 0, q 0x0001e3e4
+------
+17722 0200115577730243 (lc=21007570740 34201736170)
+(jump) a=2 m=m[33] pc 17773, !next M-src = A-src 
+a=2 (0), m=33 (0)
+no_exec_next; u_pc 17774
+------
+TRACK-MOUSE-XSC-NO-MOTION:
+17773 0604641000530370 (lc=21007570740 34201736170)
+(byte) a=115 m=m[2] dpb pos=30, width=10 -><none>,m[12] 
+a=115 (500000001), m=2 (0), dest=12
+widthm1 7, pos 30, mr_sr_bits 3
+left_mask_index 37, right_mask_index 30
+left_mask 37777777777, right_mask 37700000000, mask 37700000000
+dpb; m 0, pos 30
+dpb; mask 37700000000, result 1
+a,m_memory[12] <- 1
+------
+17774 0227345200130241 (lc=21007570740 34201736170)
+(jump) a=567 m=m[12] pc 20013, !next M-src < A-src 
+a=567 (2), m=12 (1)
+no_exec_next; u_pc 20014
+------
+TRACK-MOUSE-9:
+20013 0025500001110050 (lc=21007570740 34201736170)
+(alu) SETA a=532 m=0 m[0] C=0 alu-> -><none>,m[22] 
+a=532 (10000000000), m=0 (0)
+alu_op 5, ir8 0, ir7 0, c 0, dest 22, out_bus 1
+a,m_memory[22] <- 10000000000
+alu_out 0x40000000, alu_carry 0, q 0x0001e3e4
+------
+20014 0125540001150050 (lc=21007570740 34201736170)
+popj; (alu) SETA a=533 m=0 m[0] C=0 alu-> -><none>,m[23] 
+a=533 (0), m=0 (0)
+alu_op 5, ir8 0, ir7 0, c 0, dest 23, out_bus 1
+a,m_memory[23] <- 0
+alu_out 0x00000000, alu_carry 0, q 0x0001e3e4
+popj; reading spc[3] -> 22163
+------
+20015 0025600000450050 (lc=21007570740 34201736170)
+(alu) SETA a=534 m=0 m[0] C=0 alu-> -><none>,m[11] 
+a=534 (10), m=0 (0)
+alu_op 5, ir8 0, ir7 0, c 0, dest 11, out_bus 1
+a,m_memory[11] <- 10
+alu_out 0x00000008, alu_carry 0, q 0x0001e3e4
+------
+22163 0216241221700041 (lc=21007570740 34201736170)
+(jump) a=345 m=m[2] pc 22170, M-src < A-src 
+a=345 (64), m=2 (0)
+------
+22164 0016241616250310 (lc=21007570740 34201736170)
+(alu) M+A [ADD] a=345 m=3 m[3] C=0 alu-> ->a_mem[345] 
+a=345 (64), m=3 (37777777777)
+alu_op 11, ir8 0, ir7 1, c 0, dest 4345, out_bus 1
+a_memory[345] <- 63
+alu_out 0x00000033, alu_carry 0, q 0x0001e3e4
+------
+INTRX1:
+22170 0214101221740243 (lc=21007570740 34201736170)
+(jump) a=302 m=m[2] pc 22174, !next M-src = A-src 
+a=302 (0), m=2 (0)
+no_exec_next; u_pc 22175
+------
+INTRX2:
+22174 0200000220560247 (lc=21007570740 34201736170)
+(jump) a=0 m=m[0] pc 22056, !next jump-always 
+a=0 (0), m=0 (0)
+no_exec_next; u_pc 22057
+------
+XB-INTR-RET:
+22056 0601301001330016 (lc=21007570740 34201736170)
+(byte) a=26 m=m[2] dpb pos=16, width=1 -><none>,m[26] 
+a=26 (500042042), m=2 (0), dest=26
+widthm1 0, pos 16, mr_sr_bits 3
+left_mask_index 16, right_mask_index 16
+left_mask 77777, right_mask 37777740000, mask 40000
+dpb; m 0, pos 16
+dpb; mask 40000, result 500002042
+a,m_memory[26] <- 500002042
+------
+22057 0010540060010050 (lc=21007570740 34201736170)
+(alu) SETA a=213 m=0 m[0] C=0 alu-> ->MD ,m[0] 
+a=213 (500000663), m=0 (0)
+alu_op 5, ir8 0, ir7 0, c 0, dest 1400, out_bus 1
+md<-500000663
+a,m_memory[0] <- 500000663
+alu_out 0x050001b3, alu_carry 0, q 0x0001e3e4
+------
+22060 0010500040010050 (lc=21007570740 34201736170)
+(alu) SETA a=212 m=0 m[0] C=0 alu-> ->VMA ,m[0] 
+a=212 (500124425), m=0 (500000663)
+alu_op 5, ir8 0, ir7 0, c 0, dest 1000, out_bus 1
+a,m_memory[0] <- 500124425
+alu_out 0x0500a915, alu_carry 0, q 0x0001e3e4
+------
+22061 0010700000510050 (lc=21007570740 34201736170)
+(alu) SETA a=216 m=0 m[0] C=0 alu-> -><none>,m[12] 
+a=216 (332261), m=0 (500124425)
+alu_op 5, ir8 0, ir7 0, c 0, dest 12, out_bus 1
+a,m_memory[12] <- 332261
+alu_out 0x0001b4b1, alu_carry 0, q 0x0001e3e4
+------
+22062 0110640000310050 (lc=21007570740 34201736170)
+popj; (alu) SETA a=215 m=0 m[0] C=0 alu-> -><none>,m[6] 
+a=215 (2), m=0 (500124425)
+alu_op 5, ir8 0, ir7 0, c 0, dest 6, out_bus 1
+a,m_memory[6] <- 2
+alu_out 0x00000002, alu_carry 0, q 0x0001e3e4
+popj; reading spc[2] -> 11365
+------
+22063 0010600000250050 (lc=21007570740 34201736170)
+(alu) SETA a=214 m=0 m[0] C=0 alu-> -><none>,m[5] 
+a=214 (0), m=0 (500124425)
+alu_op 5, ir8 0, ir7 0, c 0, dest 5, out_bus 1
+a,m_memory[5] <- 0
+alu_out 0x00000000, alu_carry 0, q 0x0001e3e4
+------
+11365 0026445040010310 (lc=21007570740 34201736170)
+(alu) M+A [ADD] a=551 m=12 m[12] C=0 alu-> ->VMA ,m[0] 
+a=551 (1), m=12 (332261)
+alu_op 11, ir8 0, ir7 1, c 0, dest 1000, out_bus 1
+a,m_memory[0] <- 332262
+alu_out 0x0001b4b2, alu_carry 0, q 0x0001e3e4
+------
+11366 0637251064011340 (lc=21007570740 34201736170)
+(byte) a=765 m=m[22] ldb pos=0, width=30 ->MD,start-write ,m[0] 
+a=765 (20500000000), m=22 (10000000000), dest=1500
+widthm1 27, pos 0, mr_sr_bits 1
+left_mask_index 27, right_mask_index 0
+left_mask 77777777, right_mask 37777777777, mask 77777777
+ldb; m 10000000000
+ldb; m-rot 10000000000, mask 77777777, result 20500000000
+write_mem(vaddr=332262,v=20500000000)
+write_mem(vaddr=332262) -> pn 460, offset 262, map 262200460 (20000000)
+a,m_memory[0] <- 20500000000
+------
+11367 0200000200570645 (lc=21007570740 34201736170)
+(jump) a=0 m=m[0] pc 20057, P !next pf/int 
+a=0 (20500000000), m=0 (20500000000)
+jump i|pf
+writing spc[2] <- 11370
+no_exec_next; u_pc 20060
+------
+PGF-W-I:
+20057 0200000217420344 (lc=21007570740 34201736170)
+(jump) a=0 m=m[0] pc 21742, !next !jump pf 
+a=0 (20500000000), m=0 (20500000000)
+no_exec_next; u_pc 21743
+------
+INTR:
+21742 0200013003730622 (lc=21007570740 34201736170)
+(jump) a=0 m=m[26] pc 373, P !next m-rot<< 22
+a=0 (20500000000), m=26 (500002042)
+jump-if-bit; rot 22, before 500002042 after 2042012000
+------
+21743 0000024210510030 (lc=21007570740 34201736170)
+(alu) SETM a=0 m=50 VMA C=0 alu-> ->a_mem[212] 
+a=0 (20500000000), m=50 (332262)
+alu_op 3, ir8 0, ir7 0, c 0, dest 4212, out_bus 1
+a_memory[212] <- 332262
+alu_out 0x0001b4b2, alu_carry 0, q 0x0001e3e4
+------
+21744 0000025210550030 (lc=21007570740 34201736170)
+(alu) SETM a=0 m=52 MD C=0 alu-> ->a_mem[213] 
+a=0 (20500000000), m=52 (20500000000)
+alu_op 3, ir8 0, ir7 0, c 0, dest 4213, out_bus 1
+a_memory[213] <- 20500000000
+alu_out 0x85000000, alu_carry 0, q 0x0001e3e4
+------
+21745 0601301401330016 (lc=21007570740 34201736170)
+(byte) a=26 m=m[3] dpb pos=16, width=1 -><none>,m[26] 
+a=26 (500002042), m=3 (37777777777), dest=26
+widthm1 0, pos 16, mr_sr_bits 3
+left_mask_index 16, right_mask_index 16
+left_mask 77777, right_mask 37777740000, mask 40000
+dpb; m 37777777777, pos 16
+dpb; mask 40000, result 500042042
+a,m_memory[26] <- 500042042
+------
+21746 0027140042010050 (lc=21007570740 34201736170)
+(alu) SETA a=563 m=0 m[0] C=0 alu-> ->VMA,start-read ,m[0] 
+a=563 (77773020), m=0 (20500000000)
+alu_op 5, ir8 0, ir7 0, c 0, dest 1040, out_bus 1
+read_mem(vaddr=77773020)
+read_mem(vaddr=77773020) -> pn 37766, offset 20, map 263037766 (40000000)
+read_mem(vaddr=77773020) -> 0
+a,m_memory[0] <- 77773020
+alu_out 0x00fff610, alu_carry 0, q 0x0001e3e4
+------
+21747 0200000200420644 (lc=21007570740 34201736170)
+(jump) a=0 m=m[0] pc 20042, P !next pf 
+a=0 (77773020), m=0 (77773020)
+------
+21750 0000002610610030 (lc=21007570740 34201736170)
+(alu) SETM a=0 m=5 m[5] C=0 alu-> ->a_mem[214] 
+a=0 (77773020), m=5 (0)
+alu_op 3, ir8 0, ir7 0, c 0, dest 4214, out_bus 1
+a_memory[214] <- 0
+alu_out 0x00000000, alu_carry 0, q 0x0001e3e4
+------
+21751 0000003210650030 (lc=21007570740 34201736170)
+(alu) SETM a=0 m=6 m[6] C=0 alu-> ->a_mem[215] 
+a=0 (77773020), m=6 (2)
+alu_op 3, ir8 0, ir7 0, c 0, dest 4215, out_bus 1
+a_memory[215] <- 2
+alu_out 0x00000002, alu_carry 0, q 0x0001e3e4
+------
+21752 0000005210710030 (lc=21007570740 34201736170)
+(alu) SETM a=0 m=12 m[12] C=0 alu-> ->a_mem[216] 
+a=0 (77773020), m=12 (332261)
+alu_op 3, ir8 0, ir7 0, c 0, dest 4216, out_bus 1
+a_memory[216] <- 332261
+alu_out 0x0001b4b1, alu_carry 0, q 0x0001e3e4
+------
+21753 0600125210750037 (lc=21007570740 34201736170)
+(byte) a=2 m=MD ldb pos=37, width=1 ->a_mem[217] 
+a=2 (0), m=52 (0), dest=4217
+widthm1 0, pos 37, mr_sr_bits 1
+left_mask_index 0, right_mask_index 0
+left_mask 1, right_mask 37777777777, mask 1
+ldb; m 0
+ldb; m-rot 0, mask 1, result 0
+a_memory[217] <- 0
+------
+21754 0210741221220243 (lc=21007570740 34201736170)
+(jump) a=217 m=m[2] pc 22122, !next M-src = A-src 
+a=217 (0), m=2 (0)
+no_exec_next; u_pc 22123
+------
+INNL0:
+22122 0002700042310050 (lc=21007570740 34201736170)
+(alu) SETA a=56 m=0 m[0] C=0 alu-> ->VMA,start-read ,m[6] 
+a=56 (577772060), m=0 (77773020)
+alu_op 5, ir8 0, ir7 0, c 0, dest 1046, out_bus 1
+read_mem(vaddr=577772060)
+read_mem(vaddr=577772060) -> pn 37764, offset 60, map 263037764 (40000000)
+a,m_memory[6] <- 577772060
+alu_out 0x05fff430, alu_carry 0, q 0x0001e3e4
+------
+22123 0200000200420644 (lc=21007570740 34201736170)
+(jump) a=0 m=m[0] pc 20042, P !next pf 
+a=0 (77773020), m=0 (77773020)
+------
+22124 0200025221260334 (lc=21007570740 34201736170)
+(jump) a=0 m=MD pc 22126, !next !jump m-rot<< 34
+a=0 (77773020), m=52 (220)
+jump-if-bit; rot 34, before 220 after 11
+------
+22125 0200025221750221 (lc=21007570740 34201736170)
+(jump) a=0 m=MD pc 22175, !next m-rot<< 21
+a=0 (77773020), m=52 (220)
+jump-if-bit; rot 21, before 220 after 110000000
+------
+INNL1:
+22126 0200025221300333 (lc=21007570740 34201736170)
+(jump) a=0 m=MD pc 22130, !next !jump m-rot<< 33
+a=0 (77773020), m=52 (220)
+jump-if-bit; rot 33, before 220 after 20000000004
+no_exec_next; u_pc 22131
+------
+INNL2:
+22130 0030600000250050 (lc=21007570740 34201736170)
+(alu) SETA a=614 m=0 m[0] C=0 alu-> -><none>,m[5] 
+a=614 (413), m=0 (77773020)
+alu_op 5, ir8 0, ir7 0, c 0, dest 5, out_bus 1
+a,m_memory[5] <- 413
+alu_out 0x0000010b, alu_carry 0, q 0x0001e3e4
+INND0+1:
+
+cycle timing:
+155862760 cycles in 27.7145 seconds,  5623876.8 cycles/second
+178 ns/cycle

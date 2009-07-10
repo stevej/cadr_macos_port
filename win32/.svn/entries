@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="54"
+   name=""
+   committed-date="2005-12-12T21:11:26.512612Z"
+   url="https://svn/repos/cadr/usim/win32"
+   last-author="brad"
+   kind="dir"
+   revision="84"/>
+<entry
+   committed-rev="54"
+   name="win32.c"
+   text-time="2005-10-23T19:17:24.000000Z"
+   committed-date="2005-12-12T21:11:26.512612Z"
+   checksum="b610aea80b979baa064d00b16bf14971"
+   last-author="brad"
+   kind="file"/>
+<entry
+   committed-rev="54"
+   name="getopt.c"
+   text-time="2005-10-23T19:17:30.000000Z"
+   committed-date="2005-12-12T21:11:26.512612Z"
+   checksum="86d1fc38b9bf3abb4ae3c4df2dc4b94d"
+   last-author="brad"
+   kind="file"/>
+<entry
+   committed-rev="54"
+   name="getopt.h"
+   text-time="2005-10-23T19:17:30.000000Z"
+   committed-date="2005-12-12T21:11:26.512612Z"
+   checksum="a6ac179475d055fc18eb43d8deed9f92"
+   last-author="brad"
+   kind="file"/>
+</wc-entries>
